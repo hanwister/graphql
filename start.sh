@@ -1,0 +1,1 @@
+node-red --port 64081 --userDir ./data;

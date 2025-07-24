@@ -1,0 +1,30 @@
+{
+  "name": "ftp-server-for-ladipage",
+  "version": "1.0.0",
+  "description": "Push data from ladipage to server",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node index.js",
+    "start": "pm2 start index.js --name ftp-server-for-ladipage --watch --ignore-watch=\"node_modules\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@apollo/server": "^5.0.0",
+    "@paralleldrive/cuid2": "^2.2.2",
+    "axios": "^1.11.0",
+    "body-parser": "^2.2.0",
+    "bunyan": "^1.8.15",
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "ftp-srv": "^4.6.3",
+    "ftpd": "^0.2.16",
+    "http": "^0.0.1-security",
+    "jsonwebtoken": "^9.0.2",
+    "mkdirp": "^3.0.1",
+    "node-red": "^4.0.9",
+    "socket.io": "^4.8.1"
+  }
+}

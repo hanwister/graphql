@@ -1,0 +1,114 @@
+{
+    "axios": {
+        "spec": "axios",
+        "module": "axios",
+        "subpath": "",
+        "builtin": false,
+        "known": false
+    },
+    "bullmq": {
+        "spec": "bullmq",
+        "module": "bullmq",
+        "subpath": "",
+        "builtin": false,
+        "known": false
+    },
+    "ioredis": {
+        "spec": "ioredis",
+        "module": "ioredis",
+        "subpath": "",
+        "builtin": false,
+        "known": false
+    },
+    "@paralleldrive/cuid2": {
+        "spec": "@paralleldrive/cuid2",
+        "module": "@paralleldrive/cuid2",
+        "subpath": "",
+        "builtin": false,
+        "known": false
+    },
+    "bunyan": {
+        "spec": "bunyan",
+        "module": "bunyan",
+        "subpath": "",
+        "builtin": false,
+        "known": false
+    },
+    "express": {
+        "spec": "express",
+        "module": "express",
+        "subpath": "",
+        "builtin": false,
+        "known": false
+    },
+    "@bull-board/api": {
+        "spec": "@bull-board/api",
+        "module": "@bull-board/api",
+        "subpath": "",
+        "builtin": false,
+        "known": false
+    },
+    "@bull-board/express": {
+        "spec": "@bull-board/express",
+        "module": "@bull-board/express",
+        "subpath": "",
+        "builtin": false,
+        "known": false
+    },
+    "bull": {
+        "spec": "bull",
+        "module": "bull",
+        "subpath": "",
+        "builtin": false,
+        "known": false
+    },
+    "body-parser": {
+        "spec": "body-parser",
+        "module": "body-parser",
+        "subpath": "",
+        "builtin": false,
+        "known": false
+    },
+    "cors": {
+        "spec": "cors",
+        "module": "cors",
+        "subpath": "",
+        "builtin": false,
+        "known": false
+    },
+    "@apollo/server": {
+        "spec": "@apollo/server",
+        "module": "@apollo/server",
+        "subpath": "",
+        "builtin": false,
+        "known": false
+    },
+    "jsonwebtoken": {
+        "spec": "jsonwebtoken",
+        "module": "jsonwebtoken",
+        "subpath": "",
+        "builtin": false,
+        "known": false
+    },
+    "ws": {
+        "spec": "ws",
+        "module": "ws",
+        "subpath": "",
+        "builtin": false,
+        "known": false
+    },
+    "socket.io": {
+        "spec": "socket.io",
+        "module": "socket.io",
+        "subpath": "",
+        "builtin": false,
+        "known": false
+    },
+    "ftp-srv": {
+        "spec": "ftp-srv",
+        "module": "ftp-srv",
+        "subpath": "",
+        "builtin": false,
+        "known": false
+    }
+}
