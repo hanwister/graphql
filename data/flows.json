@@ -492,6 +492,27 @@
         "h": 82
     },
     {
+        "id": "8551bceeef4730bb",
+        "type": "group",
+        "z": "7ae160012176ad26",
+        "name": "Install Modules",
+        "style": {
+            "stroke": "#92d04f",
+            "label": true,
+            "color": "#3f5787",
+            "fill": "#c8e7a7"
+        },
+        "nodes": [
+            "10d0ad705b89709a",
+            "0dd5622af69b9c7e",
+            "52a0d4d11cfc182d"
+        ],
+        "x": 54,
+        "y": 79,
+        "w": 752,
+        "h": 82
+    },
+    {
         "id": "22369ccbce0fbb74",
         "type": "global-config",
         "name": "global-config",
@@ -1444,7 +1465,7 @@
         "z": "ce9633b89106de8f",
         "g": "27ffce4169bd5e2c",
         "name": "Set Modules Requires",
-        "func": "msg.payload[\"modules\"] = [\n    \"axios\",\n    \"express\", \"http\", \"body-parser\", \"cors\",\n    \"@paralleldrive/cuid2\", \"@apollo/server\", \"jsonwebtoken\", \"socket.io\"\n];\nreturn msg;",
+        "func": "msg.payload[\"modules\"] = [\n    \"axios\", \"bullmq\", \"ioredis\",\n    \"express\", \"http\", \"body-parser\", \"cors\",\n    \"@paralleldrive/cuid2\", \"@apollo/server\", \"jsonwebtoken\", \"socket.io\"\n];\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -1569,8 +1590,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 270,
-        "y": 440,
+        "x": 370,
+        "y": 780,
         "wires": [
             [
                 "074472b253a5b912",
@@ -1603,8 +1624,8 @@
                 "module": "@paralleldrive/cuid2"
             }
         ],
-        "x": 530,
-        "y": 380,
+        "x": 630,
+        "y": 720,
         "wires": [
             [
                 "55b4b68b3b54a532"
@@ -1623,8 +1644,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 320,
-        "y": 380,
+        "x": 420,
+        "y": 720,
         "wires": [
             [
                 "074472b253a5b912"
@@ -1652,8 +1673,8 @@
                 "module": "jsonwebtoken"
             }
         ],
-        "x": 990,
-        "y": 260,
+        "x": 1090,
+        "y": 600,
         "wires": [
             [
                 "842648288c0e45b0"
@@ -1689,8 +1710,8 @@
                 "module": "url"
             }
         ],
-        "x": 1280,
-        "y": 380,
+        "x": 1380,
+        "y": 720,
         "wires": [
             [
                 "425cce780e7eb26b"
@@ -1718,8 +1739,8 @@
                 "module": "ioredis"
             }
         ],
-        "x": 1580,
-        "y": 380,
+        "x": 1680,
+        "y": 720,
         "wires": [
             []
         ]
@@ -1745,8 +1766,8 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 140,
-        "y": 740,
+        "x": 240,
+        "y": 1080,
         "wires": [
             [
                 "edb2442a91690956"
@@ -1758,8 +1779,8 @@
         "type": "subflow:52dd62cdb44e91b4",
         "z": "7ae160012176ad26",
         "name": "",
-        "x": 540,
-        "y": 740,
+        "x": 640,
+        "y": 1080,
         "wires": [
             [],
             [
@@ -1784,8 +1805,8 @@
                 "module": "fs"
             }
         ],
-        "x": 340,
-        "y": 740,
+        "x": 440,
+        "y": 1080,
         "wires": [
             [
                 "b739e1274a15a894"
@@ -1804,8 +1825,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 750,
-        "y": 740,
+        "x": 850,
+        "y": 1080,
         "wires": [
             [
                 "074472b253a5b912"
@@ -1824,8 +1845,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 320,
-        "y": 320,
+        "x": 420,
+        "y": 660,
         "wires": [
             [
                 "074472b253a5b912"
@@ -1853,40 +1874,11 @@
                 "module": "jsonwebtoken"
             }
         ],
-        "x": 1000,
-        "y": 440,
+        "x": 1100,
+        "y": 780,
         "wires": [
             [
                 "842648288c0e45b0"
-            ]
-        ]
-    },
-    {
-        "id": "0ec4f46d4666811c",
-        "type": "inject",
-        "z": "7ae160012176ad26",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": true,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 150,
-        "y": 100,
-        "wires": [
-            [
-                "6bdba8b46697d376"
             ]
         ]
     },
@@ -1902,8 +1894,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 80,
-        "y": 320,
+        "x": 180,
+        "y": 660,
         "wires": [
             [
                 "7d7f124704a5f004",
@@ -1930,8 +1922,8 @@
         "drop": false,
         "allowrate": false,
         "outputs": 1,
-        "x": 140,
-        "y": 640,
+        "x": 240,
+        "y": 980,
         "wires": [
             [
                 "edb2442a91690956"
@@ -1965,8 +1957,8 @@
         "checkall": "true",
         "repair": false,
         "outputs": 3,
-        "x": 750,
-        "y": 380,
+        "x": 850,
+        "y": 720,
         "wires": [
             [
                 "f4dde024773468a8"
@@ -1991,8 +1983,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 320,
-        "y": 260,
+        "x": 420,
+        "y": 600,
         "wires": [
             [
                 "074472b253a5b912"
@@ -2020,8 +2012,8 @@
                 "module": "jsonwebtoken"
             }
         ],
-        "x": 1010,
-        "y": 340,
+        "x": 1110,
+        "y": 680,
         "wires": [
             [
                 "842648288c0e45b0"
@@ -2045,8 +2037,8 @@
                 "module": "events"
             }
         ],
-        "x": 550,
-        "y": 100,
+        "x": 650,
+        "y": 440,
         "wires": [
             [
                 "c805a26344fefb77"
@@ -2075,8 +2067,8 @@
         "reduceInit": "",
         "reduceInitType": "num",
         "reduceFixup": "",
-        "x": 870,
-        "y": 120,
+        "x": 970,
+        "y": 460,
         "wires": [
             [
                 "7ccdeb6e24c0292f"
@@ -2088,8 +2080,8 @@
         "type": "subflow:5ed478d1a62e4007",
         "z": "7ae160012176ad26",
         "name": "",
-        "x": 570,
-        "y": 260,
+        "x": 670,
+        "y": 600,
         "wires": [
             [
                 "c805a26344fefb77"
@@ -2108,8 +2100,8 @@
                 "type": "env"
             }
         ],
-        "x": 570,
-        "y": 160,
+        "x": 670,
+        "y": 500,
         "wires": [
             [
                 "c805a26344fefb77"
@@ -2128,13 +2120,74 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 320,
-        "y": 100,
+        "x": 420,
+        "y": 440,
         "wires": [
             [
                 "6ba4b0f5568479d8",
                 "d5128b66cbd3a1ef",
                 "19e9c334aa42a827"
+            ]
+        ]
+    },
+    {
+        "id": "10d0ad705b89709a",
+        "type": "inject",
+        "z": "7ae160012176ad26",
+        "g": "8551bceeef4730bb",
+        "name": "Khởi chạy khi Deploy",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "0",
+        "topic": "",
+        "payload": "{}",
+        "payloadType": "json",
+        "x": 200,
+        "y": 120,
+        "wires": [
+            [
+                "0dd5622af69b9c7e"
+            ]
+        ]
+    },
+    {
+        "id": "0dd5622af69b9c7e",
+        "type": "function",
+        "z": "7ae160012176ad26",
+        "g": "8551bceeef4730bb",
+        "name": "Set Modules Requires",
+        "func": "msg.payload[\"modules\"] = [\n    \"axios\", \"bullmq\", \"ioredis\",\n    \"express\", \"http\", \"body-parser\", \"cors\",\n    \"@paralleldrive/cuid2\", \"@apollo/server\", \"jsonwebtoken\", \"socket.io\"\n];\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 460,
+        "y": 120,
+        "wires": [
+            [
+                "52a0d4d11cfc182d"
+            ]
+        ]
+    },
+    {
+        "id": "52a0d4d11cfc182d",
+        "type": "subflow:ee0637aa2f7fa7fe",
+        "z": "7ae160012176ad26",
+        "g": "8551bceeef4730bb",
+        "name": "",
+        "x": 700,
+        "y": 120,
+        "wires": [
+            [
+                "6bdba8b46697d376"
             ]
         ]
     }

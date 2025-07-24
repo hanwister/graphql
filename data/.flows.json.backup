@@ -35,7 +35,7 @@
         "id": "7ae160012176ad26",
         "type": "tab",
         "label": "Process query apollo",
-        "disabled": true,
+        "disabled": false,
         "info": "",
         "env": []
     },
