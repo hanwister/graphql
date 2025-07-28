@@ -1,0 +1,5284 @@
+{
+  "resource_version": 1146,
+  "metadata": {
+    "version": 3,
+    "sources": [
+      {
+        "name": "dudu-postgres",
+        "kind": "postgres",
+        "tables": [
+          {
+            "table": {
+              "name": "fpd7yxtpvwtvhw4clp80hyxi",
+              "schema": "Runner Server"
+            },
+            "array_relationships": [
+              {
+                "name": "list_fpd7yxtpvwtvhw4clp80hyxi_history",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "id": "record_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "fpd7yxtpvwtvhw4clp80hyxi_history",
+                      "schema": "Runner Server"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_owner",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "owner_id": "department_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "department",
+                      "schema": "protected"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_superior_department",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "owner_id": "descendant_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "department_hierarchy",
+                      "schema": "protected"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "fpd7yxtpvwtvhw4clp80hyxi_history",
+              "schema": "Runner Server"
+            },
+            "object_relationships": [
+              {
+                "name": "fpd7yxtpvwtvhw4clp80hyxi",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "record_id": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "fpd7yxtpvwtvhw4clp80hyxi",
+                      "schema": "Runner Server"
+                    }
+                  }
+                }
+              }
+            ],
+            "array_relationships": [
+              {
+                "name": "list_fpd7yxtpvwtvhw4clp80hyxi",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "record_id": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "fpd7yxtpvwtvhw4clp80hyxi",
+                      "schema": "Runner Server"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "a76cv0dncgf6oc7l4mipi6ns",
+              "schema": "app"
+            },
+            "array_relationships": [
+              {
+                "name": "list_a76cv0dncgf6oc7l4mipi6ns_history",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "id": "record_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "a76cv0dncgf6oc7l4mipi6ns_history",
+                      "schema": "app"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_owner",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "owner_id": "department_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "department",
+                      "schema": "protected"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_superior_department",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "owner_id": "descendant_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "department_hierarchy",
+                      "schema": "protected"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "a76cv0dncgf6oc7l4mipi6ns_history",
+              "schema": "app"
+            },
+            "object_relationships": [
+              {
+                "name": "a76cv0dncgf6oc7l4mipi6ns",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "record_id": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "a76cv0dncgf6oc7l4mipi6ns",
+                      "schema": "app"
+                    }
+                  }
+                }
+              }
+            ],
+            "array_relationships": [
+              {
+                "name": "list_a76cv0dncgf6oc7l4mipi6ns",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "record_id": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "a76cv0dncgf6oc7l4mipi6ns",
+                      "schema": "app"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "aobcevtk024vownl3ekhmg6u",
+              "schema": "app"
+            },
+            "array_relationships": [
+              {
+                "name": "list_aobcevtk024vownl3ekhmg6u_history",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "id": "record_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "aobcevtk024vownl3ekhmg6u_history",
+                      "schema": "app"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_owner",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "owner_id": "department_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "department",
+                      "schema": "protected"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_superior_department",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "owner_id": "descendant_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "department_hierarchy",
+                      "schema": "protected"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "aobcevtk024vownl3ekhmg6u_history",
+              "schema": "app"
+            },
+            "object_relationships": [
+              {
+                "name": "aobcevtk024vownl3ekhmg6u",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "record_id": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "aobcevtk024vownl3ekhmg6u",
+                      "schema": "app"
+                    }
+                  }
+                }
+              }
+            ],
+            "array_relationships": [
+              {
+                "name": "list_aobcevtk024vownl3ekhmg6u",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "record_id": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "aobcevtk024vownl3ekhmg6u",
+                      "schema": "app"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "clibkgqe60001tr2ef6bmewkn",
+              "schema": "app"
+            },
+            "array_relationships": [
+              {
+                "name": "list_clibkgqe60001tr2ef6bmewkn_history",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "id": "record_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "clibkgqe60001tr2ef6bmewkn_history",
+                      "schema": "app"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_owner",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "owner_id": "department_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "department",
+                      "schema": "protected"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_superior_department",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "owner_id": "descendant_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "department_hierarchy",
+                      "schema": "protected"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "clibkgqe60001tr2ef6bmewkn_history",
+              "schema": "app"
+            },
+            "object_relationships": [
+              {
+                "name": "clibkgqe60001tr2ef6bmewkn",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "record_id": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "clibkgqe60001tr2ef6bmewkn",
+                      "schema": "app"
+                    }
+                  }
+                }
+              }
+            ],
+            "array_relationships": [
+              {
+                "name": "list_clibkgqe60001tr2ef6bmewkn",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "record_id": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "clibkgqe60001tr2ef6bmewkn",
+                      "schema": "app"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "eesxek0qe7o775m73eahprpp",
+              "schema": "app"
+            },
+            "object_relationships": [
+              {
+                "name": "q4b5b1ml4mu5k5sqqlv9yf3i",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "aj3or676gk43mr8fw5x236wx": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "q4b5b1ml4mu5k5sqqlv9yf3i",
+                      "schema": "app"
+                    }
+                  }
+                }
+              }
+            ],
+            "array_relationships": [
+              {
+                "name": "list_eesxek0qe7o775m73eahprpp_history",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "id": "record_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "eesxek0qe7o775m73eahprpp_history",
+                      "schema": "app"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_owner",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "owner_id": "department_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "department",
+                      "schema": "protected"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_q4b5b1ml4mu5k5sqqlv9yf3i",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "aj3or676gk43mr8fw5x236wx": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "q4b5b1ml4mu5k5sqqlv9yf3i",
+                      "schema": "app"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_superior_department",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "owner_id": "descendant_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "department_hierarchy",
+                      "schema": "protected"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "eesxek0qe7o775m73eahprpp_history",
+              "schema": "app"
+            },
+            "object_relationships": [
+              {
+                "name": "eesxek0qe7o775m73eahprpp",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "record_id": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "eesxek0qe7o775m73eahprpp",
+                      "schema": "app"
+                    }
+                  }
+                }
+              }
+            ],
+            "array_relationships": [
+              {
+                "name": "list_eesxek0qe7o775m73eahprpp",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "record_id": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "eesxek0qe7o775m73eahprpp",
+                      "schema": "app"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "egwyrwihsmtwir2fcin633r6",
+              "schema": "app"
+            },
+            "array_relationships": [
+              {
+                "name": "list_egwyrwihsmtwir2fcin633r6_history",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "id": "record_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "egwyrwihsmtwir2fcin633r6_history",
+                      "schema": "app"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_owner",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "owner_id": "department_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "department",
+                      "schema": "protected"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_superior_department",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "owner_id": "descendant_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "department_hierarchy",
+                      "schema": "protected"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "egwyrwihsmtwir2fcin633r6_history",
+              "schema": "app"
+            },
+            "object_relationships": [
+              {
+                "name": "egwyrwihsmtwir2fcin633r6",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "record_id": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "egwyrwihsmtwir2fcin633r6",
+                      "schema": "app"
+                    }
+                  }
+                }
+              }
+            ],
+            "array_relationships": [
+              {
+                "name": "list_egwyrwihsmtwir2fcin633r6",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "record_id": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "egwyrwihsmtwir2fcin633r6",
+                      "schema": "app"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "eswjvms0hbrde33rbmhb1fle",
+              "schema": "app"
+            },
+            "array_relationships": [
+              {
+                "name": "list_eswjvms0hbrde33rbmhb1fle_history",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "id": "record_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "eswjvms0hbrde33rbmhb1fle_history",
+                      "schema": "app"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_nfc7w2xhj1yqmosr63wawkj1",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "id": "fvhpqxpa1co70qx84bh5lfus"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "nfc7w2xhj1yqmosr63wawkj1",
+                      "schema": "app"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_owner",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "owner_id": "department_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "department",
+                      "schema": "protected"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_superior_department",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "owner_id": "descendant_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "department_hierarchy",
+                      "schema": "protected"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "eswjvms0hbrde33rbmhb1fle_history",
+              "schema": "app"
+            },
+            "object_relationships": [
+              {
+                "name": "eswjvms0hbrde33rbmhb1fle",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "record_id": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "eswjvms0hbrde33rbmhb1fle",
+                      "schema": "app"
+                    }
+                  }
+                }
+              }
+            ],
+            "array_relationships": [
+              {
+                "name": "list_eswjvms0hbrde33rbmhb1fle",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "record_id": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "eswjvms0hbrde33rbmhb1fle",
+                      "schema": "app"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "ewagu4lwxw59flqwd9sykf9p",
+              "schema": "app"
+            },
+            "array_relationships": [
+              {
+                "name": "list_ewagu4lwxw59flqwd9sykf9p_history",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "id": "record_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "ewagu4lwxw59flqwd9sykf9p_history",
+                      "schema": "app"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_kz6swubuzek0oxv0snig01yf",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "id": "xu9ht06nuam6tm5f0euj58a4"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "kz6swubuzek0oxv0snig01yf",
+                      "schema": "app"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_owner",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "owner_id": "department_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "department",
+                      "schema": "protected"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_superior_department",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "owner_id": "descendant_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "department_hierarchy",
+                      "schema": "protected"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "ewagu4lwxw59flqwd9sykf9p_history",
+              "schema": "app"
+            },
+            "object_relationships": [
+              {
+                "name": "ewagu4lwxw59flqwd9sykf9p",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "record_id": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "ewagu4lwxw59flqwd9sykf9p",
+                      "schema": "app"
+                    }
+                  }
+                }
+              }
+            ],
+            "array_relationships": [
+              {
+                "name": "list_ewagu4lwxw59flqwd9sykf9p",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "record_id": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "ewagu4lwxw59flqwd9sykf9p",
+                      "schema": "app"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "g7ant015g4oh96i9rwqkqyux",
+              "schema": "app"
+            },
+            "array_relationships": [
+              {
+                "name": "list_g7ant015g4oh96i9rwqkqyux_history",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "id": "record_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "g7ant015g4oh96i9rwqkqyux_history",
+                      "schema": "app"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_owner",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "owner_id": "department_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "department",
+                      "schema": "protected"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_superior_department",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "owner_id": "descendant_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "department_hierarchy",
+                      "schema": "protected"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "g7ant015g4oh96i9rwqkqyux_history",
+              "schema": "app"
+            },
+            "object_relationships": [
+              {
+                "name": "g7ant015g4oh96i9rwqkqyux",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "record_id": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "g7ant015g4oh96i9rwqkqyux",
+                      "schema": "app"
+                    }
+                  }
+                }
+              }
+            ],
+            "array_relationships": [
+              {
+                "name": "list_g7ant015g4oh96i9rwqkqyux",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "record_id": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "g7ant015g4oh96i9rwqkqyux",
+                      "schema": "app"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "gfksgqxqqf5v1r9xwnx2mx0t",
+              "schema": "app"
+            },
+            "object_relationships": [
+              {
+                "name": "aobcevtk024vownl3ekhmg6u",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "osace15ex5n29pq8b72ym3yt": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "aobcevtk024vownl3ekhmg6u",
+                      "schema": "app"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "q4b5b1ml4mu5k5sqqlv9yf3i",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "q64tjxo7nohe6brq3tgx3bfd": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "q4b5b1ml4mu5k5sqqlv9yf3i",
+                      "schema": "app"
+                    }
+                  }
+                }
+              }
+            ],
+            "array_relationships": [
+              {
+                "name": "list_aobcevtk024vownl3ekhmg6u",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "osace15ex5n29pq8b72ym3yt": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "aobcevtk024vownl3ekhmg6u",
+                      "schema": "app"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_gfksgqxqqf5v1r9xwnx2mx0t_history",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "id": "record_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "gfksgqxqqf5v1r9xwnx2mx0t_history",
+                      "schema": "app"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_owner",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "owner_id": "department_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "department",
+                      "schema": "protected"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_q4b5b1ml4mu5k5sqqlv9yf3i",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "q64tjxo7nohe6brq3tgx3bfd": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "q4b5b1ml4mu5k5sqqlv9yf3i",
+                      "schema": "app"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_superior_department",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "owner_id": "descendant_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "department_hierarchy",
+                      "schema": "protected"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "gfksgqxqqf5v1r9xwnx2mx0t_history",
+              "schema": "app"
+            },
+            "object_relationships": [
+              {
+                "name": "gfksgqxqqf5v1r9xwnx2mx0t",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "record_id": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "gfksgqxqqf5v1r9xwnx2mx0t",
+                      "schema": "app"
+                    }
+                  }
+                }
+              }
+            ],
+            "array_relationships": [
+              {
+                "name": "list_gfksgqxqqf5v1r9xwnx2mx0t",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "record_id": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "gfksgqxqqf5v1r9xwnx2mx0t",
+                      "schema": "app"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "gqvs9kezaiyx5oejtfkau5bq",
+              "schema": "app"
+            },
+            "array_relationships": [
+              {
+                "name": "list_gqvs9kezaiyx5oejtfkau5bq_history",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "id": "record_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "gqvs9kezaiyx5oejtfkau5bq_history",
+                      "schema": "app"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_owner",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "owner_id": "department_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "department",
+                      "schema": "protected"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_superior_department",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "owner_id": "descendant_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "department_hierarchy",
+                      "schema": "protected"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "gqvs9kezaiyx5oejtfkau5bq_history",
+              "schema": "app"
+            },
+            "object_relationships": [
+              {
+                "name": "gqvs9kezaiyx5oejtfkau5bq",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "record_id": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "gqvs9kezaiyx5oejtfkau5bq",
+                      "schema": "app"
+                    }
+                  }
+                }
+              }
+            ],
+            "array_relationships": [
+              {
+                "name": "list_gqvs9kezaiyx5oejtfkau5bq",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "record_id": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "gqvs9kezaiyx5oejtfkau5bq",
+                      "schema": "app"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "gwtuz6s83hc28tbjjmhh7l84",
+              "schema": "app"
+            },
+            "object_relationships": [
+              {
+                "name": "egwyrwihsmtwir2fcin633r6",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "xu5jbkxfy66v03otm623ooqx": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "egwyrwihsmtwir2fcin633r6",
+                      "schema": "app"
+                    }
+                  }
+                }
+              }
+            ],
+            "array_relationships": [
+              {
+                "name": "list_egwyrwihsmtwir2fcin633r6",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "xu5jbkxfy66v03otm623ooqx": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "egwyrwihsmtwir2fcin633r6",
+                      "schema": "app"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_gwtuz6s83hc28tbjjmhh7l84_history",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "id": "record_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "gwtuz6s83hc28tbjjmhh7l84_history",
+                      "schema": "app"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_owner",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "owner_id": "department_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "department",
+                      "schema": "protected"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_superior_department",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "owner_id": "descendant_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "department_hierarchy",
+                      "schema": "protected"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "gwtuz6s83hc28tbjjmhh7l84_history",
+              "schema": "app"
+            },
+            "object_relationships": [
+              {
+                "name": "gwtuz6s83hc28tbjjmhh7l84",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "record_id": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "gwtuz6s83hc28tbjjmhh7l84",
+                      "schema": "app"
+                    }
+                  }
+                }
+              }
+            ],
+            "array_relationships": [
+              {
+                "name": "list_gwtuz6s83hc28tbjjmhh7l84",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "record_id": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "gwtuz6s83hc28tbjjmhh7l84",
+                      "schema": "app"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "hsh6fxag5luidi05btj8h55d",
+              "schema": "app"
+            },
+            "object_relationships": [
+              {
+                "name": "eswjvms0hbrde33rbmhb1fle",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "gqx8f9o83kwdwdn5uxcjpph4": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "eswjvms0hbrde33rbmhb1fle",
+                      "schema": "app"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "me0d1kd9yi2ep4bmypgd1y5x",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "emj2z5garv6j5w6yv5wf3k1h": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "me0d1kd9yi2ep4bmypgd1y5x",
+                      "schema": "app"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "nfc7w2xhj1yqmosr63wawkj1",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "psudm0lywa7iygdoqwztuodn": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "nfc7w2xhj1yqmosr63wawkj1",
+                      "schema": "app"
+                    }
+                  }
+                }
+              }
+            ],
+            "array_relationships": [
+              {
+                "name": "list_eswjvms0hbrde33rbmhb1fle",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "gqx8f9o83kwdwdn5uxcjpph4": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "eswjvms0hbrde33rbmhb1fle",
+                      "schema": "app"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_hsh6fxag5luidi05btj8h55d_history",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "id": "record_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "hsh6fxag5luidi05btj8h55d_history",
+                      "schema": "app"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_me0d1kd9yi2ep4bmypgd1y5x",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "emj2z5garv6j5w6yv5wf3k1h": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "me0d1kd9yi2ep4bmypgd1y5x",
+                      "schema": "app"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_nfc7w2xhj1yqmosr63wawkj1",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "psudm0lywa7iygdoqwztuodn": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "nfc7w2xhj1yqmosr63wawkj1",
+                      "schema": "app"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_owner",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "owner_id": "department_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "department",
+                      "schema": "protected"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_superior_department",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "owner_id": "descendant_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "department_hierarchy",
+                      "schema": "protected"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "hsh6fxag5luidi05btj8h55d_history",
+              "schema": "app"
+            },
+            "object_relationships": [
+              {
+                "name": "hsh6fxag5luidi05btj8h55d",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "record_id": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "hsh6fxag5luidi05btj8h55d",
+                      "schema": "app"
+                    }
+                  }
+                }
+              }
+            ],
+            "array_relationships": [
+              {
+                "name": "list_hsh6fxag5luidi05btj8h55d",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "record_id": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "hsh6fxag5luidi05btj8h55d",
+                      "schema": "app"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "io6jvssmkzy4ctqgds0jx6rb",
+              "schema": "app"
+            },
+            "array_relationships": [
+              {
+                "name": "list_io6jvssmkzy4ctqgds0jx6rb_history",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "id": "record_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "io6jvssmkzy4ctqgds0jx6rb_history",
+                      "schema": "app"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_owner",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "owner_id": "department_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "department",
+                      "schema": "protected"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_superior_department",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "owner_id": "descendant_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "department_hierarchy",
+                      "schema": "protected"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "io6jvssmkzy4ctqgds0jx6rb_history",
+              "schema": "app"
+            },
+            "object_relationships": [
+              {
+                "name": "io6jvssmkzy4ctqgds0jx6rb",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "record_id": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "io6jvssmkzy4ctqgds0jx6rb",
+                      "schema": "app"
+                    }
+                  }
+                }
+              }
+            ],
+            "array_relationships": [
+              {
+                "name": "list_io6jvssmkzy4ctqgds0jx6rb",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "record_id": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "io6jvssmkzy4ctqgds0jx6rb",
+                      "schema": "app"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "kz6swubuzek0oxv0snig01yf",
+              "schema": "app"
+            },
+            "object_relationships": [
+              {
+                "name": "ewagu4lwxw59flqwd9sykf9p",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "xu9ht06nuam6tm5f0euj58a4": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "ewagu4lwxw59flqwd9sykf9p",
+                      "schema": "app"
+                    }
+                  }
+                }
+              }
+            ],
+            "array_relationships": [
+              {
+                "name": "list_ewagu4lwxw59flqwd9sykf9p",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "xu9ht06nuam6tm5f0euj58a4": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "ewagu4lwxw59flqwd9sykf9p",
+                      "schema": "app"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_kz6swubuzek0oxv0snig01yf_history",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "id": "record_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "kz6swubuzek0oxv0snig01yf_history",
+                      "schema": "app"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_owner",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "owner_id": "department_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "department",
+                      "schema": "protected"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_superior_department",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "owner_id": "descendant_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "department_hierarchy",
+                      "schema": "protected"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "kz6swubuzek0oxv0snig01yf_history",
+              "schema": "app"
+            },
+            "object_relationships": [
+              {
+                "name": "kz6swubuzek0oxv0snig01yf",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "record_id": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "kz6swubuzek0oxv0snig01yf",
+                      "schema": "app"
+                    }
+                  }
+                }
+              }
+            ],
+            "array_relationships": [
+              {
+                "name": "list_kz6swubuzek0oxv0snig01yf",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "record_id": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "kz6swubuzek0oxv0snig01yf",
+                      "schema": "app"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "me0d1kd9yi2ep4bmypgd1y5x",
+              "schema": "app"
+            },
+            "array_relationships": [
+              {
+                "name": "list_me0d1kd9yi2ep4bmypgd1y5x_history",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "id": "record_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "me0d1kd9yi2ep4bmypgd1y5x_history",
+                      "schema": "app"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_owner",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "owner_id": "department_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "department",
+                      "schema": "protected"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_superior_department",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "owner_id": "descendant_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "department_hierarchy",
+                      "schema": "protected"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "me0d1kd9yi2ep4bmypgd1y5x_history",
+              "schema": "app"
+            },
+            "object_relationships": [
+              {
+                "name": "me0d1kd9yi2ep4bmypgd1y5x",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "record_id": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "me0d1kd9yi2ep4bmypgd1y5x",
+                      "schema": "app"
+                    }
+                  }
+                }
+              }
+            ],
+            "array_relationships": [
+              {
+                "name": "list_me0d1kd9yi2ep4bmypgd1y5x",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "record_id": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "me0d1kd9yi2ep4bmypgd1y5x",
+                      "schema": "app"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "nfc7w2xhj1yqmosr63wawkj1",
+              "schema": "app"
+            },
+            "object_relationships": [
+              {
+                "name": "eswjvms0hbrde33rbmhb1fle",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "fvhpqxpa1co70qx84bh5lfus": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "eswjvms0hbrde33rbmhb1fle",
+                      "schema": "app"
+                    }
+                  }
+                }
+              }
+            ],
+            "array_relationships": [
+              {
+                "name": "list_eswjvms0hbrde33rbmhb1fle",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "fvhpqxpa1co70qx84bh5lfus": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "eswjvms0hbrde33rbmhb1fle",
+                      "schema": "app"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_nfc7w2xhj1yqmosr63wawkj1_history",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "id": "record_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "nfc7w2xhj1yqmosr63wawkj1_history",
+                      "schema": "app"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_owner",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "owner_id": "department_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "department",
+                      "schema": "protected"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_superior_department",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "owner_id": "descendant_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "department_hierarchy",
+                      "schema": "protected"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "nfc7w2xhj1yqmosr63wawkj1_history",
+              "schema": "app"
+            },
+            "object_relationships": [
+              {
+                "name": "nfc7w2xhj1yqmosr63wawkj1",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "record_id": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "nfc7w2xhj1yqmosr63wawkj1",
+                      "schema": "app"
+                    }
+                  }
+                }
+              }
+            ],
+            "array_relationships": [
+              {
+                "name": "list_nfc7w2xhj1yqmosr63wawkj1",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "record_id": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "nfc7w2xhj1yqmosr63wawkj1",
+                      "schema": "app"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "nnuncdvj7t8438s77g09ek7b",
+              "schema": "app"
+            },
+            "array_relationships": [
+              {
+                "name": "list_nnuncdvj7t8438s77g09ek7b_history",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "id": "record_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "nnuncdvj7t8438s77g09ek7b_history",
+                      "schema": "app"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_owner",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "owner_id": "department_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "department",
+                      "schema": "protected"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_superior_department",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "owner_id": "descendant_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "department_hierarchy",
+                      "schema": "protected"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "nnuncdvj7t8438s77g09ek7b_history",
+              "schema": "app"
+            },
+            "object_relationships": [
+              {
+                "name": "nnuncdvj7t8438s77g09ek7b",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "record_id": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "nnuncdvj7t8438s77g09ek7b",
+                      "schema": "app"
+                    }
+                  }
+                }
+              }
+            ],
+            "array_relationships": [
+              {
+                "name": "list_nnuncdvj7t8438s77g09ek7b",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "record_id": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "nnuncdvj7t8438s77g09ek7b",
+                      "schema": "app"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "nv3gqx2omz0vf15ddez95htw",
+              "schema": "app"
+            },
+            "array_relationships": [
+              {
+                "name": "list_nv3gqx2omz0vf15ddez95htw_history",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "id": "record_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "nv3gqx2omz0vf15ddez95htw_history",
+                      "schema": "app"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_owner",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "owner_id": "department_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "department",
+                      "schema": "protected"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_superior_department",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "owner_id": "descendant_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "department_hierarchy",
+                      "schema": "protected"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "nv3gqx2omz0vf15ddez95htw_history",
+              "schema": "app"
+            },
+            "object_relationships": [
+              {
+                "name": "nv3gqx2omz0vf15ddez95htw",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "record_id": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "nv3gqx2omz0vf15ddez95htw",
+                      "schema": "app"
+                    }
+                  }
+                }
+              }
+            ],
+            "array_relationships": [
+              {
+                "name": "list_nv3gqx2omz0vf15ddez95htw",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "record_id": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "nv3gqx2omz0vf15ddez95htw",
+                      "schema": "app"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "q4b5b1ml4mu5k5sqqlv9yf3i",
+              "schema": "app"
+            },
+            "object_relationships": [
+              {
+                "name": "eswjvms0hbrde33rbmhb1fle",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "xc3tnri3tz0q003pyf80p2md": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "eswjvms0hbrde33rbmhb1fle",
+                      "schema": "app"
+                    }
+                  }
+                }
+              }
+            ],
+            "array_relationships": [
+              {
+                "name": "list_eesxek0qe7o775m73eahprpp",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "id": "aj3or676gk43mr8fw5x236wx"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "eesxek0qe7o775m73eahprpp",
+                      "schema": "app"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_eswjvms0hbrde33rbmhb1fle",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "xc3tnri3tz0q003pyf80p2md": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "eswjvms0hbrde33rbmhb1fle",
+                      "schema": "app"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_gfksgqxqqf5v1r9xwnx2mx0t",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "id": "q64tjxo7nohe6brq3tgx3bfd"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "gfksgqxqqf5v1r9xwnx2mx0t",
+                      "schema": "app"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_gwtuz6s83hc28tbjjmhh7l84",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "id": "ydztlhpp9zminehxf33789re"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "gwtuz6s83hc28tbjjmhh7l84",
+                      "schema": "app"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_owner",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "owner_id": "department_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "department",
+                      "schema": "protected"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_q4b5b1ml4mu5k5sqqlv9yf3i_history",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "id": "record_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "q4b5b1ml4mu5k5sqqlv9yf3i_history",
+                      "schema": "app"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_superior_department",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "owner_id": "descendant_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "department_hierarchy",
+                      "schema": "protected"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_wktoglimpbnciem4cswrfw35",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "n3mry7hrqzcr0ecq2pj9m2vd": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "wktoglimpbnciem4cswrfw35",
+                      "schema": "app"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_zm0c2dpryown4lva5dpq3wgh",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "id": "zyo63lnqrr7do4tqtol1pcnd"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "zm0c2dpryown4lva5dpq3wgh",
+                      "schema": "app"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "q4b5b1ml4mu5k5sqqlv9yf3i_history",
+              "schema": "app"
+            },
+            "object_relationships": [
+              {
+                "name": "q4b5b1ml4mu5k5sqqlv9yf3i",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "record_id": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "q4b5b1ml4mu5k5sqqlv9yf3i",
+                      "schema": "app"
+                    }
+                  }
+                }
+              }
+            ],
+            "array_relationships": [
+              {
+                "name": "list_q4b5b1ml4mu5k5sqqlv9yf3i",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "record_id": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "q4b5b1ml4mu5k5sqqlv9yf3i",
+                      "schema": "app"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "vx8mt7bycygryzfth7x3v0br",
+              "schema": "app"
+            },
+            "array_relationships": [
+              {
+                "name": "list_owner",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "owner_id": "department_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "department",
+                      "schema": "protected"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_superior_department",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "owner_id": "descendant_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "department_hierarchy",
+                      "schema": "protected"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_vx8mt7bycygryzfth7x3v0br_history",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "id": "record_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "vx8mt7bycygryzfth7x3v0br_history",
+                      "schema": "app"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "vx8mt7bycygryzfth7x3v0br_history",
+              "schema": "app"
+            },
+            "object_relationships": [
+              {
+                "name": "vx8mt7bycygryzfth7x3v0br",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "record_id": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "vx8mt7bycygryzfth7x3v0br",
+                      "schema": "app"
+                    }
+                  }
+                }
+              }
+            ],
+            "array_relationships": [
+              {
+                "name": "list_vx8mt7bycygryzfth7x3v0br",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "record_id": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "vx8mt7bycygryzfth7x3v0br",
+                      "schema": "app"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "wktoglimpbnciem4cswrfw35",
+              "schema": "app"
+            },
+            "array_relationships": [
+              {
+                "name": "list_owner",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "owner_id": "department_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "department",
+                      "schema": "protected"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_q4b5b1ml4mu5k5sqqlv9yf3i",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "id": "n3mry7hrqzcr0ecq2pj9m2vd"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "q4b5b1ml4mu5k5sqqlv9yf3i",
+                      "schema": "app"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_superior_department",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "owner_id": "descendant_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "department_hierarchy",
+                      "schema": "protected"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_wktoglimpbnciem4cswrfw35_history",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "id": "record_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "wktoglimpbnciem4cswrfw35_history",
+                      "schema": "app"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "wktoglimpbnciem4cswrfw35_history",
+              "schema": "app"
+            },
+            "object_relationships": [
+              {
+                "name": "wktoglimpbnciem4cswrfw35",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "record_id": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "wktoglimpbnciem4cswrfw35",
+                      "schema": "app"
+                    }
+                  }
+                }
+              }
+            ],
+            "array_relationships": [
+              {
+                "name": "list_wktoglimpbnciem4cswrfw35",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "record_id": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "wktoglimpbnciem4cswrfw35",
+                      "schema": "app"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "zm0c2dpryown4lva5dpq3wgh",
+              "schema": "app"
+            },
+            "object_relationships": [
+              {
+                "name": "q4b5b1ml4mu5k5sqqlv9yf3i",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "zyo63lnqrr7do4tqtol1pcnd": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "q4b5b1ml4mu5k5sqqlv9yf3i",
+                      "schema": "app"
+                    }
+                  }
+                }
+              }
+            ],
+            "array_relationships": [
+              {
+                "name": "list_g7ant015g4oh96i9rwqkqyux",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "z6erxzibenjbyjckdnxygxjv": "d4e3dkwg17hrhq7i0vlqwvs3"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "g7ant015g4oh96i9rwqkqyux",
+                      "schema": "app"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_owner",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "owner_id": "department_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "department",
+                      "schema": "protected"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_q4b5b1ml4mu5k5sqqlv9yf3i",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "zyo63lnqrr7do4tqtol1pcnd": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "q4b5b1ml4mu5k5sqqlv9yf3i",
+                      "schema": "app"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_superior_department",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "owner_id": "descendant_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "department_hierarchy",
+                      "schema": "protected"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_zm0c2dpryown4lva5dpq3wgh_history",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "id": "record_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "zm0c2dpryown4lva5dpq3wgh_history",
+                      "schema": "app"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "zm0c2dpryown4lva5dpq3wgh_history",
+              "schema": "app"
+            },
+            "object_relationships": [
+              {
+                "name": "zm0c2dpryown4lva5dpq3wgh",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "record_id": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "zm0c2dpryown4lva5dpq3wgh",
+                      "schema": "app"
+                    }
+                  }
+                }
+              }
+            ],
+            "array_relationships": [
+              {
+                "name": "list_zm0c2dpryown4lva5dpq3wgh",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "record_id": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "zm0c2dpryown4lva5dpq3wgh",
+                      "schema": "app"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "ac7sv59n3c790t81s0athzia",
+              "schema": "auth"
+            },
+            "array_relationships": [
+              {
+                "name": "list_ac7sv59n3c790t81s0athzia_history",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "id": "record_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "ac7sv59n3c790t81s0athzia_history",
+                      "schema": "auth"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_owner",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "owner_id": "department_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "department",
+                      "schema": "protected"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_superior_department",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "owner_id": "descendant_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "department_hierarchy",
+                      "schema": "protected"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "ac7sv59n3c790t81s0athzia_history",
+              "schema": "auth"
+            },
+            "object_relationships": [
+              {
+                "name": "ac7sv59n3c790t81s0athzia",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "record_id": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "ac7sv59n3c790t81s0athzia",
+                      "schema": "auth"
+                    }
+                  }
+                }
+              }
+            ],
+            "array_relationships": [
+              {
+                "name": "list_ac7sv59n3c790t81s0athzia",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "record_id": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "ac7sv59n3c790t81s0athzia",
+                      "schema": "auth"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "jpd8d8jx72vrp6ok01p0zb1b",
+              "schema": "auth"
+            },
+            "array_relationships": [
+              {
+                "name": "list_jpd8d8jx72vrp6ok01p0zb1b_history",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "id": "record_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "jpd8d8jx72vrp6ok01p0zb1b_history",
+                      "schema": "auth"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_owner",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "owner_id": "department_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "department",
+                      "schema": "protected"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_superior_department",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "owner_id": "descendant_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "department_hierarchy",
+                      "schema": "protected"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "jpd8d8jx72vrp6ok01p0zb1b_history",
+              "schema": "auth"
+            },
+            "object_relationships": [
+              {
+                "name": "jpd8d8jx72vrp6ok01p0zb1b",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "record_id": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "jpd8d8jx72vrp6ok01p0zb1b",
+                      "schema": "auth"
+                    }
+                  }
+                }
+              }
+            ],
+            "array_relationships": [
+              {
+                "name": "list_jpd8d8jx72vrp6ok01p0zb1b",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "record_id": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "jpd8d8jx72vrp6ok01p0zb1b",
+                      "schema": "auth"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "ptn6m2rmto4tmehbxglf1va3",
+              "schema": "auth"
+            },
+            "array_relationships": [
+              {
+                "name": "list_owner",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "owner_id": "department_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "department",
+                      "schema": "protected"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_ptn6m2rmto4tmehbxglf1va3_history",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "id": "record_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "ptn6m2rmto4tmehbxglf1va3_history",
+                      "schema": "auth"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_superior_department",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "owner_id": "descendant_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "department_hierarchy",
+                      "schema": "protected"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "ptn6m2rmto4tmehbxglf1va3_history",
+              "schema": "auth"
+            },
+            "object_relationships": [
+              {
+                "name": "ptn6m2rmto4tmehbxglf1va3",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "record_id": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "ptn6m2rmto4tmehbxglf1va3",
+                      "schema": "auth"
+                    }
+                  }
+                }
+              }
+            ],
+            "array_relationships": [
+              {
+                "name": "list_ptn6m2rmto4tmehbxglf1va3",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "record_id": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "ptn6m2rmto4tmehbxglf1va3",
+                      "schema": "auth"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "ltxwzfndejsmc0cg772e50ul",
+              "schema": "bucket"
+            },
+            "array_relationships": [
+              {
+                "name": "list_ltxwzfndejsmc0cg772e50ul_history",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "id": "record_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "ltxwzfndejsmc0cg772e50ul_history",
+                      "schema": "bucket"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_owner",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "owner_id": "department_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "department",
+                      "schema": "protected"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_superior_department",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "owner_id": "descendant_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "department_hierarchy",
+                      "schema": "protected"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "ltxwzfndejsmc0cg772e50ul_history",
+              "schema": "bucket"
+            },
+            "object_relationships": [
+              {
+                "name": "ltxwzfndejsmc0cg772e50ul",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "record_id": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "ltxwzfndejsmc0cg772e50ul",
+                      "schema": "bucket"
+                    }
+                  }
+                }
+              }
+            ],
+            "array_relationships": [
+              {
+                "name": "list_ltxwzfndejsmc0cg772e50ul",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "record_id": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "ltxwzfndejsmc0cg772e50ul",
+                      "schema": "bucket"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "amki954n0e6d7rwvde63kksu",
+              "schema": "cloud"
+            },
+            "object_relationships": [
+              {
+                "name": "xenqo5s13d9le0c8ul32g1fg",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "cbzqi5sng7qu2l5h6ybs8aqh": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "xenqo5s13d9le0c8ul32g1fg",
+                      "schema": "cloud"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "yciavf2we1zwb86zv0ibigxj",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "nultt52ehlf9hsjj5mtzn26h": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "yciavf2we1zwb86zv0ibigxj",
+                      "schema": "cloud"
+                    }
+                  }
+                }
+              }
+            ],
+            "array_relationships": [
+              {
+                "name": "list_amki954n0e6d7rwvde63kksu_history",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "id": "record_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "amki954n0e6d7rwvde63kksu_history",
+                      "schema": "cloud"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_owner",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "owner_id": "department_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "department",
+                      "schema": "protected"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_superior_department",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "owner_id": "descendant_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "department_hierarchy",
+                      "schema": "protected"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_xenqo5s13d9le0c8ul32g1fg",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "cbzqi5sng7qu2l5h6ybs8aqh": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "xenqo5s13d9le0c8ul32g1fg",
+                      "schema": "cloud"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_yciavf2we1zwb86zv0ibigxj",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "nultt52ehlf9hsjj5mtzn26h": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "yciavf2we1zwb86zv0ibigxj",
+                      "schema": "cloud"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "amki954n0e6d7rwvde63kksu_history",
+              "schema": "cloud"
+            },
+            "object_relationships": [
+              {
+                "name": "amki954n0e6d7rwvde63kksu",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "record_id": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "amki954n0e6d7rwvde63kksu",
+                      "schema": "cloud"
+                    }
+                  }
+                }
+              }
+            ],
+            "array_relationships": [
+              {
+                "name": "list_amki954n0e6d7rwvde63kksu",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "record_id": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "amki954n0e6d7rwvde63kksu",
+                      "schema": "cloud"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "cznfzscsdz6ez5l0lruc7kem",
+              "schema": "cloud"
+            },
+            "array_relationships": [
+              {
+                "name": "list_cznfzscsdz6ez5l0lruc7kem_history",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "id": "record_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "cznfzscsdz6ez5l0lruc7kem_history",
+                      "schema": "cloud"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_owner",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "owner_id": "department_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "department",
+                      "schema": "protected"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_superior_department",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "owner_id": "descendant_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "department_hierarchy",
+                      "schema": "protected"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "cznfzscsdz6ez5l0lruc7kem_history",
+              "schema": "cloud"
+            },
+            "object_relationships": [
+              {
+                "name": "cznfzscsdz6ez5l0lruc7kem",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "record_id": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "cznfzscsdz6ez5l0lruc7kem",
+                      "schema": "cloud"
+                    }
+                  }
+                }
+              }
+            ],
+            "array_relationships": [
+              {
+                "name": "list_cznfzscsdz6ez5l0lruc7kem",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "record_id": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "cznfzscsdz6ez5l0lruc7kem",
+                      "schema": "cloud"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "dnuimb8nqzt42mnyrtgxgrt2",
+              "schema": "cloud"
+            },
+            "array_relationships": [
+              {
+                "name": "list_dnuimb8nqzt42mnyrtgxgrt2_history",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "id": "record_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "dnuimb8nqzt42mnyrtgxgrt2_history",
+                      "schema": "cloud"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_owner",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "owner_id": "department_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "department",
+                      "schema": "protected"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_superior_department",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "owner_id": "descendant_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "department_hierarchy",
+                      "schema": "protected"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "dnuimb8nqzt42mnyrtgxgrt2_history",
+              "schema": "cloud"
+            },
+            "object_relationships": [
+              {
+                "name": "dnuimb8nqzt42mnyrtgxgrt2",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "record_id": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "dnuimb8nqzt42mnyrtgxgrt2",
+                      "schema": "cloud"
+                    }
+                  }
+                }
+              }
+            ],
+            "array_relationships": [
+              {
+                "name": "list_dnuimb8nqzt42mnyrtgxgrt2",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "record_id": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "dnuimb8nqzt42mnyrtgxgrt2",
+                      "schema": "cloud"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "eqiphlh882vv3535i601qwmc",
+              "schema": "cloud"
+            },
+            "object_relationships": [
+              {
+                "name": "xenqo5s13d9le0c8ul32g1fg",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "zrptw5p71745fi9baut7sk9q": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "xenqo5s13d9le0c8ul32g1fg",
+                      "schema": "cloud"
+                    }
+                  }
+                }
+              }
+            ],
+            "array_relationships": [
+              {
+                "name": "list_eqiphlh882vv3535i601qwmc_history",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "id": "record_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "eqiphlh882vv3535i601qwmc_history",
+                      "schema": "cloud"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_owner",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "owner_id": "department_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "department",
+                      "schema": "protected"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_superior_department",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "owner_id": "descendant_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "department_hierarchy",
+                      "schema": "protected"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_xenqo5s13d9le0c8ul32g1fg",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "zrptw5p71745fi9baut7sk9q": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "xenqo5s13d9le0c8ul32g1fg",
+                      "schema": "cloud"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "eqiphlh882vv3535i601qwmc_history",
+              "schema": "cloud"
+            },
+            "object_relationships": [
+              {
+                "name": "eqiphlh882vv3535i601qwmc",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "record_id": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "eqiphlh882vv3535i601qwmc",
+                      "schema": "cloud"
+                    }
+                  }
+                }
+              }
+            ],
+            "array_relationships": [
+              {
+                "name": "list_eqiphlh882vv3535i601qwmc",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "record_id": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "eqiphlh882vv3535i601qwmc",
+                      "schema": "cloud"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "g6jrw4mzxkrhuuyciktl9o8k",
+              "schema": "cloud"
+            },
+            "array_relationships": [
+              {
+                "name": "list_g6jrw4mzxkrhuuyciktl9o8k_history",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "id": "record_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "g6jrw4mzxkrhuuyciktl9o8k_history",
+                      "schema": "cloud"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_owner",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "owner_id": "department_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "department",
+                      "schema": "protected"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_superior_department",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "owner_id": "descendant_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "department_hierarchy",
+                      "schema": "protected"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "g6jrw4mzxkrhuuyciktl9o8k_history",
+              "schema": "cloud"
+            },
+            "object_relationships": [
+              {
+                "name": "g6jrw4mzxkrhuuyciktl9o8k",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "record_id": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "g6jrw4mzxkrhuuyciktl9o8k",
+                      "schema": "cloud"
+                    }
+                  }
+                }
+              }
+            ],
+            "array_relationships": [
+              {
+                "name": "list_g6jrw4mzxkrhuuyciktl9o8k",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "record_id": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "g6jrw4mzxkrhuuyciktl9o8k",
+                      "schema": "cloud"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "xenqo5s13d9le0c8ul32g1fg",
+              "schema": "cloud"
+            },
+            "array_relationships": [
+              {
+                "name": "list_eqiphlh882vv3535i601qwmc",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "id": "zrptw5p71745fi9baut7sk9q"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "eqiphlh882vv3535i601qwmc",
+                      "schema": "cloud"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_owner",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "owner_id": "department_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "department",
+                      "schema": "protected"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_superior_department",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "owner_id": "descendant_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "department_hierarchy",
+                      "schema": "protected"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_xenqo5s13d9le0c8ul32g1fg_history",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "id": "record_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "xenqo5s13d9le0c8ul32g1fg_history",
+                      "schema": "cloud"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "xenqo5s13d9le0c8ul32g1fg_history",
+              "schema": "cloud"
+            },
+            "object_relationships": [
+              {
+                "name": "xenqo5s13d9le0c8ul32g1fg",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "record_id": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "xenqo5s13d9le0c8ul32g1fg",
+                      "schema": "cloud"
+                    }
+                  }
+                }
+              }
+            ],
+            "array_relationships": [
+              {
+                "name": "list_xenqo5s13d9le0c8ul32g1fg",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "record_id": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "xenqo5s13d9le0c8ul32g1fg",
+                      "schema": "cloud"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "yciavf2we1zwb86zv0ibigxj",
+              "schema": "cloud"
+            },
+            "array_relationships": [
+              {
+                "name": "list_owner",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "owner_id": "department_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "department",
+                      "schema": "protected"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_superior_department",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "owner_id": "descendant_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "department_hierarchy",
+                      "schema": "protected"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_yciavf2we1zwb86zv0ibigxj_history",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "id": "record_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "yciavf2we1zwb86zv0ibigxj_history",
+                      "schema": "cloud"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "yciavf2we1zwb86zv0ibigxj_history",
+              "schema": "cloud"
+            },
+            "object_relationships": [
+              {
+                "name": "yciavf2we1zwb86zv0ibigxj",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "record_id": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "yciavf2we1zwb86zv0ibigxj",
+                      "schema": "cloud"
+                    }
+                  }
+                }
+              }
+            ],
+            "array_relationships": [
+              {
+                "name": "list_yciavf2we1zwb86zv0ibigxj",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "record_id": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "yciavf2we1zwb86zv0ibigxj",
+                      "schema": "cloud"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "x5n5xcbdlbhhrr3nzae6wv25",
+              "schema": "dev"
+            },
+            "array_relationships": [
+              {
+                "name": "list_owner",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "owner_id": "department_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "department",
+                      "schema": "protected"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_superior_department",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "owner_id": "descendant_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "department_hierarchy",
+                      "schema": "protected"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_x5n5xcbdlbhhrr3nzae6wv25_history",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "id": "record_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "x5n5xcbdlbhhrr3nzae6wv25_history",
+                      "schema": "dev"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "x5n5xcbdlbhhrr3nzae6wv25_history",
+              "schema": "dev"
+            },
+            "object_relationships": [
+              {
+                "name": "x5n5xcbdlbhhrr3nzae6wv25",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "record_id": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "x5n5xcbdlbhhrr3nzae6wv25",
+                      "schema": "dev"
+                    }
+                  }
+                }
+              }
+            ],
+            "array_relationships": [
+              {
+                "name": "list_x5n5xcbdlbhhrr3nzae6wv25",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "record_id": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "x5n5xcbdlbhhrr3nzae6wv25",
+                      "schema": "dev"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "cli7nzxn50001try731u85x5u",
+              "schema": "library"
+            },
+            "array_relationships": [
+              {
+                "name": "list_cli7nzxn50001try731u85x5u_history",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "id": "record_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "cli7nzxn50001try731u85x5u_history",
+                      "schema": "library"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_owner",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "owner_id": "department_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "department",
+                      "schema": "protected"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_superior_department",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "owner_id": "descendant_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "department_hierarchy",
+                      "schema": "protected"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "cli7nzxn50001try731u85x5u_history",
+              "schema": "library"
+            },
+            "object_relationships": [
+              {
+                "name": "cli7nzxn50001try731u85x5u",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "record_id": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "cli7nzxn50001try731u85x5u",
+                      "schema": "library"
+                    }
+                  }
+                }
+              }
+            ],
+            "array_relationships": [
+              {
+                "name": "list_cli7nzxn50001try731u85x5u",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "record_id": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "cli7nzxn50001try731u85x5u",
+                      "schema": "library"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "db9sdb8k0loafy8qqy4jed77",
+              "schema": "library"
+            },
+            "array_relationships": [
+              {
+                "name": "list_db9sdb8k0loafy8qqy4jed77_history",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "id": "record_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "db9sdb8k0loafy8qqy4jed77_history",
+                      "schema": "library"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_owner",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "owner_id": "department_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "department",
+                      "schema": "protected"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_superior_department",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "owner_id": "descendant_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "department_hierarchy",
+                      "schema": "protected"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "db9sdb8k0loafy8qqy4jed77_history",
+              "schema": "library"
+            },
+            "object_relationships": [
+              {
+                "name": "db9sdb8k0loafy8qqy4jed77",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "record_id": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "db9sdb8k0loafy8qqy4jed77",
+                      "schema": "library"
+                    }
+                  }
+                }
+              }
+            ],
+            "array_relationships": [
+              {
+                "name": "list_db9sdb8k0loafy8qqy4jed77",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "record_id": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "db9sdb8k0loafy8qqy4jed77",
+                      "schema": "library"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "ohzmtf86gfkn0t47lyqyozmv",
+              "schema": "library"
+            },
+            "array_relationships": [
+              {
+                "name": "list_ohzmtf86gfkn0t47lyqyozmv_history",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "id": "record_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "ohzmtf86gfkn0t47lyqyozmv_history",
+                      "schema": "library"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_owner",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "owner_id": "department_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "department",
+                      "schema": "protected"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_superior_department",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "owner_id": "descendant_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "department_hierarchy",
+                      "schema": "protected"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "ohzmtf86gfkn0t47lyqyozmv_history",
+              "schema": "library"
+            },
+            "object_relationships": [
+              {
+                "name": "ohzmtf86gfkn0t47lyqyozmv",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "record_id": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "ohzmtf86gfkn0t47lyqyozmv",
+                      "schema": "library"
+                    }
+                  }
+                }
+              }
+            ],
+            "array_relationships": [
+              {
+                "name": "list_ohzmtf86gfkn0t47lyqyozmv",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "record_id": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "ohzmtf86gfkn0t47lyqyozmv",
+                      "schema": "library"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "column",
+              "schema": "private"
+            },
+            "object_relationships": [
+              {
+                "name": "table",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "table_id": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "table",
+                      "schema": "private"
+                    }
+                  }
+                }
+              }
+            ],
+            "array_relationships": [
+              {
+                "name": "list_column_history",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "id": "record_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "column_history",
+                      "schema": "private"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_owner",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "owner_id": "department_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "department",
+                      "schema": "protected"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_relation",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "id": "column_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "relation",
+                      "schema": "private"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_superior_department",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "owner_id": "descendant_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "department_hierarchy",
+                      "schema": "protected"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_table",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "table_id": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "table",
+                      "schema": "private"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "column_history",
+              "schema": "private"
+            },
+            "object_relationships": [
+              {
+                "name": "column",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "record_id": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "column",
+                      "schema": "private"
+                    }
+                  }
+                }
+              }
+            ],
+            "array_relationships": [
+              {
+                "name": "list_column",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "record_id": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "column",
+                      "schema": "private"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "relation",
+              "schema": "private"
+            },
+            "object_relationships": [
+              {
+                "name": "column",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "column_id": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "column",
+                      "schema": "private"
+                    }
+                  }
+                }
+              }
+            ],
+            "array_relationships": [
+              {
+                "name": "list_column",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "column_id": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "column",
+                      "schema": "private"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_owner",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "owner_id": "department_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "department",
+                      "schema": "protected"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_relation_history",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "id": "record_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "relation_history",
+                      "schema": "private"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_superior_department",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "owner_id": "descendant_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "department_hierarchy",
+                      "schema": "protected"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "relation_history",
+              "schema": "private"
+            },
+            "object_relationships": [
+              {
+                "name": "relation",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "record_id": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "relation",
+                      "schema": "private"
+                    }
+                  }
+                }
+              }
+            ],
+            "array_relationships": [
+              {
+                "name": "list_relation",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "record_id": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "relation",
+                      "schema": "private"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "table",
+              "schema": "private"
+            },
+            "array_relationships": [
+              {
+                "name": "list_column",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "id": "table_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "column",
+                      "schema": "private"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_owner",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "owner_id": "department_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "department",
+                      "schema": "protected"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_superior_department",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "owner_id": "descendant_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "department_hierarchy",
+                      "schema": "protected"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_table_history",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "id": "record_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "table_history",
+                      "schema": "private"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "table_history",
+              "schema": "private"
+            },
+            "object_relationships": [
+              {
+                "name": "table",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "record_id": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "table",
+                      "schema": "private"
+                    }
+                  }
+                }
+              }
+            ],
+            "array_relationships": [
+              {
+                "name": "list_table",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "record_id": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "table",
+                      "schema": "private"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "account",
+              "schema": "protected"
+            },
+            "array_relationships": [
+              {
+                "name": "list_account_history",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "id": "record_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "account_history",
+                      "schema": "protected"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_owner",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "owner_id": "department_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "department",
+                      "schema": "protected"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_superior_department",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "owner_id": "descendant_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "department_hierarchy",
+                      "schema": "protected"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "account_history",
+              "schema": "protected"
+            },
+            "object_relationships": [
+              {
+                "name": "account",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "record_id": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "account",
+                      "schema": "protected"
+                    }
+                  }
+                }
+              }
+            ],
+            "array_relationships": [
+              {
+                "name": "list_account",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "record_id": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "account",
+                      "schema": "protected"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "department",
+              "schema": "protected"
+            },
+            "array_relationships": [
+              {
+                "name": "list_department_history",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "id": "record_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "department_history",
+                      "schema": "protected"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_department_user",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "department_id": "department_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "department_user",
+                      "schema": "protected"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_owner",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "owner_id": "department_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "department",
+                      "schema": "protected"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_superior_department",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "owner_id": "descendant_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "department_hierarchy",
+                      "schema": "protected"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "department_hierarchy",
+              "schema": "protected"
+            },
+            "array_relationships": [
+              {
+                "name": "list_department_hierarchy_history",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "id": "record_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "department_hierarchy_history",
+                      "schema": "protected"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_department_user",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "ancestor_id": "department_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "department_user",
+                      "schema": "protected"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_owner",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "owner_id": "department_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "department",
+                      "schema": "protected"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_superior_department",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "owner_id": "descendant_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "department_hierarchy",
+                      "schema": "protected"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "department_hierarchy_history",
+              "schema": "protected"
+            },
+            "object_relationships": [
+              {
+                "name": "department_hierarchy",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "record_id": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "department_hierarchy",
+                      "schema": "protected"
+                    }
+                  }
+                }
+              }
+            ],
+            "array_relationships": [
+              {
+                "name": "list_department_hierarchy",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "record_id": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "department_hierarchy",
+                      "schema": "protected"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "department_history",
+              "schema": "protected"
+            },
+            "object_relationships": [
+              {
+                "name": "department",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "record_id": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "department",
+                      "schema": "protected"
+                    }
+                  }
+                }
+              }
+            ],
+            "array_relationships": [
+              {
+                "name": "list_department",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "record_id": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "department",
+                      "schema": "protected"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "department_user",
+              "schema": "protected"
+            },
+            "object_relationships": [
+              {
+                "name": "role",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "role_id": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "role",
+                      "schema": "protected"
+                    }
+                  }
+                }
+              }
+            ],
+            "array_relationships": [
+              {
+                "name": "list_department_user_history",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "id": "record_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "department_user_history",
+                      "schema": "protected"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_owner",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "owner_id": "department_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "department",
+                      "schema": "protected"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_role",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "role_id": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "role",
+                      "schema": "protected"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_superior_department",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "owner_id": "descendant_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "department_hierarchy",
+                      "schema": "protected"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "department_user_history",
+              "schema": "protected"
+            },
+            "object_relationships": [
+              {
+                "name": "department_user",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "record_id": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "department_user",
+                      "schema": "protected"
+                    }
+                  }
+                }
+              }
+            ],
+            "array_relationships": [
+              {
+                "name": "list_department_user",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "record_id": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "department_user",
+                      "schema": "protected"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "role",
+              "schema": "protected"
+            },
+            "array_relationships": [
+              {
+                "name": "list_owner",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "owner_id": "department_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "department",
+                      "schema": "protected"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_role_history",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "id": "record_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "role_history",
+                      "schema": "protected"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_superior_department",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "owner_id": "descendant_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "department_hierarchy",
+                      "schema": "protected"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "role_history",
+              "schema": "protected"
+            },
+            "object_relationships": [
+              {
+                "name": "role",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "record_id": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "role",
+                      "schema": "protected"
+                    }
+                  }
+                }
+              }
+            ],
+            "array_relationships": [
+              {
+                "name": "list_role",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "record_id": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "role",
+                      "schema": "protected"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "bln6p3evjcypeyb2m53mndfp",
+              "schema": "style"
+            },
+            "array_relationships": [
+              {
+                "name": "list_bln6p3evjcypeyb2m53mndfp_history",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "id": "record_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "bln6p3evjcypeyb2m53mndfp_history",
+                      "schema": "style"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_owner",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "owner_id": "department_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "department",
+                      "schema": "protected"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_superior_department",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "owner_id": "descendant_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "department_hierarchy",
+                      "schema": "protected"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_x5libi5961z390umzdz7ocpr",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "id": "ipracf31c6t3z6yq8t4oevkm"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "x5libi5961z390umzdz7ocpr",
+                      "schema": "style"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "bln6p3evjcypeyb2m53mndfp_history",
+              "schema": "style"
+            },
+            "object_relationships": [
+              {
+                "name": "bln6p3evjcypeyb2m53mndfp",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "record_id": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "bln6p3evjcypeyb2m53mndfp",
+                      "schema": "style"
+                    }
+                  }
+                }
+              }
+            ],
+            "array_relationships": [
+              {
+                "name": "list_bln6p3evjcypeyb2m53mndfp",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "record_id": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "bln6p3evjcypeyb2m53mndfp",
+                      "schema": "style"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "x5libi5961z390umzdz7ocpr",
+              "schema": "style"
+            },
+            "object_relationships": [
+              {
+                "name": "bln6p3evjcypeyb2m53mndfp",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "ipracf31c6t3z6yq8t4oevkm": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "bln6p3evjcypeyb2m53mndfp",
+                      "schema": "style"
+                    }
+                  }
+                }
+              }
+            ],
+            "array_relationships": [
+              {
+                "name": "list_bln6p3evjcypeyb2m53mndfp",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "ipracf31c6t3z6yq8t4oevkm": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "bln6p3evjcypeyb2m53mndfp",
+                      "schema": "style"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_owner",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "owner_id": "department_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "department",
+                      "schema": "protected"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_superior_department",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "owner_id": "descendant_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "department_hierarchy",
+                      "schema": "protected"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "list_x5libi5961z390umzdz7ocpr_history",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "id": "record_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "x5libi5961z390umzdz7ocpr_history",
+                      "schema": "style"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "x5libi5961z390umzdz7ocpr_history",
+              "schema": "style"
+            },
+            "object_relationships": [
+              {
+                "name": "x5libi5961z390umzdz7ocpr",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "record_id": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "x5libi5961z390umzdz7ocpr",
+                      "schema": "style"
+                    }
+                  }
+                }
+              }
+            ],
+            "array_relationships": [
+              {
+                "name": "list_x5libi5961z390umzdz7ocpr",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "record_id": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "x5libi5961z390umzdz7ocpr",
+                      "schema": "style"
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "configuration": {
+          "connection_info": {
+            "database_url": "postgresql://postgres:buuandbee@localhost:5432/postgres",
+            "isolation_level": "read-committed",
+            "pool_settings": {
+              "connection_lifetime": 600,
+              "idle_timeout": 180,
+              "max_connections": 50,
+              "retries": 1
+            },
+            "use_prepared_statements": false
+          }
+        }
+      }
+    ]
+  }
+}

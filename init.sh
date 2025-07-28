@@ -19,11 +19,14 @@ echo \
 sudo apt-get update
 sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
+
 # Create a Docker network for containers
 docker network create pg-network
 
 # Run Redis Stack container on the created network
-docker run -p 6379:6379 -p 8001:8001 -v /redis-data/:/data --network=tl-network --name redis-server redis/redis-stack
+docker container stop redis-server
+docker container rm redis-server
+docker run -p 6379:6379 -p 8001:8001 -v /redis-data/:/data --network=pg-network -e REDIS_ARGS="--requirepass anh08091998t" --name redis-server redis/redis-stack
 
 # Stop and remove existing Postgres container if it exists, then run a new one
 docker container stop postgres
@@ -36,7 +39,7 @@ sudo sleep 10
 # Stop and remove existing Hasura container if it exists, then run a new one
 docker container stop hasura
 sudo docker container rm hasura
-sudo docker run -d --network=pg-network --restart always -p 8080:8080 -e HASURA_GRAPHQL_ENABLE_CONSOLE=true -e HASURA_GRAPHQL_METADATA_DATABASE_URL=postgresql://postgres:buuandbee@postgres:5432/postgres --name hasura hasura/graphql-engine:v2.15.2
+sudo docker run -d --net=host --restart always -p 8080:8080 -e HASURA_GRAPHQL_ENABLE_CONSOLE=true -e HASURA_GRAPHQL_METADATA_DATABASE_URL=postgresql://postgres:buuandbee@0.0.0.0:6432/postgres --name hasura hasura/graphql-engine:v2.15.2
 
 # Install git
 apt-get install git
@@ -54,6 +57,8 @@ nvm install 22
 node -v # Should print "v22.17.1".
 nvm current # Should print "v22.17.1".
 npm -v # Should print "10.9.2".
+
+cd ~
 
 # Clone the GraphQL repository and install dependencies
 git clone https://github.com/hanwister/graphql.git

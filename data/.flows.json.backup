@@ -24,6 +24,21 @@
         "env": []
     },
     {
+        "id": "c1a8b2d3e4f5a6b7",
+        "type": "tab",
+        "label": "Build Main Flow",
+        "disabled": true,
+        "info": "This flow replicates the logic of the Build_Main Node.js script. It listens for table changes from a GraphQL subscription, processes them, writes new config files, and forwards the data to a 'serve' flow.",
+        "env": []
+    },
+    {
+        "id": "4495e7c5444d7ec4",
+        "type": "tab",
+        "label": "BuildServe API Listeners",
+        "disabled": true,
+        "info": "This set of flows replicates the functionality of the `BuildServe` class.\n\n1.  **Setup Flow**: A `link in` node receives table configurations and initializes a global `graphqlContainer`.\n2.  **HTTP Flow**: A `http in` node handles GraphQL queries over POST requests.\n3.  **WebSocket Flow**: A `websocket in`/`out` pair handles the GraphQL-WS protocol.\n4.  **Socket.IO Flow**: A `socketio in`/`out` pair handles the custom 'data' event protocol.\n\nAll flows use the `global.graphqlContainer` to execute operations, simulating the architecture of the original script."
+    },
+    {
         "id": "ce9633b89106de8f",
         "type": "tab",
         "label": "graphql Server Images",
@@ -450,6 +465,27 @@
         "h": 242
     },
     {
+        "id": "51b080a42f98859c",
+        "type": "group",
+        "z": "c1a8b2d3e4f5a6b7",
+        "name": "Install Modules",
+        "style": {
+            "stroke": "#92d04f",
+            "label": true,
+            "color": "#3f5787",
+            "fill": "#c8e7a7"
+        },
+        "nodes": [
+            "5831d0b20d21f4b6",
+            "b4e69c76ccc9df0c",
+            "927434eabd3ba380"
+        ],
+        "x": 74,
+        "y": 179,
+        "w": 752,
+        "h": 82
+    },
+    {
         "id": "27ffce4169bd5e2c",
         "type": "group",
         "z": "ce9633b89106de8f",
@@ -471,27 +507,6 @@
         "h": 82
     },
     {
-        "id": "d7c408a655f0bc8f",
-        "type": "group",
-        "z": "d598a5fa8d4ceb78",
-        "name": "Install Modules",
-        "style": {
-            "stroke": "#92d04f",
-            "label": true,
-            "color": "#3f5787",
-            "fill": "#c8e7a7"
-        },
-        "nodes": [
-            "26e59e393baea768",
-            "79cef9f943b57773",
-            "42ea73ec6dbe25d3"
-        ],
-        "x": 34,
-        "y": 119,
-        "w": 752,
-        "h": 82
-    },
-    {
         "id": "22369ccbce0fbb74",
         "type": "global-config",
         "name": "global-config",
@@ -508,7 +523,7 @@
             },
             {
                 "name": "REDIS_CONNECTION",
-                "value": "{\"host\":\"s3.tolife.me\",\"port\":6379,\"username\":\"default\",\"password\":\"anh08091998t\",\"tls\":{\"rejectUnauthorized\":false}}",
+                "value": "{\"host\":\"s5.tolife.me\",\"port\":6379,\"username\":\"default\",\"password\":\"anh08091998t\"}",
                 "type": "json"
             }
         ]
@@ -1015,70 +1030,71 @@
                 "module": "process"
             }
         ],
-        "x": 110,
-        "y": 340,
+        "x": 850,
+        "y": 320,
         "wires": [
             []
         ]
     },
     {
-        "id": "26e59e393baea768",
+        "id": "94c005e855467d92",
         "type": "inject",
         "z": "d598a5fa8d4ceb78",
-        "g": "d7c408a655f0bc8f",
-        "name": "Khởi chạy khi Deploy",
+        "name": "",
         "props": [
             {
                 "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
             }
         ],
         "repeat": "",
         "crontab": "",
         "once": true,
-        "onceDelay": "0",
+        "onceDelay": 0.1,
         "topic": "",
-        "payload": "{}",
-        "payloadType": "json",
-        "x": 180,
-        "y": 160,
+        "payload": "",
+        "payloadType": "date",
+        "x": 130,
+        "y": 320,
         "wires": [
             [
-                "79cef9f943b57773"
+                "3a3ac46f710c85fc"
             ]
         ]
     },
     {
-        "id": "79cef9f943b57773",
+        "id": "1e06892c4af20fab",
+        "type": "subflow:ee0637aa2f7fa7fe",
+        "z": "d598a5fa8d4ceb78",
+        "name": "",
+        "x": 580,
+        "y": 320,
+        "wires": [
+            [
+                "250377c421cf84ee"
+            ]
+        ]
+    },
+    {
+        "id": "3a3ac46f710c85fc",
         "type": "function",
         "z": "d598a5fa8d4ceb78",
-        "g": "d7c408a655f0bc8f",
         "name": "Set Modules Requires",
-        "func": "msg.payload[\"modules\"] = ['axios', \n    \"ftp-srv\", \"bunyan\"];\nreturn msg;",
+        "func": "msg.payload = {\n    \"modules\": ['axios', \n    \"ftp-srv\", \"bunyan\"]\n};\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 440,
-        "y": 160,
+        "x": 340,
+        "y": 320,
         "wires": [
             [
-                "42ea73ec6dbe25d3"
-            ]
-        ]
-    },
-    {
-        "id": "42ea73ec6dbe25d3",
-        "type": "subflow:ee0637aa2f7fa7fe",
-        "z": "d598a5fa8d4ceb78",
-        "g": "d7c408a655f0bc8f",
-        "name": "",
-        "x": 680,
-        "y": 160,
-        "wires": [
-            [
-                "250377c421cf84ee"
+                "1e06892c4af20fab"
             ]
         ]
     },
@@ -1190,6 +1206,1553 @@
         "wires": [
             []
         ]
+    },
+    {
+        "id": "a09b3dcf68a8e1b1",
+        "type": "exec",
+        "z": "c1a8b2d3e4f5a6b7",
+        "command": "rm -rf ./prisma",
+        "addpay": false,
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "Delete Prisma Folder",
+        "x": 430,
+        "y": 120,
+        "wires": [
+            [],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "e6f23a4198b16335",
+        "type": "inject",
+        "z": "c1a8b2d3e4f5a6b7",
+        "name": "On Start: Clean Folder",
+        "props": [],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "0.1",
+        "topic": "",
+        "x": 180,
+        "y": 120,
+        "wires": [
+            [
+                "a09b3dcf68a8e1b1",
+                "97a37635513d274b",
+                "318e1534bf25d63d"
+            ]
+        ]
+    },
+    {
+        "id": "5831d0b20d21f4b6",
+        "type": "inject",
+        "z": "c1a8b2d3e4f5a6b7",
+        "g": "51b080a42f98859c",
+        "name": "Khởi chạy khi Deploy",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "0",
+        "topic": "",
+        "payload": "{}",
+        "payloadType": "json",
+        "x": 220,
+        "y": 220,
+        "wires": [
+            [
+                "b4e69c76ccc9df0c",
+                "718c8adc934ab506"
+            ]
+        ]
+    },
+    {
+        "id": "b4e69c76ccc9df0c",
+        "type": "function",
+        "z": "c1a8b2d3e4f5a6b7",
+        "g": "51b080a42f98859c",
+        "name": "Set Modules Requires",
+        "func": "msg.payload[\"modules\"] = [\n    \"axios\",\n    \"express\", \"http\", \"body-parser\", \"cors\",\n    \"@paralleldrive/cuid2\", \"@apollo/server\", \"jsonwebtoken\"\n];\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 480,
+        "y": 220,
+        "wires": [
+            [
+                "927434eabd3ba380"
+            ]
+        ]
+    },
+    {
+        "id": "927434eabd3ba380",
+        "type": "subflow:ee0637aa2f7fa7fe",
+        "z": "c1a8b2d3e4f5a6b7",
+        "g": "51b080a42f98859c",
+        "name": "",
+        "x": 720,
+        "y": 220,
+        "wires": [
+            [
+                "06616135e9a8315d",
+                "39a3313da84120e1"
+            ]
+        ]
+    },
+    {
+        "id": "40c5885bb5fecd23",
+        "type": "file",
+        "z": "c1a8b2d3e4f5a6b7",
+        "name": "",
+        "filename": "./configs/private.json",
+        "filenameType": "str",
+        "appendNewline": false,
+        "createDir": true,
+        "overwriteFile": "true",
+        "encoding": "none",
+        "x": 380,
+        "y": 360,
+        "wires": [
+            [
+                "ef4a8c9af0a6c878"
+            ]
+        ]
+    },
+    {
+        "id": "06616135e9a8315d",
+        "type": "function",
+        "z": "c1a8b2d3e4f5a6b7",
+        "name": "Set Private",
+        "func": "msg.payload = [\n    {\n        \"id\": \"relation\",\n        \"columns\": [\n            {\n                \"id\": \"field\",\n                \"type\": \"3\",\n                \"required\": true\n            },\n            {\n                \"id\": \"reference\",\n                \"type\": \"3\",\n                \"required\": true\n            },\n            {\n                \"id\": \"column_id\",\n                \"type\": \"3\",\n                \"required\": true\n            },\n            {\n                \"id\": \"column\",\n                \"type\": \"column\",\n                \"relations\": [\n                    {\n                        \"field\": \"column_id\",\n                        \"reference\": \"id\"\n                    }\n                ]\n            }\n        ],\n        \"schema\": \"private\"\n    },\n    {\n        \"id\": \"table\",\n        \"columns\": [\n            {\n                \"id\": \"name\",\n                \"name\": \"name\",\n                \"type\": \"3\"\n            },\n            {\n                \"id\": \"schema\",\n                \"name\": \"schema\",\n                \"type\": \"3\",\n                \"required\": false\n            },\n            {\n                \"id\": \"getter\",\n                \"name\": \"getter\",\n                \"type\": \"3\"\n            },\n            {\n                \"id\": \"setter\",\n                \"name\": \"setter\",\n                \"type\": \"3\"\n            },\n            {\n                \"id\": \"format\",\n                \"name\": \"format\",\n                \"type\": \"3\"\n            },\n            {\n                \"id\": \"columns\",\n                \"name\": \"columns\",\n                \"type\": \"column\",\n                \"is_many\": true,\n                \"relations\": [\n                    {\n                        \"field\": \"id\",\n                        \"reference\": \"table_id\"\n                    }\n                ]\n            }\n        ],\n        \"schema\": \"private\"\n    },\n    {\n        \"id\": \"column\",\n        \"columns\": [\n            {\n                \"id\": \"name\",\n                \"name\": \"name\",\n                \"type\": \"3\",\n                \"dname\": \"Name\"\n            },\n            {\n                \"id\": \"dname\",\n                \"name\": \"dname\",\n                \"type\": \"3\",\n                \"dname\": \"Display Name\"\n            },\n            {\n                \"id\": \"type\",\n                \"name\": \"type\",\n                \"type\": \"3\",\n                \"required\": true,\n                \"no_modify\": false,\n                \"dname\": \"Type\"\n            },\n            {\n                \"id\": \"required\",\n                \"name\": \"required\",\n                \"type\": \"4\",\n                \"dname\": \"Required\"\n            },\n            {\n                \"id\": \"is_many\",\n                \"name\": \"is_many\",\n                \"type\": \"4\",\n                \"dname\": \"Is Many\"\n            },\n            {\n                \"id\": \"no_modify\",\n                \"name\": \"no_modify\",\n                \"type\": \"4\",\n                \"dname\": \"No Modify\"\n            },\n            {\n                \"id\": \"format\",\n                \"name\": \"format\",\n                \"type\": \"3\",\n                \"dname\": \"Format\"\n            },\n            {\n                \"id\": \"table_id\",\n                \"name\": \"table_id\",\n                \"type\": \"3\",\n                \"required\": true,\n                \"dname\": \"Table ID\"\n            },\n            {\n                \"id\": \"relations\",\n                \"name\": \"relations\",\n                \"type\": \"relation\",\n                \"is_many\": true,\n                \"relations\": [\n                    {\n                        \"field\": \"id\",\n                        \"reference\": \"column_id\"\n                    }\n                ]\n            },\n            {\n                \"id\": \"table\",\n                \"name\": \"table\",\n                \"type\": \"table\",\n                \"relations\": [\n                    {\n                        \"field\": \"table_id\",\n                        \"reference\": \"id\"\n                    }\n                ]\n            }\n        ],\n        \"schema\": \"private\"\n    }\n]\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 170,
+        "y": 360,
+        "wires": [
+            [
+                "40c5885bb5fecd23"
+            ]
+        ]
+    },
+    {
+        "id": "f5e3390232f26d23",
+        "type": "file",
+        "z": "c1a8b2d3e4f5a6b7",
+        "name": "",
+        "filename": "./configs/protected.json",
+        "filenameType": "str",
+        "appendNewline": false,
+        "createDir": true,
+        "overwriteFile": "true",
+        "encoding": "none",
+        "x": 390,
+        "y": 440,
+        "wires": [
+            [
+                "36ceacd7636fccb0"
+            ]
+        ]
+    },
+    {
+        "id": "83ce1767938be794",
+        "type": "join",
+        "z": "c1a8b2d3e4f5a6b7",
+        "name": "Compile tables",
+        "mode": "custom",
+        "build": "array",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "useparts": true,
+        "accumulate": false,
+        "timeout": "",
+        "count": "2",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "num",
+        "reduceFixup": "",
+        "x": 990,
+        "y": 400,
+        "wires": [
+            [
+                "1f5e783e2b5da233"
+            ]
+        ]
+    },
+    {
+        "id": "ef4a8c9af0a6c878",
+        "type": "file in",
+        "z": "c1a8b2d3e4f5a6b7",
+        "name": "private.json",
+        "filename": "./configs/private.json",
+        "filenameType": "str",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "utf8",
+        "allProps": false,
+        "x": 610,
+        "y": 360,
+        "wires": [
+            [
+                "7d3a5faefdeb4777"
+            ]
+        ]
+    },
+    {
+        "id": "36ceacd7636fccb0",
+        "type": "file in",
+        "z": "c1a8b2d3e4f5a6b7",
+        "name": "protected.json",
+        "filename": "./configs/protected.json",
+        "filenameType": "str",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "utf8",
+        "allProps": false,
+        "x": 620,
+        "y": 440,
+        "wires": [
+            [
+                "1fb1e6748694d982"
+            ]
+        ]
+    },
+    {
+        "id": "97a37635513d274b",
+        "type": "function",
+        "z": "c1a8b2d3e4f5a6b7",
+        "name": "Start WebSerer",
+        "func": "console.log(\"graphql\", msg)\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "const { createServer, request } = http;\n\nvar app = express();\nvar server = createServer(app);\n\napp.use(cors({\n    \"origin\": \"*\",\n    \"methods\": \"GET,HEAD,PUT,PATCH,POST,DELETE\",\n    // \"preflightContinue\": false,\n    // \"optionsSuccessStatus\": 204\n}));\napp.use(bodyParser.json());\n\ntry {\n    server.listen(4086, '0.0.0.0', () => {\n        console.log(`GRAPHQL running in port ${4082}`)\n    });\n} catch (err) {\n    console.log(err.message)\n}\n\nflow.set(\"webServer\", server);\nflow.set(\"webApp\", app);\n\n// Code added here will be run once\n// whenever the node is started.\n",
+        "finalize": "",
+        "libs": [
+            {
+                "var": "express",
+                "module": "express"
+            },
+            {
+                "var": "http",
+                "module": "http"
+            },
+            {
+                "var": "bodyParser",
+                "module": "body-parser"
+            },
+            {
+                "var": "cors",
+                "module": "cors"
+            }
+        ],
+        "x": 680,
+        "y": 120,
+        "wires": [
+            [
+                "8ce195352d71883a"
+            ]
+        ]
+    },
+    {
+        "id": "c396d18077ded59b",
+        "type": "function",
+        "z": "c1a8b2d3e4f5a6b7",
+        "name": "HTTP Router",
+        "func": "var emitter = new events.EventEmitter();\nemitter.setMaxListeners(0);\n\nlet returnQueue = 'http' + paralleldriveCuid2.createId();\n\nlet app = flow.get(\"webApp\");\nlet message = {};\napp.post(\"/:schema\", function (req, res) {\n    let requestId = paralleldriveCuid2.createId();\n    message.topic = \"request\";\n    message.resolve = async ({ type, payload }) => {\n        res.type('application/json');\n        switch (type) {\n            case 'data':\n                res.status(200)\n                res.send(payload)\n                break;\n            case 'error':\n                res.status(400)\n                res.send(payload)\n                break;\n        }\n        res.end();\n    };\n    message.request = {\n        schema: req?.params?.schema,\n        payload: req.body,\n        context: { \n            headers: req.headers,\n            id: requestId,\n            replyTo: returnQueue\n         }\n    }\n    node.send(message);\n    emitter.once(requestId, ({ type, payload }) => {\n        if (type !== \"data\") { res.status(400) }\n        res.send(payload).end()\n        console.log( requestId, type, payload)\n    })\n});\n\napp.post(\"/graphql/:schema\", function (req, res) {\n    let requestId = paralleldriveCuid2.createId();\n    message.topic = \"request\";\n    message.resolve = async ({ type, payload }) => {\n        res.type('application/json');\n        switch (type) {\n            case 'data':\n                res.status(200)\n                res.send(payload)\n                break;\n            case 'error':\n                res.status(400)\n                res.send(payload)\n                break;\n        }\n        res.end();\n    };\n    message.request = {\n        schema: req?.params?.schema,\n        payload: req.body,\n        context: { \n            headers: req.headers,\n            id: requestId,\n            replyTo: returnQueue\n         }\n    }\n    node.send(message);\n    emitter.once(requestId, ({ type, payload }) => {\n        if (type !== \"data\") { res.status(400) }\n        res.send(payload).end()\n        console.log( requestId, type, payload)\n    })\n});\n\n\nflow.get(\"setWorker\")(returnQueue, async ( returnJob ) => {\n    console.log(returnJob.id, \"tttt\")\n    emitter.emit( returnJob.id, returnJob.data );\n    return null\n}, { concurrency: 100 })\n\nreturn null;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "var emitter = new events.EventEmitter();\nemitter.setMaxListeners(0);",
+        "finalize": "",
+        "libs": [
+            {
+                "var": "paralleldriveCuid2",
+                "module": "@paralleldrive/cuid2"
+            },
+            {
+                "var": "events",
+                "module": "events"
+            }
+        ],
+        "x": 1210,
+        "y": 120,
+        "wires": [
+            [
+                "b00e0509ea4c2445",
+                "0b974c817737301b"
+            ]
+        ]
+    },
+    {
+        "id": "b00e0509ea4c2445",
+        "type": "function",
+        "z": "c1a8b2d3e4f5a6b7",
+        "name": "function 5",
+        "func": "console.log(msg)\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1460,
+        "y": 120,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "1f5e783e2b5da233",
+        "type": "switch",
+        "z": "c1a8b2d3e4f5a6b7",
+        "name": "Filter RC Complete",
+        "property": "rc",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "null"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 1230,
+        "y": 400,
+        "wires": [
+            [
+                "7b8991d4290b026b"
+            ]
+        ]
+    },
+    {
+        "id": "7d3a5faefdeb4777",
+        "type": "function",
+        "z": "c1a8b2d3e4f5a6b7",
+        "name": "Add Key",
+        "func": "msg.payload = [\n    \"private\", JSON.parse(msg.payload)\n];\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 780,
+        "y": 360,
+        "wires": [
+            [
+                "83ce1767938be794"
+            ]
+        ]
+    },
+    {
+        "id": "1fb1e6748694d982",
+        "type": "function",
+        "z": "c1a8b2d3e4f5a6b7",
+        "name": "Add Key",
+        "func": "msg.payload = [\n    \"protected\", JSON.parse(msg.payload)\n]\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 800,
+        "y": 440,
+        "wires": [
+            [
+                "83ce1767938be794"
+            ]
+        ]
+    },
+    {
+        "id": "c984ff7aac06a3c5",
+        "type": "subflow:5ed478d1a62e4007",
+        "z": "c1a8b2d3e4f5a6b7",
+        "name": "",
+        "x": 1310,
+        "y": 60,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "8ce195352d71883a",
+        "type": "function",
+        "z": "c1a8b2d3e4f5a6b7",
+        "name": "Config Worker Response",
+        "func": "msg.topic = \"configWorker\";\nmsg.payload = { name: \"http-\" + paralleldriveCuid2.createId(), concurrency: 100 };\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [
+            {
+                "var": "paralleldriveCuid2",
+                "module": "@paralleldrive/cuid2"
+            }
+        ],
+        "x": 910,
+        "y": 120,
+        "wires": [
+            [
+                "c984ff7aac06a3c5",
+                "c396d18077ded59b"
+            ]
+        ]
+    },
+    {
+        "id": "318e1534bf25d63d",
+        "type": "function",
+        "z": "c1a8b2d3e4f5a6b7",
+        "name": "Config Queue and Worker Bull",
+        "func": "\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "// Code added here will be run once\n// whenever the node is started.\nconst { Queue, QueueEvents, Worker } = bullmq;\nconst IORedis = ioredis;\n\nconst connection = new IORedis(env.get(\"REDIS_URL\"), { maxRetriesPerRequest: null });\nconst AsyncFunction = (async function () { }).constructor;\n\nvar queues = {};\nvar eventQueues = {};\nvar workers = {};\n\nflow.set(\"sendJobToQueue\", async (queueName, jobName, jobData, jobOptions = {}) => {\n    if (!queues[queueName]) {\n        queues[queueName] = await new Queue(queueName, { connection });\n        eventQueues[queueName] = await new QueueEvents(queueName, { connection });\n    };\n    var job = await queues[queueName].add(jobName, jobData, jobOptions);\n    const result = await job.waitUntilFinished(eventQueues[queueName]);\n    return result\n});\n\nflow.set(\"setWorker\", async (queueName, workerRun, options) => {\n    if (workers[queueName]) {\n        await workers[queueName].pause(true)\n    };\n    workers[queueName] = await new Worker(queueName, async (job) => {\n        workerRun(job)\n    }, { options, connection })\n})",
+        "finalize": "",
+        "libs": [
+            {
+                "var": "bullmq",
+                "module": "bullmq"
+            },
+            {
+                "var": "ioredis",
+                "module": "ioredis"
+            }
+        ],
+        "x": 470,
+        "y": 60,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f92c63414402d0fa",
+        "type": "inject",
+        "z": "c1a8b2d3e4f5a6b7",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 1020,
+        "y": 60,
+        "wires": [
+            [
+                "c396d18077ded59b"
+            ]
+        ]
+    },
+    {
+        "id": "611eddba69cfbab8",
+        "type": "function",
+        "z": "c1a8b2d3e4f5a6b7",
+        "name": "Start WebApp",
+        "func": "\n\n\n( async () => {\n    node.status({\n        fill: \"red\",\n        shape: \"ring\",\n        text: \"Starting\"\n    })\n    flow.get(\"emitter\").once(\"initWebApp\", () => {\n        \n    });\n\n    node.status({\n        fill: \"red\",\n        shape: \"ring\",\n        text: \"Running\"\n    })\n})()\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 100,
+        "y": 1240,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "b10935dc5f05edb3",
+        "type": "function",
+        "z": "c1a8b2d3e4f5a6b7",
+        "name": "Start Emitter",
+        "func": "( async () => {\n    await node.status({\n        fill: \"red\",\n        shape: \"ring\",\n        text: \"Starting\"\n    })\n    var emitter = new events.EventEmitter();\n    emitter.setMaxListeners(0);\n    await flow.set(\"emitter\", emitter);\n    await node.status({\n        fill: \"red\",\n        shape: \"ring\",\n        text: \"Running\"\n    });\n    node.send({})\n})()\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [
+            {
+                "var": "events",
+                "module": "events"
+            }
+        ],
+        "x": 350,
+        "y": 940,
+        "wires": [
+            [
+                "7dbce9ec090e9f09"
+            ]
+        ],
+        "icon": "node-red/arrow-in.svg"
+    },
+    {
+        "id": "2a52e513e0b0d093",
+        "type": "inject",
+        "z": "c1a8b2d3e4f5a6b7",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 130,
+        "y": 940,
+        "wires": [
+            [
+                "b10935dc5f05edb3"
+            ]
+        ]
+    },
+    {
+        "id": "7dbce9ec090e9f09",
+        "type": "function",
+        "z": "c1a8b2d3e4f5a6b7",
+        "name": "Start Queue Container",
+        "func": "// Code added here will be run once\n// whenever the node is started.\nconst { Queue, QueueEvents } = bullmq;\nconst IORedis = ioredis;\n\nconst connection = new IORedis(env.get(\"REDIS_URL\"), { maxRetriesPerRequest: null });\n\nvar queues = {};\nvar eventQueues = {};\n\n( async () => {\n    await node.status({\n        fill: \"red\",\n        shape: \"ring\",\n        text: \"Starting\"\n    })\n    await flow.set(\"sendJobToQueue\", async (queueName, jobName, jobData, jobOptions = {}) => {\n        if (!queues[queueName]) {\n            queues[queueName] = await new Queue(queueName, { connection });\n            eventQueues[queueName] = await new QueueEvents(queueName, { connection });\n        };\n        var job = await queues[queueName].add(jobName, jobData, Object.assign({ removeOnComplete: 1000, removeOnFail: 5000 }, jobOptions));\n        const result = await job.waitUntilFinished(eventQueues[queueName]);\n        return result\n    });\n    await flow.set(\"getQueue\", async (queueName) => {\n        if (!queues[queueName]) {\n            queues[queueName] = await new Queue(queueName, { connection });\n            eventQueues[queueName] = await new QueueEvents(queueName, { connection });\n        };\n        let queueJob = async (jobName, jobData, jobOptions = {}) => {\n            var job = await queues[queueName].add(jobName, jobData, jobOptions);\n            const result = await job.waitUntilFinished(eventQueues[queueName]);\n            return result\n        };\n        return queueJob\n    });\n    await node.status({\n        fill: \"red\",\n        shape: \"ring\",\n        text: \"Running\"\n    });\n    node.send({})\n})()",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [
+            {
+                "var": "bullmq",
+                "module": "bullmq"
+            },
+            {
+                "var": "ioredis",
+                "module": "ioredis"
+            }
+        ],
+        "x": 600,
+        "y": 940,
+        "wires": [
+            [
+                "fbaaa8cb504d0c2e"
+            ]
+        ]
+    },
+    {
+        "id": "fbaaa8cb504d0c2e",
+        "type": "function",
+        "z": "c1a8b2d3e4f5a6b7",
+        "name": "Config Worker Container",
+        "func": "const { Worker } = bullmq;\nconst IORedis = ioredis;\n\nconst connection = new IORedis(env.get(\"REDIS_URL\"), { maxRetriesPerRequest: null });\n\nvar workers = {};\n\n( async () => {\n    await node.status({\n        fill: \"red\",\n        shape: \"ring\",\n        text: \"Starting\"\n    })\n    await flow.set(\"setWorker\", async (queueName, workerRun, options) => {\n        if (workers[queueName]) {\n            await workers[queueName].pause(true)\n        };\n        workers[queueName] = await new Worker(queueName, async (job) => {\n            workerRun(job)\n        }, { options, connection })\n    })\n    await node.status({\n        fill: \"red\",\n        shape: \"ring\",\n        text: \"Running\"\n    });\n    node.send({});\n    await flow.get(\"emitter\").emit(\"initWebApp\", {})\n})()",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [
+            {
+                "var": "bullmq",
+                "module": "bullmq"
+            },
+            {
+                "var": "ioredis",
+                "module": "ioredis"
+            }
+        ],
+        "x": 890,
+        "y": 940,
+        "wires": [
+            [
+                "99de549855dc79ad"
+            ]
+        ]
+    },
+    {
+        "id": "99de549855dc79ad",
+        "type": "function",
+        "z": "c1a8b2d3e4f5a6b7",
+        "name": "Start WebSerer",
+        "func": "(async () => {\n    await node.status({\n        fill: \"red\",\n        shape: \"ring\",\n        text: \"Starting at: \" + new Date()\n    })\n    await context.get(\"init\")()\n    await node.status({\n        fill: \"red\",\n        shape: \"ring\",\n        text: \"Running at: \" + new Date()\n    });\n})()\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "const { createServer, request } = http;\n\nvar app = express();\nvar server = createServer(app);\nvar init = false;\n\nvar main = async () => {\n    app.use(cors({\n        \"origin\": \"*\",\n        \"methods\": \"GET,HEAD,PUT,PATCH,POST,DELETE\",\n        // \"preflightContinue\": false,\n        // \"optionsSuccessStatus\": 204\n    }));\n    app.use(bodyParser.json());\n\n    try {\n        server.listen(4081, '0.0.0.0', () => {\n            console.log(`GRAPHQL running in port ${4082}`)\n        });\n    } catch (err) {\n        console.log(err.message)\n    }\n\n    node.send({\n        server,\n        app\n    })\n\n    flow.set(\"webServer\", server);\n    flow.set(\"webApp\", app);\n}\n\ncontext.set(\"init\", async () => {\n    if (!init) {\n        await main();\n    };\n    init = true\n})\n\n",
+        "finalize": "",
+        "libs": [
+            {
+                "var": "express",
+                "module": "express"
+            },
+            {
+                "var": "http",
+                "module": "http"
+            },
+            {
+                "var": "bodyParser",
+                "module": "body-parser"
+            },
+            {
+                "var": "cors",
+                "module": "cors"
+            }
+        ],
+        "x": 200,
+        "y": 1080,
+        "wires": [
+            [
+                "fe31e00464d7f99c",
+                "f2d81793b1654a78"
+            ]
+        ]
+    },
+    {
+        "id": "fe31e00464d7f99c",
+        "type": "function",
+        "z": "c1a8b2d3e4f5a6b7",
+        "name": "Start HTTP",
+        "func": "var emitter = new events.EventEmitter();\nemitter.setMaxListeners(0);\n\nlet returnQueue = 'http-response';\n\nconst app = flow.get(\"webApp\");\n\nvar addJob = await flow.get(\"getQueue\")(\"query\"); \nawait node.status({\n        fill: \"red\",\n        shape: \"ring\",\n        text: \"Starting at: \" + new Date()\n    })\napp.post(\"/:schema\", function (req, res) {\n    let requestId = paralleldriveCuid2.createId();\n    emitter.once(requestId, ({ type, payload }) => {\n        res.type('application/json');\n        switch (type) {\n            case 'data':\n                res.status(200)\n                res.send(payload)\n                break;\n            case 'error':\n                res.status(400)\n                res.send(payload)\n                break;\n        }\n        res.end();\n    });\n    addJob(requestId, {\n        id: requestId,\n        schema: req?.params?.schema,\n        payload: req.body,\n        context: { \n            headers: req.headers,\n            id: requestId,\n            replyTo: returnQueue\n         }\n    }, { jobId: requestId })\n});\n\nflow.get(\"setWorker\")(returnQueue, async ( returnJob ) => {\n    emitter.emit( returnJob.id, returnJob.data );\n    return null\n}, { concurrency: 100 })\n\nawait node.status({\n    fill: \"green\",\n    shape: \"ring\",\n    text: \"Running at: \" + new Date()\n});\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [
+            {
+                "var": "paralleldriveCuid2",
+                "module": "@paralleldrive/cuid2"
+            },
+            {
+                "var": "events",
+                "module": "events"
+            }
+        ],
+        "x": 690,
+        "y": 1060,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e97c3bb98fd60a71",
+        "type": "function",
+        "z": "c1a8b2d3e4f5a6b7",
+        "name": "Config Private And Protected Tables",
+        "func": "msg.topic = \"configTables\";\nmsg.payload = {\n    private: [\n        {\n            \"id\": \"relation\",\n            \"columns\": [\n                {\n                    \"id\": \"field\",\n                    \"type\": \"3\",\n                    \"required\": true\n                },\n                {\n                    \"id\": \"reference\",\n                    \"type\": \"3\",\n                    \"required\": true\n                },\n                {\n                    \"id\": \"column_id\",\n                    \"type\": \"3\",\n                    \"required\": true\n                },\n                {\n                    \"id\": \"column\",\n                    \"type\": \"column\",\n                    \"relations\": [\n                        {\n                            \"field\": \"column_id\",\n                            \"reference\": \"id\"\n                        }\n                    ]\n                }\n            ],\n            \"schema\": \"private\"\n        },\n        {\n            \"id\": \"table\",\n            \"columns\": [\n                {\n                    \"id\": \"name\",\n                    \"name\": \"name\",\n                    \"type\": \"3\"\n                },\n                {\n                    \"id\": \"schema\",\n                    \"name\": \"schema\",\n                    \"type\": \"3\",\n                    \"required\": false\n                },\n                {\n                    \"id\": \"getter\",\n                    \"name\": \"getter\",\n                    \"type\": \"3\"\n                },\n                {\n                    \"id\": \"setter\",\n                    \"name\": \"setter\",\n                    \"type\": \"3\"\n                },\n                {\n                    \"id\": \"format\",\n                    \"name\": \"format\",\n                    \"type\": \"3\"\n                },\n                {\n                    \"id\": \"columns\",\n                    \"name\": \"columns\",\n                    \"type\": \"column\",\n                    \"is_many\": true,\n                    \"relations\": [\n                        {\n                            \"field\": \"id\",\n                            \"reference\": \"table_id\"\n                        }\n                    ]\n                }\n            ],\n            \"schema\": \"private\"\n        },\n        {\n            \"id\": \"column\",\n            \"columns\": [\n                {\n                    \"id\": \"name\",\n                    \"name\": \"name\",\n                    \"type\": \"3\",\n                    \"dname\": \"Name\"\n                },\n                {\n                    \"id\": \"dname\",\n                    \"name\": \"dname\",\n                    \"type\": \"3\",\n                    \"dname\": \"Display Name\"\n                },\n                {\n                    \"id\": \"type\",\n                    \"name\": \"type\",\n                    \"type\": \"3\",\n                    \"required\": true,\n                    \"no_modify\": false,\n                    \"dname\": \"Type\"\n                },\n                {\n                    \"id\": \"required\",\n                    \"name\": \"required\",\n                    \"type\": \"4\",\n                    \"dname\": \"Required\"\n                },\n                {\n                    \"id\": \"is_many\",\n                    \"name\": \"is_many\",\n                    \"type\": \"4\",\n                    \"dname\": \"Is Many\"\n                },\n                {\n                    \"id\": \"no_modify\",\n                    \"name\": \"no_modify\",\n                    \"type\": \"4\",\n                    \"dname\": \"No Modify\"\n                },\n                {\n                    \"id\": \"format\",\n                    \"name\": \"format\",\n                    \"type\": \"3\",\n                    \"dname\": \"Format\"\n                },\n                {\n                    \"id\": \"table_id\",\n                    \"name\": \"table_id\",\n                    \"type\": \"3\",\n                    \"required\": true,\n                    \"dname\": \"Table ID\"\n                },\n                {\n                    \"id\": \"relations\",\n                    \"name\": \"relations\",\n                    \"type\": \"relation\",\n                    \"is_many\": true,\n                    \"relations\": [\n                        {\n                            \"field\": \"id\",\n                            \"reference\": \"column_id\"\n                        }\n                    ]\n                },\n                {\n                    \"id\": \"table\",\n                    \"name\": \"table\",\n                    \"type\": \"table\",\n                    \"relations\": [\n                        {\n                            \"field\": \"table_id\",\n                            \"reference\": \"id\"\n                        }\n                    ]\n                }\n            ],\n            \"schema\": \"private\"\n        }\n    ],\n    protected: [\n        {\n            \"id\": \"account\",\n            \"schema\": \"protected\",\n            \"columns\": [\n                {\n                    \"id\": \"name\",\n                    \"type\": \"3\"\n                },\n                {\n                    \"id\": \"type\",\n                    \"type\": \"3\"\n                },\n                {\n                    \"id\": \"status\",\n                    \"type\": \"3\"\n                }\n            ]\n        },\n        {\n            \"id\": \"department\",\n            \"schema\": \"protected\",\n            \"columns\": [\n                {\n                    \"id\": \"department_name\",\n                    \"type\": \"3\"\n                },\n                {\n                    \"id\": \"department_id\",\n                    \"type\": \"3\"\n                },\n                {\n                    \"id\": \"parent_id\",\n                    \"type\": \"3\"\n                },\n                {\n                    \"id\": \"appliedAt\",\n                    \"type\": \"5\"\n                },\n                {\n                    \"id\": \"department_user\",\n                    \"type\": \"department_user\",\n                    \"is_many\": true,\n                    \"relations\": [\n                        {\n                            \"field\": \"department_id\",\n                            \"reference\": \"department_id\"\n                        }\n                    ]\n                }\n            ]\n        },\n        {\n            \"id\": \"role\",\n            \"schema\": \"protected\",\n            \"columns\": [\n                {\n                    \"id\": \"name\",\n                    \"type\": \"name\"\n                },\n                {\n                    \"id\": \"schema_id\",\n                    \"type\": \"3\"\n                },\n                {\n                    \"id\": \"table_id\",\n                    \"type\": \"3\"\n                },\n                {\n                    \"id\": \"record_id\",\n                    \"type\": \"3\"\n                },\n                {\n                    \"id\": \"create\",\n                    \"name\": \"create\",\n                    \"type\": \"4\"\n                },\n                {\n                    \"id\": \"update\",\n                    \"name\": \"update\",\n                    \"type\": \"4\"\n                },\n                {\n                    \"id\": \"delete\",\n                    \"name\": \"delete\",\n                    \"type\": \"4\"\n                },\n                {\n                    \"id\": \"query\",\n                    \"name\": \"query\",\n                    \"type\": \"4\"\n                }\n            ]\n        },\n        {\n            \"id\": \"department_user\",\n            \"schema\": \"protected\",\n            \"columns\": [\n                {\n                    \"id\": \"department_id\",\n                    \"type\": \"3\"\n                },\n                {\n                    \"id\": \"user_id\",\n                    \"type\": \"3\"\n                },\n                {\n                    \"id\": \"role_id\",\n                    \"type\": \"3\"\n                },\n                {\n                    \"id\": \"role\",\n                    \"type\": \"role\",\n                    \"relations\": [\n                        {\n                            \"field\": \"role_id\",\n                            \"reference\": \"id\"\n                        }\n                    ]\n                }\n            ]\n        },\n        {\n            \"id\": \"department_hierarchy\",\n            \"schema\": \"protected\",\n            \"columns\": [\n                {\n                    \"id\": \"ancestor_id\",\n                    \"type\": \"3\"\n                },\n                {\n                    \"id\": \"descendant_id\",\n                    \"type\": \"3\"\n                },\n                {\n                    \"id\": \"depth\",\n                    \"type\": \"1\"\n                },\n                {\n                    \"id\": \"department_user\",\n                    \"type\": \"department_user\",\n                    \"is_many\": true,\n                    \"relations\": [\n                        {\n                            \"field\": \"ancestor_id\",\n                            \"reference\": \"department_id\"\n                        }\n                    ]\n                }\n            ]\n        }\n    ]\n};\n\nmsg.payload = Object.entries(msg.payload)\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 350,
+        "y": 1400,
+        "wires": [
+            [
+                "7f80d93e143de0b3"
+            ]
+        ]
+    },
+    {
+        "id": "7f80d93e143de0b3",
+        "type": "function",
+        "z": "c1a8b2d3e4f5a6b7",
+        "name": "Build Apolo",
+        "func": "const { createId } = paralleldriveCuid2;\nif (msg.topic == \"request\") {\n    let { schema, payload, context: contextValue } = msg.request;\n    let requestParse = await context.get(\"getGraphQlServer\")({ schema, payload, options: { contextValue }});\n    if ( [\"error\", \"data\"].includes(requestParse.topic)) {\n        flow.get(\"sendJobToQueue\")(contextValue.replyTo, contextValue.id, requestParse.payload, { jobId: contextValue.id })\n    } else if (requestParse.topic == \"parse\") {\n        node.send(requestParse)\n    }\n} else if ( msg.topic == \"configTables\") {\n    msg.payload.forEach( async ([schema, tables]) => {\n        console.log(schema)\n        await context.get(\"createGraphqlServer\")(schema, tables);\n    });\n}\n\nreturn null;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "const { EventEmitter } = events;\nconst { ApolloServer } = apolloServer;\nconst { createId } = paralleldriveCuid2;\n\nconst emitter = new EventEmitter();\nemitter.setMaxListeners(0);\n\nconst OperationMap = new Map([\n    [\"ne\", \"not\"],\n    [\"eq\", \"equals\"],\n    [\"gt\", \"gt\"],\n    [\"ge\", \"gte\"],\n    [\"lt\", \"lt\"],\n    [\"le\", \"lte\"],\n    [\"in\", \"in\"],\n    [\"nin\", \"notIn\"],\n    [\"ct\", \"contains\"],\n    [\"sw\", \"startsWith\"],\n    [\"ew\", \"endsWith\"],\n    [\"and\", \"and\"],\n    [\"not\", \"not\"],\n    [\"or\", \"or\"],\n]);\n\nconst ArgsDefaultMap = new Map([\n    [\"where\", {}]\n])\n\nconst parseArguments = function (args, variables) {\n    function parseVariable(value) {\n        if (value && typeof value == \"object\") {\n          if (Object.prototype.toString.call(value) === '[object Object]') {\n                return Object.fromEntries(Object.entries(value).map(([key, val]) => [OperationMap.get(key) || key, parseVariable(val)]));\n            } else if (Object.prototype.toString.call(value) === '[object Array]') {\n                return value.map((val) => parseVariable(val));\n            }\n        } else {\n            return value;\n        }\n    }\n\n    function parseValue(value) {\n        if (value.kind == \"Variable\") {\n            return parseVariable(variables[value.name.value]);\n        }\n    };\n    let re = Object.fromEntries(args.map((arg) => ([arg.name.value, parseValue(arg.value) || ArgsDefaultMap.get(arg.name.value)])));\n    return re;\n};\n\nclass Build_graphQlServer {\n    constructor({ tables, path }) {\n        this.path = path;\n        this.tables = tables;\n        this.typeDefType = new Map([\n            [\"0\", \"ID\"],\n            [\"1\", \"Int\"],\n            [\"2\", \"Float\"],\n            [\"3\", \"String\"],\n            [\"4\", \"Boolean\"],\n            [\"5\", \"Date\"],\n            [\"6\", \"Json\"],\n        ]);\n\n        this.sendAndListenQueue;\n        this.initTypeDefs = `\n                scalar Date\n                scalar Json\n                scalar asc\n                scalar desc\n        \n                input ModelIntWhereInput {\n                  _neq: Int\n                  _eq: Int\n                  _lte: Int\n                  _lt: Int\n                  _gte: Int\n                  _gt: Int\n                  _in: [Int]\n                  _nin: [Int]\n                  _is_null: Boolean\n                }\n        \n                input ModelFloatWhereInput {\n                  _neq: Float\n                  _eq: Float\n                  _lte: Float\n                  _lt: Float\n                  _gte: Float\n                  _gt: Float\n                  _in: [Float]\n                  _nin: [Float]\n                  _is_null: Boolean\n                }\n        \n                input ModelStringWhereInput {\n                  _neq: String\n                  _eq: String\n                  _like: String\n                  _ilike: String\n                  _regex: String\n                  _iregex: String\n                  _similar: String\n                  _in: [String]\n                  _nin: [String]\n                  _is_null: Boolean\n                }\n        \n                input ModelBooleanWhereInput {\n                  _not: Boolean\n                  _eq: Boolean\n                  _in: [Boolean]\n                  _nin: [Boolean]\n                  _is_null: Boolean\n                }\n        \n                input ModelDateWhereInput {\n                  _neq: Date\n                  _eq: Date\n                  _lte: Date\n                  _lt: Date\n                  _gte: Date\n                  _gt: Date\n                  _in: [Date]\n                  _nin: [Date]\n                  _is_null: Boolean\n                }\n      \n                input ModelJsonCastInput {\n                  String: ModelStringWhereInput\n                }\n      \n                input ModelJsonWhereInput {\n                  _cast: ModelJsonCastInput\n                  _eq: Json\n                }\n        \n                input ModelListStringWhereInput {\n                  _contains: String\n                  _eq: [String]\n                  _has_keys_all: [String]                                                               \n                  _has_keys_any: [String]\n                  _is_null: Boolean\n                }\n      \n                input ModelListIntWhereInput {\n                  _contains: Int\n                  _eq: [Int]\n                  _has_keys_all: [Int]                                                               \n                  _has_keys_any: [Int]\n                  _is_null: Boolean\n                }\n      \n                input ModelListFloatWhereInput {\n                  _contains: Float\n                  _eq: [Float]\n                  _has_keys_all: [Float]                                                               \n                  _has_keys_any: [Float]\n                  _is_null: Boolean\n                }\n      \n                input ModelListDateWhereInput {\n                  _contains: Date\n                  _eq: [Date]\n                  _has_keys_all: [Date]                                                               \n                  _has_keys_any: [Date]\n                  _is_null: Boolean\n                }\n      \n                enum ModelOrderByInput {\n                  asc\n                  desc\n                }\n            `;\n        this.tables = new Map(tables.map((x) => [x.id, x]));\n    }\n\n    setQueue(func) {\n        this.sendAndListenQueue = func;\n    }\n\n    generateTypeDefs() {\n        return [\n            this.initTypeDefs,\n            ...[...this.tables.values()].map(({ id, schema, columns, column }) => {\n                return column\n                    ? `\n            type ${id} {\n              id: String\n              createdAt: Date\n              updatedAt: Date\n              ${columns.map(({ id, type, required, is_many }) => `${id}: ${is_many ? \"[\" : \"\"}${this.typeDefType.has(type) ? this.typeDefType.get(type) : type}${is_many ? \"]\" : \"\"}${required ? \"!\" : \"\"}`).join(\"\\n\\t\")}\n          }`\n                    : `\n        type ${id} {\n            id: String\n            createdAt: Date\n            updatedAt: Date\n            ${columns\n                        .filter(({ relations, type }) => [...(relations || [])].length == 0 && this.typeDefType.get(type))\n                        .map(({ id, type, required, is_many }) => `${id}: ${is_many ? \"[\" : \"\"}${this.typeDefType.get(type)}${is_many ? \"]\" : \"\"}${required ? \"!\" : \"\"}`)\n                        .join(\"\\n\\t\")}\n            ${columns\n                        .filter(({ relations, type }) => (relations?.length && this.tables.has(type)))\n                        .map(({ id, type, required, is_many }) => `list_${type} (where: Model${type}WhereInput, distinctOn: [Model${type}ColumnInput], limit: Int, offset: Int, orderBy: Model${type}OrderByInput): [${type}]`)\n                        .join(\"\\n\\t\")}\n        }\n  \n        ${(() => {\n                        let col_number_ids = columns.filter(({ type }) => [\"1\", \"2\"].includes(type)).map(x => x.id);\n                        return col_number_ids > 0 ?\n                            `type ${id}_is_number {\n            ${col_number_ids.join(\"\\n\\t\")}\n          }\n          \n          type ${id}_aggregate_object {\n            count: Int\n            ${[\"sum\", \"avg\", \"stddev\", \"stddev_pop\", \"stddev_samp\", \"var_pop\", \"var_samp\", \"variance\"].map(operation => `${operation}: type ${id}_is_number`).join(\"\\n\\t\")}\n          }\n  \n          ` : `\n          type ${id}_aggregate_object {\n            count: Int\n          }\n          `\n\n                    })()}\n  \n        type ${id}_aggregate {\n          aggregate: ${id}_aggregate_object\n          nodes: [${id}]\n        }\n  \n        input Model${id}WhereInput {\n            id: ModelStringWhereInput\n            createdAt: ModelDateWhereInput\n            updatedAt: ModelDateWhereInput\n            and: [Model${id}WhereInput]\n            or: [Model${id}WhereInput]\n            not: Model${id}WhereInput\n            ${columns\n                        .filter(({ relations, type }) => [...(relations || [])].length == 0 && this.typeDefType.get(type))\n                        .map(({ id, type, required, is_many }) => `${id}: Model${this.typeDefType.get(type)}WhereInput`)\n                        .join(\"\\n\\t\")}\n            ${columns\n                        .filter(({ relations, type }) => (relations?.length && this.tables.has(type)))\n                        .map(({ id, type, required, is_many }) => `list_${type}: Model${type}WhereInput`)\n                        .join(\"\\n\\t\")}\n        }\n  \n        input Model${id}OrderByInput {\n          id: ModelOrderByInput\n          createdAt: ModelOrderByInput\n          updatedAt: ModelOrderByInput\n          ${columns\n                        .filter(({ relations, type }) => [...(relations || [])].length == 0 && this.typeDefType.get(type))\n                        .map(({ id, type, required, is_many }) => `${id}: ModelOrderByInput`)\n                        .join(\"\\n\\t\")}\n        }\n  \n        enum Model${id}ColumnInput {\n          id\n          createdAt\n          updatedAt\n          ${columns\n                        .filter(({ relations, type }) => [...(relations || [])].length == 0 && this.typeDefType.get(type))\n                        .map(({ id, type, required, is_many }) => `${id}`)\n                        .join(\"\\n\\t\")}\n        }\n  \n        ${(() => {\n                        let _columns = columns.filter(({ relations, type }) => [...(relations || [])].length == 0 && this.typeDefType.get(type));\n                        _columns = _columns.map(({ id: column_id, type, required, is_many }) => `${column_id}: ${is_many ? \"[\" : \"\"}${this.typeDefType.has(type) ? this.typeDefType.get(type) : type}${is_many ? \"]\" : \"\"}${(required && !id.endsWith(\"history\")) ? \"!\" : \"\"}`);\n\n                        return `input Model${id}CreateInput {\n            ${[\"version: String\", ..._columns].join(\"\\n\\t\")}\n          }`;\n                    })()}\n  \n        ${(() => {\n                        let _columns = columns.filter(({ relations, type, no_modify }) => !no_modify && [...(relations || [])].length == 0 && this.typeDefType.get(type));\n                        _columns = _columns.map(({ id, type, required, is_many }) => `${id}: ${is_many ? \"[\" : \"\"}${this.typeDefType.has(type) ? this.typeDefType.get(type) : type}${is_many ? \"]\" : \"\"}`);\n                        return `input Model${id}UpdateInput {\n           ${[\"version: String\", ..._columns].join(\"\\n\\t\")} \n          }`;\n                    })()}\n        \n        ${(id.endsWith(\"_history\") || (schema !== this.path)) ? '' : `type Query {\n          get_${id} (id: ID!): ${id}!\n          list_${id} (where: Model${id}WhereInput, distinctOn: [Model${id}ColumnInput], limit: Int, offset: Int, orderBy: Model${id}OrderByInput): [${id}]!\n          aggregate_${id} (where: Model${id}WhereInput): ${id}_aggregate!\n        }\n    \n        type Mutation {\n          create_${id} (input: Model${id}CreateInput!): ${id}!\n          update_${id} (input: Model${id}UpdateInput!, id: ID!): ${id}!\n          delete_${id} (id: ID!): ${id}!\n        }\n  \n        type Subscription {\n          get_${id} (id: ID!): ${id}!\n          list_${id} (where: Model${id}WhereInput, distinctOn: [Model${id}ColumnInput], limit: Int, offset: Int, orderBy: Model${id}OrderByInput): [${id}]!\n        }`}\n        `;\n            }),\n        ].join(\"\\n\");\n    }\n\n    convertGraph = function (field, table, args = {}, variables = {}, headers, child = false) {\n        return {\n            ...(child ? {} : { schema: table.schema, headers }),\n            schema: table.schema,\n            target: [field.alias ? field.alias.value : field.name.value, child ? field.name.value : table.id],\n            variables: parseArguments(field.arguments, variables),\n            fields: field.selectionSet?.selections.filter((_field) => !_field.selectionSet).map((_field) => (_field.alias ? [_field.alias.value, _field.name.value] : [_field.name.value])),\n            links: field.selectionSet?.selections.filter((_field) => _field.selectionSet).map((_field) => this.convertGraph(_field, this.tables.get((table.columns.filter((col) => `list_${col.type}` == _field.name.value)[0] || { type: _field.name.value }).type), args, variables, headers, true)),\n        };\n    };\n\n    generateResolves() {\n        const tables = this.tables;\n        let all_action = [];\n        [...this.tables]\n            .map(([key, val]) => val)\n            .filter(({ id, schema, column }) => !column && !id.endsWith(\"_history\") && (schema === this.path))\n            .forEach(({ id, columns }) => {\n                all_action = [\n                    ...all_action,\n                    ...[\n                        [\"query\", \"get\"],\n                        [\"query\", \"list\"],\n                        [\"query\", \"aggregate\"],\n                        [\"mutation\", \"create\"],\n                        [\"mutation\", \"update\"],\n                        [\"mutation\", \"delete\"],\n                        [\"subscription\", \"get\"],\n                        [\"subscription\", \"list\"],\n                    ].map(([mode, type]) => [\n                        mode,\n                        type + \"_\" + id,\n                        async (parentValue, args, context, info) => {\n                            let query = this.convertGraph(info.fieldNodes[0], this.tables.get(id), args, info[\"variableValues\"], context.headers, false);\n                            return await this.sendAndListenQueue(mode, type, query, context);\n                        },\n                    ]),\n                ];\n            });\n\n        return {\n            Query: Object.fromEntries(all_action.filter(([mode, name, func]) => mode == \"query\").map(([type, name, func]) => [name, func])),\n            Mutation: Object.fromEntries(all_action.filter(([mode, name, func]) => mode == \"mutation\").map(([type, name, func]) => [name, func])), Subscription: Object.fromEntries(all_action.filter(([mode, name, func]) => mode == \"subscription\").map(([type, name, func]) => [name, func])),\n        };\n    }\n}\n\nvar graphQlServerContainer = {};\nvar graphQlServerContainerLoading = {};\nvar completegraphQlServerContainer = async function (schema) {\n    emitter.emit(schema, { error: false })\n}\n\nlet createGraphqlServer = async (schema, tables) => {\n  node.status({\n    fill: \"red\",\n    shape: \"ring\",\n    text: \"Start Graphql Server: \" + schema\n  })\n  let graphQlServer = new Build_graphQlServer({\n    path: schema,\n    tables\n  });\n\n  const queue = async (mode, action, data, context) => {\n    return new Promise((resolve, reject) => {\n      emitter.emit(context.headers['transaction-id'], {\n        mode, action, data, context\n      });\n      reject(\"success\")\n      // throw new Error({ message: \"success\" });\n    })\n  };\n  graphQlServer.setQueue(queue);\n  const apolloServer = new ApolloServer({\n    typeDefs: graphQlServer.generateTypeDefs(),\n    resolvers: graphQlServer.generateResolves(),\n    introspection: true,\n    cache: \"bounded\",\n  });\n  await apolloServer.start();\n  graphQlServerContainer[schema] = apolloServer;\n  completegraphQlServerContainer(schema);\n  node.status({\n    fill: \"green\",\n    shape: \"ring\",\n    text: \"End Graphql Server: \" + schema\n  })\n}\n\n\n\ncontext.set(\"createGraphqlServer\", createGraphqlServer)\ncontext.set(\"getGraphQlServer\", async ({ schema, payload, options }) => {\n  return await new Promise( async ( resolve, reject ) => {\n    if (!graphQlServerContainer[schema]) {\n      resolve({\n        topic: \"error\",\n        payload: {\n          type: \"error\",\n          payload: {\n            errors: [{\n              message: \"Not found schema: \" + schema\n            }]\n          }\n        }\n      });\n      return\n    }\n    let transactionId = createId();\n    options.contextValue.headers['transaction-id'] = transactionId;\n    emitter.once(transactionId, res => {\n      resolve({\n        topic: \"parse\",\n        payload: res\n      })\n    });\n    let result = await graphQlServerContainer[schema].executeOperation(payload, options).catch(err => {\n      return {\n        body: {\n          singleResult: {\n            errors: true,\n            payload: err.message\n          }\n        }\n      };\n    });\n    let resData = result?.body?.singleResult || {};\n    if (resData?.errors) {\n      resolve({\n        topic: \"error\",\n        payload: { type: 'error', payload: resData }\n      })\n    } else {\n      resolve({\n        topic: \"data\",\n        payload: { type: 'data', payload: resData }\n      })\n    };\n    return null\n  })\n})\n\n\n// $local.Build_graphQlServer = Build_graphQlServer;\n// $local.graphQlServerContainer = {};\n// $local.graphQlServerContainerLoading = {};\n// $local.createWaittinggraphQlServerContainer = async function (schema) {\n//     return await new Promise((resolve, reject) => {\n//         emitter.once(schema, () => { resolve(null) })\n//     })\n// };\n\n// $local.completegraphQlServerContainer = async function (schema) {\n//     emitter.emit(schema, { error: false })\n// }\nreturn null;",
+        "finalize": "",
+        "libs": [
+            {
+                "var": "events",
+                "module": "events"
+            },
+            {
+                "var": "apolloServer",
+                "module": "@apollo/server"
+            },
+            {
+                "var": "paralleldriveCuid2",
+                "module": "@paralleldrive/cuid2"
+            }
+        ],
+        "x": 490,
+        "y": 1320,
+        "wires": [
+            [
+                "de22fd8602f74d0a",
+                "4461b8cb54c4fcc6"
+            ]
+        ]
+    },
+    {
+        "id": "70eceaed0de4a2eb",
+        "type": "inject",
+        "z": "c1a8b2d3e4f5a6b7",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 110,
+        "y": 1360,
+        "wires": [
+            [
+                "e97c3bb98fd60a71",
+                "6870e939d1c38329",
+                "7878ed5d3d1e5b7d",
+                "fe4d605ef0d91ddc"
+            ]
+        ]
+    },
+    {
+        "id": "6870e939d1c38329",
+        "type": "function",
+        "z": "c1a8b2d3e4f5a6b7",
+        "name": "Query Worker",
+        "func": "flow.get(\"setWorker\")(\"query\", (job) => {\n    node.send({\n        topic: \"request\",\n        request: job.data\n    })\n    return null\n}, { concurrency: 100 })\nreturn null;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 280,
+        "y": 1320,
+        "wires": [
+            [
+                "7f80d93e143de0b3"
+            ]
+        ]
+    },
+    {
+        "id": "de22fd8602f74d0a",
+        "type": "function",
+        "z": "c1a8b2d3e4f5a6b7",
+        "name": "Convert Query To Hasura",
+        "func": "let { mode, action, data, context: contextValue } = msg.payload;\ntry {\n    node.send([{\n        topic: \"parse\",\n        payload: await context.get(\"queryNow\")( contextValue.id, action, data, true),\n        type: \"start\",\n        contextValue\n    }])\n    node.status({\n        fill: \"green\",\n        shape: \"ring\",\n        text: contextValue.id\n    })\n} catch (err) {\n    console.log(err.message)\n}\nreturn null;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   ",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "const { createId } = paralleldriveCuid2;\n\nconst filterPrismaToHasuraInWhere = new Map([\n     [\"neq\", [\"_neq\"]],\n     [\"eq\", [\"_eq\"]],\n     [\"equals\", [\"_eq\"]],\n     [\"lte\", [\"[_lte\"]],\n     [\"lt\", [\"_lt\"]],\n     [\"gte\", [\"_gte\"]],\n     [\"gt\", [\"_gt\"]],\n     [\"in\", [\"_in\"]],\n     [\"notIn\", [\"_nin\"]],\n     [\"like\", [\"_like\"]],\n     [\"iLike\", [\"_ilike\"]],\n     [\"regex\", [\"_regex\"]],\n     [\"iRegex\", [\"_iregex\"]],\n     [\"hasKey\", [\"_has_key\"]],\n     [\"isNull\", [\"_is_null\"]],\n ]);\n\nconst filterPrismaToHasura = new Map([\n       [\"neq\", [\"_neq\"]],\n       [\"eq\", [\"_eq\"]],\n       [\"equals\", [\"_eq\"]],\n       [\"lte\", [\"[_lte\"]],\n       [\"lt\", [\"_lt\"]],\n       [\"gte\", [\"_gte\"]],\n       [\"gt\", [\"_gt\"]],\n       [\"in\", [\"_in\"]],\n       [\"notIn\", [\"_nin\"]],\n       [\"like\", [\"_like\"]],\n       [\"iLike\", [\"_ilike\"]],\n       [\"regex\", [\"_regex\"]],\n       [\"iRegex\", [\"_iregex\"]],\n       [\"and\", [\"_and\"]],\n       [\"or\", [\"_or\"]],\n       [\"not\", [\"_not\"]],\n       [\"distinctOn\", [\"distinct_on\"]],\n       [\"orderBy\", [\"order_by\"]],\n       [\"hasKey\", [\"_has_key\"]],\n       [\"cast\", [\"_cast\"]],\n       [\"String\", [\"String\"]],\n       [\"path\", [\"path\"]],\n   ]);\n\nconst generatedHasuraVariables = (objectQuery, type = undefined, zone = '', level = '') => {\n    objectQuery.variables.where = { and: [objectQuery.variables.where || {}, { deletedAt: { isNull: true } }] }\n    let generatedHasuraVariablesZone = (variables, type = undefined) => {\n        return Object.fromEntries(Object.entries(variables).map(([key, val]) => {\n            let test_key = filterPrismaToHasuraInWhere.get(key);\n            if (test_key) {\n                return [test_key, val]\n            } else {\n                let _type = type || key;\n                let new_key = [...filterPrismaToHasura.get(key) || [key]][0];\n                if (val && [\"and\", \"or\", \"not\"].includes(key) && Object.prototype.toString.call(val) === '[object Array]') {\n                    return [new_key, val.map(_val => generatedHasuraVariablesZone(_val, _type))]\n                } else if (val && !filterPrismaToHasuraInWhere.has(key) && Object.prototype.toString.call(val) === '[object Object]') {\n                    if (new_key.startsWith(\"list\")) {\n                        return [new_key, generatedHasuraVariablesZone({ and: [{ deletedAt: { isNull: true } }, val] }, _type)]\n                    } else {\n                        return [new_key, generatedHasuraVariablesZone(val, _type)]\n                    }\n                } else {\n                    return [new_key, val]\n                }\n            }\n        }))\n    }\n    return Object.fromEntries([...Object.entries(generatedHasuraVariablesZone(objectQuery.variables)).map(([key, val]) => [`${key}_${zone}_${level}`, val]),\n    ...objectQuery.links.map((childQuery, childQueryIndex) => Object.entries(generatedHasuraVariables(childQuery, undefined, `${zone}${level}`, childQueryIndex))).flat()\n    ])\n}\n\nconst target_begin = {\n    get: ``,\n    list: ``,\n    aggregate: ``,\n    create: 'insert_',\n    update: \"update_\"\n}\n\nconst target_end = {\n    get: ``,\n    list: ``,\n    aggregate: `_aggregate`,\n    create: '_one',\n    update: \"_by_pk\"\n}\n\nconst generatedHasuraQuery = (type, action, objectQuery, root = true, zone = '', level = '') => {\n    if (objectQuery.variables.id) {\n        objectQuery.variables[\"where\"] = objectQuery.variables[\"where\"] || {};\n        objectQuery.variables[\"where\"][\"id\"] = { _eq: objectQuery.variables.id };\n        delete objectQuery.variables.id;\n    }\n\n    return `${([\"socket\", \"subscription\"].includes(type)) ? `${[...objectQuery.target].shift()}:` : (root ? \"data:\" : \"\")}${objectQuery.schema ? `${root ? `${objectQuery.schema}_` : \"\"}${objectQuery.target.slice(-1)}${target_end[action]}` : objectQuery.target.slice(-1)[0]}\n    ${Object.keys(objectQuery.variables).length > 0 ? `(${(() => {\n            let trans_variables = Object.keys(objectQuery.variables).map(k => (filterPrismaToHasura.get(k) || [k])[0]);\n            return [\n                [\"where\", `$where_${zone}_${level}`],\n                [\"order_by\", `$order_by_${zone}_${level}`],\n                [\"distinct_on\", `$distinct_on_${zone}_${level}`],\n                [\"limit\", `$limit_${zone}_${level}`],\n                [\"offset\", `$offset_${zone}_${level}`],\n            ].filter(([key, val]) => trans_variables.includes(key)).map((x) => x.join(\": \")).join(\", \")\n\n        })()\n            })` : \"\"} {\n            ${objectQuery.fields.map((x) => `${(x.length > 1 && [\"socket\", \"subscription\"].includes(type)) ? `${x.slice(0, 1)[0]}:` : \"\"}${x.slice(-1)[0]}`).join(\"\\n\")}\n            ${objectQuery.links.map((x, linkIndex) => generatedHasuraQuery(type, action, x, false, `${zone}${level}`, linkIndex))}\n        }`;\n}\n\nconst generateHasuraVariablesType = (objectQuery, zone = '', level = '') => {\n    let table = `${objectQuery.schema}_${[...objectQuery.target].pop().replace(\"list_\", \"\")}`\n    let keys = Object.keys(objectQuery.variables).map(k => (filterPrismaToHasura.get(k) || [k])[0]);\n    let tt = [...[\n        [\"where\", `${table}_bool_exp`],\n        [\"order_by\", `[${table}_order_by!]`],\n        [\"distinct_on\", `[${table}_select_column!]`],\n        [\"limit\", `Int`],\n        [\"offset\", `Int`],\n    ].filter(([key, val]) => keys.includes(key)).map(([key, val]) => `$${key}_${zone}_${level}: ${val}`),\n    ...objectQuery.links.map((childQuery, childQueryIndex) => generateHasuraVariablesType(childQuery, `${zone}${level}`, childQueryIndex))\n    ]\n    return tt.filter(x => x).join(\",\")\n}\n\nconst generateHasuraObject = (id, mode, action, objectQuery, root = true) => {\n    let table = `${objectQuery.schema}_${objectQuery.target.slice(-1)[0]}`\n    let _variables = generatedHasuraVariables(objectQuery);\n    let _variablesType = generateHasuraVariablesType(objectQuery);\n    let _query = generatedHasuraQuery(mode, action, objectQuery);\n\n    return ({\n        query: `${mode === \"subscription\" ? mode : \"query\"} ${id}${_variablesType ? ` (${_variablesType}) ` : \"\"}{ ${_query} }`,\n        variables: _variables\n    })\n}\n\nconst applyRole = async (action, objectQuery) => {\n    objectQuery.user = {};\n    if (objectQuery.headers['authorization'] && objectQuery.headers['authorization']['startsWith'](\"Bearer \")) {\n        let token = objectQuery.headers['authorization'].slice(7)\n        let payload = jwt.verify(token, await jwt.getPrivateKey(), { algorithm: \"HS512\" })\n        objectQuery.user['id'] = payload.userId;\n    }\n\n    objectQuery.links.map(childObjectQuery => applyRole(action, Object.assign(childObjectQuery, { headers: objectQuery.headers })))\n    // if ([\"get\", \"list\"].includes(action)) {\n    //     if (objectQuery.variables.id) {\n    //         objectQuery.variables[\"where\"] = objectQuery.variables[\"where\"] || {};\n    //         objectQuery.variables[\"where\"][\"id\"] = { _eq: objectQuery.variables.id };\n    //         delete objectQuery.variables.id;\n    //     }\n    //     let getter = getters.get(objectQuery.target[1])\n    //     if (getter) {\n    //         await getter.bind(objectQuery)()\n    //     }\n    // } else if ([\"create\", \"update\"].includes(action)) {\n    //     let setter = setters.get(objectQuery.target[1]);\n    //     if (setter) {\n    //         await setter.bind(objectQuery)()\n    //     }\n    // }\n    return objectQuery\n}\n\nconst queryNow = async (id, action, objectQuery, socket = false, callback = () => { }) => {\n    id = id || createId()\n    objectQuery = await applyRole(action, objectQuery) || objectQuery;\n    let _query2 = generateHasuraObject(id, socket ? \"socket\" : \"query\", action, objectQuery);\n    return _query2\n    // await sendData(id, { operationName: id, ..._query2 }, \"start\");\n    // return await new Promise((resolve, reject) => {\n    //     emitter.once(id, async (_preDeleteRecord) => {\n    //         resolve(_preDeleteRecord)\n    //     })\n    // })\n};\ncontext.set(\"queryNow\", queryNow)",
+        "finalize": "",
+        "libs": [
+            {
+                "var": "paralleldriveCuid2",
+                "module": "@paralleldrive/cuid2"
+            },
+            {
+                "var": "jwt",
+                "module": "jsonwebtoken"
+            }
+        ],
+        "x": 730,
+        "y": 1320,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "24b240a2d666641b",
+        "type": "function",
+        "z": "c1a8b2d3e4f5a6b7",
+        "name": "hasura Worker",
+        "func": "if ( msg.topic == \"parse\") {\n    let { payload, type, contextValue } = msg;\n    console.log( payload, type)\n    context.get(\"sendQuery\")({ payload, type, contextValue})\n}",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "var wsApp;\nvar wsAppConnected = false;\nvar emitter = new events.EventEmitter();\nemitter.setMaxListeners(0);\n\nlet connectSocket = async () => {\n    let hasuraURL = new url.URL(env.get(\"HASURA_URL\"));\n    // Convert Ws Query\n    hasuraURL.protocol = \"ws:\";\n    hasuraURL.pathname = \"/v1/graphql\";\n    console.log(`Connecting Hasura: ${hasuraURL.href}`);\n    wsApp = new WebSocket(hasuraURL.href, [\"graphql-ws\"]);\n    wsApp.on(\"open\", async () => {\n        console.log(`Connect Hasura successfully: ${hasuraURL.href}`);\n        await wsApp.send(JSON.stringify({ type: \"connection_init\", payload: { headers: { \"content-type\": \"application/json\" }, lazy: true } }));\n    });\n\n    wsApp.on(\"message\", async (msg) => {\n        const { id, type, payload } = JSON.parse(msg.toString());\n        console.log(\"message\", id, type, payload?.errors);\n        if (id) {\n            let has_listener = await emitter.emit(id, {\n                type,\n                payload\n            });\n            if (!has_listener) {\n                emitter.emit(`stop-${id}`, null)\n            }\n        } else if (type === \"connection_ack\") {\n            wsAppConnected = true;\n            emitter.emit(\"connect\", true);\n        }\n    });\n\n\n    wsApp.on(\"error\", (err) => {\n        console.log(\"Connect Hasura failed!\");\n    });\n\n    wsApp.on(\"close\", () => {\n        console.log(\"Connect Hasura Socket closed!\");\n        console.log(`Try reconnect to Hasura after: 1000ms`);\n        if (this.state !== \"close\") {\n            setTimeout(connectSocket, 1000)\n        }\n    });\n};\n\nconnectSocket();\n\ncontext.set(\"sendQuery\", async ({ payload, type, contextValue}) => {\n    await wsApp.send(JSON.stringify({ id: contextValue.id, payload, type }));\n    emitter.once(contextValue.id, async (returnValue) => {\n        node.send({\n            topic: \"reply\",\n            returnValue,\n            replyTo: contextValue.replyTo,\n            id: contextValue.id\n        })\n    })\n})",
+        "finalize": "",
+        "libs": [
+            {
+                "var": "events",
+                "module": "events"
+            },
+            {
+                "var": "WebSocket",
+                "module": "ws"
+            },
+            {
+                "var": "paralleldriveCuid2",
+                "module": "@paralleldrive/cuid2"
+            },
+            {
+                "var": "url",
+                "module": "url"
+            }
+        ],
+        "x": 1020,
+        "y": 1320,
+        "wires": [
+            [
+                "89aadee45b76f2fe"
+            ]
+        ]
+    },
+    {
+        "id": "89aadee45b76f2fe",
+        "type": "function",
+        "z": "c1a8b2d3e4f5a6b7",
+        "name": "send Response To ReplyTo Queue",
+        "func": "flow.get(\"sendJobToQueue\")( msg.replyTo, msg.id, msg.returnValue, { jobId: msg.id})\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "// Code added here will be run once\n// whenever the node is started.\nconst { Queue, QueueEvents } = bullmq;\nconst IORedis = ioredis;\n\nconst connection = new IORedis(env.get(\"REDIS_URL\"), { maxRetriesPerRequest: null });\nconst AsyncFunction = (async function () { }).constructor;\n\nvar queues = {};\nvar eventQueues = {};\n\nvar newQueue;\nvar newQueueEvents;\n\ncontext.set(\"createNewQueue\", async (name) => {\n    newQueue = await new Queue(name, { connection });\n    newQueueEvents = await new QueueEvents(name, { connection })\n    await context.set(\"addJob\", async (jobName, jobData) => {\n        var job = await newQueue.add(jobName, jobData);\n        const result = await job.waitUntilFinished(newQueueEvents);\n        return result\n    })\n});\n\ncontext.set(\"sendJobToQueue\", async (queueName, jobName, jobData) => {\n    if (!queues[queueName]) {\n        queues[queueName] = await new Queue(queueName, { connection });\n        eventQueues[queueName] = await new QueueEvents(queueName, { connection });\n    };\n    var job = await queues[queueName].add(jobName, jobData);\n    const result = await job.waitUntilFinished(eventQueues[queueName]);\n    return result\n    \n})",
+        "finalize": "",
+        "libs": [
+            {
+                "var": "bullmq",
+                "module": "bullmq"
+            },
+            {
+                "var": "ioredis",
+                "module": "ioredis"
+            }
+        ],
+        "x": 1020,
+        "y": 1460,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "7140fd502292ea03",
+        "type": "inject",
+        "z": "c1a8b2d3e4f5a6b7",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "5",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 110,
+        "y": 1680,
+        "wires": [
+            [
+                "fe4d605ef0d91ddc"
+            ]
+        ]
+    },
+    {
+        "id": "7bccb104e1171c1d",
+        "type": "subflow:52dd62cdb44e91b4",
+        "z": "c1a8b2d3e4f5a6b7",
+        "name": "",
+        "x": 500,
+        "y": 1680,
+        "wires": [
+            [],
+            [
+                "780749c2f8f8ec6d"
+            ]
+        ]
+    },
+    {
+        "id": "fe4d605ef0d91ddc",
+        "type": "function",
+        "z": "c1a8b2d3e4f5a6b7",
+        "name": "Listening Tables",
+        "func": "msg.payload = {};\nnode.status({ fill: \"red\", shape: \"ring\", text: \"Starting\" });\nmsg.payload.graphQlData = {\n    schema: 'private',\n    operationName: \"new_data\",\n    query: `\n              query List_table($where: ModeltableWhereInput) {\n                    list_table(where: $where) { id createdAt updatedAt name schema getter setter format columns:list_column {\n                        id, type, required, is_many, name, relations:list_relation {\n                            field, reference\n                    }}}}`,\n    variables: {\n        \"where\": {\n            \"schema\": {\n            // \"in\": [\"dev\", \"app\", \"auth\", \"style\", \"cloud\"]\n            \"_in\": [\"dev\"]\n            }\n        }\n        }\n};\nnode.status({ fill: \"red\", shape: \"ring\", text: \"Running\" });\n\nconsole.log(msg)\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [
+            {
+                "var": "fs",
+                "module": "fs"
+            }
+        ],
+        "x": 300,
+        "y": 1680,
+        "wires": [
+            [
+                "7bccb104e1171c1d"
+            ]
+        ]
+    },
+    {
+        "id": "780749c2f8f8ec6d",
+        "type": "function",
+        "z": "c1a8b2d3e4f5a6b7",
+        "name": "Flat Tables",
+        "func": "console.log(\"yy\", msg.payload.new_data);\nvar list_table = msg.payload.new_data.data.list_table;\nvar schemaList = [ ...new Set(list_table.map( ({schema}) => schema))] ;\nvar schemaMap = schemaList.map( (schema) => {\n    return [ schema, list_table.filter( ({ schema:schemaInTable }) => schema == schemaInTable)]\n});\nmsg.topic = \"configTables\";\nmsg.payload = schemaMap;\nconsole.log(schemaMap)\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 710,
+        "y": 1680,
+        "wires": [
+            [
+                "7f80d93e143de0b3"
+            ]
+        ]
+    },
+    {
+        "id": "f2d81793b1654a78",
+        "type": "function",
+        "z": "c1a8b2d3e4f5a6b7",
+        "name": "Start WS",
+        "func": "var emitter = new events.EventEmitter();\nemitter.setMaxListeners(0);\nconst { WebSocketServer, WebSocket } = ws;\n\nlet returnQueue = 'ws-response';\n\nconst app = flow.get(\"webApp\");\nconst server = flow.get(\"webServer\");\n\nvar addJob = await flow.get(\"getQueue\")(\"ws\"); \nawait node.status({\n        fill: \"red\",\n        shape: \"ring\",\n        text: \"Starting at: \" + new Date()\n    });\n\nconst wsServer = new WebSocketServer({ noServer: true });\nwsServer.on(\"connection\", (cb, req) => {\n    const { pathname } = url.parse(req.url || \"\");\n    console.log(pathname)\n    cb.on(\"message\", async (data) => {\n        const { id, type, payload } = JSON.parse('{}');\n        if (type === \"connection_init\") cb.send(JSON.stringify({ type: \"connection_ack\" }));\n        else if (type === \"subscribe\") {\n            const requestId = paralleldriveCuid2.createId();\n            emitter.on(requestId, ({ type: tRes, payload }) => {\n                if (tRes == \"data\") {\n                    cb.send(JSON.stringify({ id, type: \"next\", payload }));\n                } else {\n                    cb.send(JSON.stringify({\n                        id, type: tRes, payload: payload.errors\n                         }));\n                }\n            });\n            addJob(requestId, {\n                id: requestId,\n                schema: pathname.split(\"/\").pop(),\n                payload: payload,\n                context: {\n                    headers: {},\n                    id: requestId,\n                    replyTo: returnQueue\n                }\n            }, { jobId: requestId })\n        }\n    });\n    cb.on(\"close\", () => {\n\n    });\n});\n\nserver.on(\"upgrade\", (req, socket, head) => {\n    wsServer.handleUpgrade( req, socket, head, wsObject => {\n        wsServer.emit('connection', wsObject, req);\n    })\n});\n\nflow.get(\"setWorker\")(returnQueue, async ( returnJob ) => {\n    emitter.emit( returnJob.id, returnJob.data );\n    return null\n}, { concurrency: 100 })\n\nawait node.status({\n    fill: \"green\",\n    shape: \"ring\",\n    text: \"Running at: \" + new Date()\n});\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [
+            {
+                "var": "paralleldriveCuid2",
+                "module": "@paralleldrive/cuid2"
+            },
+            {
+                "var": "events",
+                "module": "events"
+            },
+            {
+                "var": "ws",
+                "module": "ws"
+            },
+            {
+                "var": "url",
+                "module": "url"
+            }
+        ],
+        "x": 680,
+        "y": 1140,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "7878ed5d3d1e5b7d",
+        "type": "function",
+        "z": "c1a8b2d3e4f5a6b7",
+        "name": "Query Worker",
+        "func": "flow.get(\"setWorker\")(\"ws\", (job) => {\n    node.send({\n        topic: \"request\",\n        request: job.data\n    })\n    return null\n}, { concurrency: 100 })\nreturn null;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 280,
+        "y": 1280,
+        "wires": [
+            [
+                "7f80d93e143de0b3"
+            ]
+        ]
+    },
+    {
+        "id": "39a3313da84120e1",
+        "type": "function",
+        "z": "c1a8b2d3e4f5a6b7",
+        "name": "Set Protected",
+        "func": "msg.payload = [\n    {\n        \"id\": \"account\",\n        \"schema\": \"protected\",\n        \"columns\": [\n            {\n                \"id\": \"name\",\n                \"type\": \"3\"\n            },\n            {\n                \"id\": \"type\",\n                \"type\": \"3\"\n            },\n            {\n                \"id\": \"status\",\n                \"type\": \"3\"\n            }\n        ]\n    },\n    {\n        \"id\": \"department\",\n        \"schema\": \"protected\",\n        \"columns\": [\n            {\n                \"id\": \"department_name\",\n                \"type\": \"3\"\n            },\n            {\n                \"id\": \"department_id\",\n                \"type\": \"3\"\n            },\n            {\n                \"id\": \"parent_id\",\n                \"type\": \"3\"\n            },\n            {\n                \"id\": \"appliedAt\",\n                \"type\": \"5\"\n            },\n            {\n                \"id\": \"department_user\",\n                \"type\": \"department_user\",\n                \"is_many\": true,\n                \"relations\": [\n                    {\n                        \"field\": \"department_id\",\n                        \"reference\": \"department_id\"\n                    }\n                ]\n            }\n        ]\n    },\n    {\n        \"id\": \"role\",\n        \"schema\": \"protected\",\n        \"columns\": [\n            {\n                \"id\": \"name\",\n                \"type\": \"name\"\n            },\n            {\n                \"id\": \"schema_id\",\n                \"type\": \"3\"\n            },\n            {\n                \"id\": \"table_id\",\n                \"type\": \"3\"\n            },\n            {\n                \"id\": \"record_id\",\n                \"type\": \"3\"\n            },\n            {\n                \"id\": \"create\",\n                \"name\": \"create\",\n                \"type\": \"4\"\n            },\n            {\n                \"id\": \"update\",\n                \"name\": \"update\",\n                \"type\": \"4\"\n            },\n            {\n                \"id\": \"delete\",\n                \"name\": \"delete\",\n                \"type\": \"4\"\n            },\n            {\n                \"id\": \"query\",\n                \"name\": \"query\",\n                \"type\": \"4\"\n            }\n        ]\n    },\n    {\n        \"id\": \"department_user\",\n        \"schema\": \"protected\",\n        \"columns\": [\n            {\n                \"id\": \"department_id\",\n                \"type\": \"3\"\n            },\n            {\n                \"id\": \"user_id\",\n                \"type\": \"3\"\n            },\n            {\n                \"id\": \"role_id\",\n                \"type\": \"3\"\n            },\n            {\n                \"id\": \"role\",\n                \"type\": \"role\",\n                \"relations\": [\n                    {\n                        \"field\": \"role_id\",\n                        \"reference\": \"id\"\n                    }\n                ]\n            }\n        ]\n    },\n    {\n        \"id\": \"department_hierarchy\",\n        \"schema\": \"protected\",\n        \"columns\": [\n            {\n                \"id\": \"ancestor_id\",\n                \"type\": \"3\"\n            },\n            {\n                \"id\": \"descendant_id\",\n                \"type\": \"3\"\n            },\n            {\n                \"id\": \"depth\",\n                \"type\": \"1\"\n            },\n            {\n                \"id\": \"department_user\",\n                \"type\": \"department_user\",\n                \"is_many\": true,\n                \"relations\": [\n                    {\n                        \"field\": \"ancestor_id\",\n                        \"reference\": \"department_id\"\n                    }\n                ]\n            }\n        ]\n    }\n];\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 160,
+        "y": 440,
+        "wires": [
+            [
+                "f5e3390232f26d23"
+            ]
+        ]
+    },
+    {
+        "id": "7b8991d4290b026b",
+        "type": "function",
+        "z": "c1a8b2d3e4f5a6b7",
+        "name": "Flat table",
+        "func": "msg.topic = \"configTables\";\nconsole.log(msg)\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 140,
+        "y": 560,
+        "wires": [
+            [
+                "b8855ffa0d3ddbeb"
+            ]
+        ]
+    },
+    {
+        "id": "51f2a8e01b664fba",
+        "type": "inject",
+        "z": "c1a8b2d3e4f5a6b7",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 110,
+        "y": 720,
+        "wires": [
+            [
+                "4b2d302eacc317e1",
+                "ef4d78454cc63244"
+            ]
+        ]
+    },
+    {
+        "id": "b8855ffa0d3ddbeb",
+        "type": "function",
+        "z": "c1a8b2d3e4f5a6b7",
+        "name": "Build Apolo",
+        "func": "console.log(msg.topic)\nconst { createId } = paralleldriveCuid2;\nif (msg.topic == \"request\") {\n    let { schema, payload, context: contextValue } = msg.request;\n    let requestParse= await context.get(\"getSchema\")({ schema, payload, options: { contextValue }});\n} else if ( msg.topic == \"configTables\") {\n    msg.payload.forEach( async ([schema, tables]) => {\n        console.log(schema)\n        await context.get(\"createGraphqlServer\")(schema, tables);\n    });\n}\n\nreturn null;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "const { EventEmitter } = events;\nconst { ApolloServer } = apolloServer;\nconst { createId } = paralleldriveCuid2;\n\nconst emitter = new EventEmitter();\nemitter.setMaxListeners(0);\n\nconst OperationMap = new Map([\n    [\"ne\", \"not\"],\n    [\"eq\", \"equals\"],\n    [\"gt\", \"gt\"],\n    [\"ge\", \"gte\"],\n    [\"lt\", \"lt\"],\n    [\"le\", \"lte\"],\n    [\"in\", \"in\"],\n    [\"nin\", \"notIn\"],\n    [\"ct\", \"contains\"],\n    [\"sw\", \"startsWith\"],\n    [\"ew\", \"endsWith\"],\n    [\"and\", \"and\"],\n    [\"not\", \"not\"],\n    [\"or\", \"or\"],\n]);\n\nconst ArgsDefaultMap = new Map([\n    [\"where\", {}]\n])\n\nconst parseArguments = function (args, variables) {\n\n    function parseVariable(value) {\n        if (value && typeof value == \"object\") {\n            if (value.constructor == Object) {\n                return Object.fromEntries(Object.entries(value).map(([key, val]) => [OperationMap.get(key) || key, parseVariable(val)]));\n            } else if (value.constructor == Array) {\n                return value.map((val) => parseVariable(val));\n            }\n        } else {\n            return value;\n        }\n    }\n\n    function parseValue(value) {\n        if (value.kind == \"Variable\") {\n            return parseVariable(variables[value.name.value]);\n        }\n    }\n    return Object.fromEntries(args.map((arg) => ([arg.name.value, parseValue(arg.value) || ArgsDefaultMap.get(arg.name.value)])));\n};\n\nclass Build_graphQlServer {\n    constructor({ tables, path }) {\n        this.path = path;\n        this.tables = tables;\n        this.typeDefType = new Map([\n            [\"0\", \"ID\"],\n            [\"1\", \"Int\"],\n            [\"2\", \"Float\"],\n            [\"3\", \"String\"],\n            [\"4\", \"Boolean\"],\n            [\"5\", \"Date\"],\n            [\"6\", \"Json\"],\n        ]);\n\n        this.sendAndListenQueue;\n        this.initTypeDefs = `\n                scalar Date\n                scalar Json\n                scalar asc\n                scalar desc\n        \n                input ModelIntWhereInput {\n                  _neq: Int\n                  _eq: Int\n                  _lte: Int\n                  _lt: Int\n                  _gte: Int\n                  _gt: Int\n                  _in: [Int]\n                  _nin: [Int]\n                  _is_null: Boolean\n                }\n        \n                input ModelFloatWhereInput {\n                  _neq: Float\n                  _eq: Float\n                  _lte: Float\n                  _lt: Float\n                  _gte: Float\n                  _gt: Float\n                  _in: [Float]\n                  _nin: [Float]\n                  _is_null: Boolean\n                }\n        \n                input ModelStringWhereInput {\n                  _neq: String\n                  _eq: String\n                  _like: String\n                  _ilike: String\n                  _regex: String\n                  _iregex: String\n                  _similar: String\n                  _in: [String]\n                  _nin: [String]\n                  _is_null: Boolean\n                }\n        \n                input ModelBooleanWhereInput {\n                  _not: Boolean\n                  _eq: Boolean\n                  _in: [Boolean]\n                  _nin: [Boolean]\n                  _is_null: Boolean\n                }\n        \n                input ModelDateWhereInput {\n                  _neq: Date\n                  _eq: Date\n                  _lte: Date\n                  _lt: Date\n                  _gte: Date\n                  _gt: Date\n                  _in: [Date]\n                  _nin: [Date]\n                  _is_null: Boolean\n                }\n      \n                input ModelJsonCastInput {\n                  String: ModelStringWhereInput\n                }\n      \n                input ModelJsonWhereInput {\n                  _cast: ModelJsonCastInput\n                  _eq: Json\n                }\n        \n                input ModelListStringWhereInput {\n                  _contains: String\n                  _eq: [String]\n                  _has_keys_all: [String]                                                               \n                  _has_keys_any: [String]\n                  _is_null: Boolean\n                }\n      \n                input ModelListIntWhereInput {\n                  _contains: Int\n                  _eq: [Int]\n                  _has_keys_all: [Int]                                                               \n                  _has_keys_any: [Int]\n                  _is_null: Boolean\n                }\n      \n                input ModelListFloatWhereInput {\n                  _contains: Float\n                  _eq: [Float]\n                  _has_keys_all: [Float]                                                               \n                  _has_keys_any: [Float]\n                  _is_null: Boolean\n                }\n      \n                input ModelListDateWhereInput {\n                  _contains: Date\n                  _eq: [Date]\n                  _has_keys_all: [Date]                                                               \n                  _has_keys_any: [Date]\n                  _is_null: Boolean\n                }\n      \n                enum ModelOrderByInput {\n                  asc\n                  desc\n                }\n            `;\n        this.tables = new Map(tables.map((x) => [x.id, x]));\n    }\n\n    setQueue(func) {\n        this.sendAndListenQueue = func;\n    }\n\n    generateTypeDefs() {\n        return [\n            this.initTypeDefs,\n            ...[...this.tables.values()].map(({ id, schema, columns, column }) => {\n                return column\n                    ? `\n            type ${id} {\n              id: String\n              createdAt: Date\n              updatedAt: Date\n              ${columns.map(({ id, type, required, is_many }) => `${id}: ${is_many ? \"[\" : \"\"}${this.typeDefType.has(type) ? this.typeDefType.get(type) : type}${is_many ? \"]\" : \"\"}${required ? \"!\" : \"\"}`).join(\"\\n\\t\")}\n          }`\n                    : `\n        type ${id} {\n            id: String\n            createdAt: Date\n            updatedAt: Date\n            ${columns\n                        .filter(({ relations, type }) => [...(relations || [])].length == 0 && this.typeDefType.get(type))\n                        .map(({ id, type, required, is_many }) => `${id}: ${is_many ? \"[\" : \"\"}${this.typeDefType.get(type)}${is_many ? \"]\" : \"\"}${required ? \"!\" : \"\"}`)\n                        .join(\"\\n\\t\")}\n            ${columns\n                        .filter(({ relations, type }) => (relations?.length && this.tables.has(type)))\n                        .map(({ id, type, required, is_many }) => `list_${type} (where: Model${type}WhereInput, distinctOn: [Model${type}ColumnInput], limit: Int, offset: Int, orderBy: Model${type}OrderByInput): [${type}]`)\n                        .join(\"\\n\\t\")}\n        }\n  \n        ${(() => {\n                        let col_number_ids = columns.filter(({ type }) => [\"1\", \"2\"].includes(type)).map(x => x.id);\n                        return col_number_ids > 0 ?\n                            `type ${id}_is_number {\n            ${col_number_ids.join(\"\\n\\t\")}\n          }\n          \n          type ${id}_aggregate_object {\n            count: Int\n            ${[\"sum\", \"avg\", \"stddev\", \"stddev_pop\", \"stddev_samp\", \"var_pop\", \"var_samp\", \"variance\"].map(operation => `${operation}: type ${id}_is_number`).join(\"\\n\\t\")}\n          }\n  \n          ` : `\n          type ${id}_aggregate_object {\n            count: Int\n          }\n          `\n\n                    })()}\n  \n        type ${id}_aggregate {\n          aggregate: ${id}_aggregate_object\n          nodes: [${id}]\n        }\n  \n        input Model${id}WhereInput {\n            id: ModelStringWhereInput\n            createdAt: ModelDateWhereInput\n            updatedAt: ModelDateWhereInput\n            _and: [Model${id}WhereInput]\n            _or: [Model${id}WhereInput]\n            _not: Model${id}WhereInput\n            ${columns\n                        .filter(({ relations, type }) => [...(relations || [])].length == 0 && this.typeDefType.get(type))\n                        .map(({ id, type, required, is_many }) => `${id}: Model${this.typeDefType.get(type)}WhereInput`)\n                        .join(\"\\n\\t\")}\n            ${columns\n                        .filter(({ relations, type }) => (relations?.length && this.tables.has(type)))\n                        .map(({ id, type, required, is_many }) => `list_${type}: Model${type}WhereInput`)\n                        .join(\"\\n\\t\")}\n        }\n  \n        input Model${id}OrderByInput {\n          id: ModelOrderByInput\n          createdAt: ModelOrderByInput\n          updatedAt: ModelOrderByInput\n          ${columns\n                        .filter(({ relations, type }) => [...(relations || [])].length == 0 && this.typeDefType.get(type))\n                        .map(({ id, type, required, is_many }) => `${id}: ModelOrderByInput`)\n                        .join(\"\\n\\t\")}\n        }\n  \n        enum Model${id}ColumnInput {\n          id\n          createdAt\n          updatedAt\n          ${columns\n                        .filter(({ relations, type }) => [...(relations || [])].length == 0 && this.typeDefType.get(type))\n                        .map(({ id, type, required, is_many }) => `${id}`)\n                        .join(\"\\n\\t\")}\n        }\n  \n        ${(() => {\n                        let _columns = columns.filter(({ relations, type }) => [...(relations || [])].length == 0 && this.typeDefType.get(type));\n                        _columns = _columns.map(({ id: column_id, type, required, is_many }) => `${column_id}: ${is_many ? \"[\" : \"\"}${this.typeDefType.has(type) ? this.typeDefType.get(type) : type}${is_many ? \"]\" : \"\"}${(required && !id.endsWith(\"history\")) ? \"!\" : \"\"}`);\n\n                        return `input Model${id}CreateInput {\n            ${[\"version: String\", ..._columns].join(\"\\n\\t\")}\n          }`;\n                    })()}\n  \n        ${(() => {\n                        let _columns = columns.filter(({ relations, type, no_modify }) => !no_modify && [...(relations || [])].length == 0 && this.typeDefType.get(type));\n                        _columns = _columns.map(({ id, type, required, is_many }) => `${id}: ${is_many ? \"[\" : \"\"}${this.typeDefType.has(type) ? this.typeDefType.get(type) : type}${is_many ? \"]\" : \"\"}`);\n                        return `input Model${id}UpdateInput {\n            ${[\"version: String\", ..._columns].join(\"\\n\\t\")}\n          }`;\n                    })()}\n        \n        ${(id.endsWith(\"_history\") || (schema !== this.path)) ? '' : `type Query {\n          get_${id} (id: ID!): ${id}!\n          list_${id} (where: Model${id}WhereInput, distinctOn: [Model${id}ColumnInput], limit: Int, offset: Int, orderBy: Model${id}OrderByInput): [${id}]!\n          aggregate_${id} (where: Model${id}WhereInput): ${id}_aggregate!\n        }\n    \n        type Mutation {\n          create_${id} (input: Model${id}CreateInput!): ${id}!\n          update_${id} (input: Model${id}UpdateInput!, id: ID!): ${id}!\n          delete_${id} (id: ID!): ${id}!\n        }\n  \n        type Subscription {\n          get_${id} (id: ID!): ${id}!\n          list_${id} (where: Model${id}WhereInput, distinctOn: [Model${id}ColumnInput], limit: Int, offset: Int, orderBy: Model${id}OrderByInput): [${id}]!\n        }`}\n        `;\n            }),\n        ].join(\"\\n\");\n    }\n\n    convertGraph = function (field, table, args = {}, variables = {}, headers, child = false) {\n        return {\n            ...(child ? {} : { schema: table.schema, headers }),\n            schema: table.schema,\n            target: [field.alias ? field.alias.value : field.name.value, child ? field.name.value : table.id],\n            variables: parseArguments(field.arguments, variables),\n            fields: field.selectionSet?.selections.filter((_field) => !_field.selectionSet).map((_field) => (_field.alias ? [_field.alias.value, _field.name.value] : [_field.name.value])),\n            links: field.selectionSet?.selections.filter((_field) => _field.selectionSet).map((_field) => this.convertGraph(_field, this.tables.get((table.columns.filter((col) => `list_${col.type}` == _field.name.value)[0] || { type: _field.name.value }).type), args, variables, headers, true)),\n        };\n    };\n\n    generateResolves() {\n        const tables = this.tables;\n        let all_action = [];\n        [...this.tables]\n            .map(([key, val]) => val)\n            .filter(({ id, schema, column }) => !column && !id.endsWith(\"_history\") && (schema === this.path))\n            .forEach(({ id, columns }) => {\n                all_action = [\n                    ...all_action,\n                    ...[\n                        [\"query\", \"get\"],\n                        [\"query\", \"list\"],\n                        [\"query\", \"aggregate\"],\n                        [\"mutation\", \"create\"],\n                        [\"mutation\", \"update\"],\n                        [\"mutation\", \"delete\"],\n                        [\"subscription\", \"get\"],\n                        [\"subscription\", \"list\"],\n                    ].map(([mode, type]) => [\n                        mode,\n                        type + \"_\" + id,\n                        async (parentValue, args, context, info) => {\n                            let query = this.convertGraph(info.fieldNodes[0], this.tables.get(id), args, info[\"variableValues\"], context.headers, false);\n                            return await this.sendAndListenQueue(mode, type, query, context);\n                        },\n                    ]),\n                ];\n            });\n\n        return {\n            Query: Object.fromEntries(all_action.filter(([mode, name, func]) => mode == \"query\").map(([type, name, func]) => [name, func])),\n            Mutation: Object.fromEntries(all_action.filter(([mode, name, func]) => mode == \"mutation\").map(([type, name, func]) => [name, func])), Subscription: Object.fromEntries(all_action.filter(([mode, name, func]) => mode == \"subscription\").map(([type, name, func]) => [name, func])),\n        };\n    }\n}\n\nvar graphQlServerContainer = {};\nvar graphQlServerContainerLoading = {};\nvar completegraphQlServerContainer = async function (schema) {\n    emitter.emit(schema, { error: false })\n}\n\nlet createGraphqlServer = async (schema, tables) => {\n  node.status({\n    fill: \"red\",\n    shape: \"ring\",\n    text: \"Start Graphql Server: \" + schema\n  })\n  let graphQlServer = new Build_graphQlServer({\n    path: schema,\n    tables\n  });\n\n  const queue = async (mode, action, data, context) => {\n    return new Promise((resolve, reject) => {\n      console.log(mode, action)\n      emitter.emit(context.headers['transaction-id'], {\n        mode, action, data, context\n      });\n      reject(\"success\")\n      // throw new Error({ message: \"success\" });\n    })\n  };\n  graphQlServer.setQueue(queue)\n  const apolloServer = new ApolloServer({\n    typeDefs: graphQlServer.generateTypeDefs(),\n    resolvers: graphQlServer.generateResolves(),\n    introspection: true,\n    cache: \"bounded\",\n  });\n  await apolloServer.start();\n  graphQlServerContainer[schema] = apolloServer;\n  completegraphQlServerContainer(schema);\n  node.status({\n    fill: \"green\",\n    shape: \"ring\",\n    text: \"End Graphql Server: \" + schema\n  })\n}\n\n\n\ncontext.set(\"createGraphqlServer\", createGraphqlServer)\nflow.set(\"getGraphQlServer\", async ({ schema, payload, options }) => {\n  return new Promise( async ( resolve, reject ) => {\n    let transactionId = createId();\n    options.contextValue.headers['transaction-id'] = transactionId;\n    emitter.once(transactionId, res => {\n      resolve({\n        topic: \"parse\",\n        payload: res\n      })\n    })\n  let result = await graphQlServerContainer[schema].executeOperation(payload, options).catch(err => {\n    return {\n      body: {\n        singleResult: {\n          errors: true,\n          payload: err.message\n        }\n      }\n    };\n  });\n  let resData = result?.body?.singleResult || {};\n  console.log(resData)\n  if (resData?.errors) {\n    console.log( \"resdata\", resData)\n    resolve({\n      topic: \"error\",\n      payload: { type: 'error', payload: resData }\n    })\n  } else {\n    console.log(\"options\", options)\n    flow.get(\"sendJobToQueue\")( options.contextValue.replyTo, options.contextValue.id, {\n      type: \"data\",\n      payload: resData\n    }, { jobId: options.contextValue.id})\n  };\n  return resData\n  })\n})\n\n\n// $local.Build_graphQlServer = Build_graphQlServer;\n// $local.graphQlServerContainer = {};\n// $local.graphQlServerContainerLoading = {};\n// $local.createWaittinggraphQlServerContainer = async function (schema) {\n//     return await new Promise((resolve, reject) => {\n//         emitter.once(schema, () => { resolve(null) })\n//     })\n// };\n\n// $local.completegraphQlServerContainer = async function (schema) {\n//     emitter.emit(schema, { error: false })\n// }\nreturn null;",
+        "finalize": "",
+        "libs": [
+            {
+                "var": "events",
+                "module": "events"
+            },
+            {
+                "var": "apolloServer",
+                "module": "@apollo/server"
+            },
+            {
+                "var": "paralleldriveCuid2",
+                "module": "@paralleldrive/cuid2"
+            }
+        ],
+        "x": 390,
+        "y": 560,
+        "wires": [
+            [
+                "0b974c817737301b"
+            ]
+        ]
+    },
+    {
+        "id": "0b974c817737301b",
+        "type": "function",
+        "z": "c1a8b2d3e4f5a6b7",
+        "name": "getGraphQlServer",
+        "func": "if (msg.topic == \"request\") {\n    console.log(msg)\n    let { schema, payload, context: contextValue } = msg.request;\n    let requestParse= await flow.get(\"getGraphQlServer\")({ schema, payload, options: { contextValue }});\n    if (requestParse.topic == \"parse\") {\n\n    } else if ( requestParse.topic == \"error\") {\n        msg.resolve(requestParse.payload)\n    }\n    node.send(requestParse)\n}\nreturn null;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 610,
+        "y": 560,
+        "wires": [
+            [
+                "9ee0c0db98e5f790"
+            ]
+        ]
+    },
+    {
+        "id": "0fb0833f4e31a63b",
+        "type": "function",
+        "z": "c1a8b2d3e4f5a6b7",
+        "name": "Convert Query To Hasura",
+        "func": "node.status({\n    fill: \"red\",\n    shape: \"ring\",\n    text: JSON.stringify(msg)\n  })\nlet { mode, action, data, context: contextValue } = msg.payload.job.data;\ntry {\n    node.send([{\n        topic: \"parse\",\n        payload: await context.get(\"queryNow\")( contextValue.id, action, data, true),\n        type: \"start\",\n        contextValue\n    }])\n} catch (err) {\n    console.log(err.message)\n}\nreturn msg;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   ",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "const { createId } = paralleldriveCuid2;\n\nconst filterPrismaToHasuraInWhere = new Map([\n     [\"neq\", [\"_neq\"]],\n     [\"eq\", [\"_eq\"]],\n     [\"equals\", [\"_eq\"]],\n     [\"lte\", [\"[_lte\"]],\n     [\"lt\", [\"_lt\"]],\n     [\"gte\", [\"_gte\"]],\n     [\"gt\", [\"_gt\"]],\n     [\"in\", [\"_in\"]],\n     [\"notIn\", [\"_nin\"]],\n     [\"like\", [\"_like\"]],\n     [\"iLike\", [\"_ilike\"]],\n     [\"regex\", [\"_regex\"]],\n     [\"iRegex\", [\"_iregex\"]],\n     [\"hasKey\", [\"_has_key\"]],\n     [\"isNull\", [\"_is_null\"]],\n ]);\n\nconst filterPrismaToHasura = new Map([\n       [\"neq\", [\"_neq\"]],\n       [\"eq\", [\"_eq\"]],\n       [\"equals\", [\"_eq\"]],\n       [\"lte\", [\"[_lte\"]],\n       [\"lt\", [\"_lt\"]],\n       [\"gte\", [\"_gte\"]],\n       [\"gt\", [\"_gt\"]],\n       [\"in\", [\"_in\"]],\n       [\"notIn\", [\"_nin\"]],\n       [\"like\", [\"_like\"]],\n       [\"iLike\", [\"_ilike\"]],\n       [\"regex\", [\"_regex\"]],\n       [\"iRegex\", [\"_iregex\"]],\n       [\"and\", [\"_and\"]],\n       [\"or\", [\"_or\"]],\n       [\"not\", [\"_not\"]],\n       [\"distinctOn\", [\"distinct_on\"]],\n       [\"orderBy\", [\"order_by\"]],\n       [\"hasKey\", [\"_has_key\"]],\n       [\"cast\", [\"_cast\"]],\n       [\"String\", [\"String\"]],\n       [\"path\", [\"path\"]],\n   ]);\n\nconst generatedHasuraVariables = (objectQuery, type = undefined, zone = '', level = '') => {\n    objectQuery.variables.where = { and: [objectQuery.variables.where || {}, { deletedAt: { isNull: true } }] }\n    let generatedHasuraVariablesZone = (variables, type = undefined) => {\n        return Object.fromEntries(Object.entries(variables).map(([key, val]) => {\n            let test_key = filterPrismaToHasuraInWhere.get(key);\n            if (test_key) {\n                return [test_key, val]\n            } else {\n                let _type = type || key;\n                let new_key = [...filterPrismaToHasura.get(key) || [key]][0];\n                if (val && [\"and\", \"or\", \"not\"].includes(key) && val.constructor === Array) {\n                    return [new_key, val.map(_val => generatedHasuraVariablesZone(_val, _type))]\n                } else if (val && !filterPrismaToHasuraInWhere.has(key) && val.constructor === Object) {\n                    if (new_key.startsWith(\"list\")) {\n                        return [new_key, generatedHasuraVariablesZone({ and: [{ deletedAt: { isNull: true } }, val] }, _type)]\n                    } else {\n                        return [new_key, generatedHasuraVariablesZone(val, _type)]\n                    }\n                } else {\n                    return [new_key, val]\n                }\n            }\n        }))\n    }\n    return Object.fromEntries([...Object.entries(generatedHasuraVariablesZone(objectQuery.variables)).map(([key, val]) => [`${key}_${zone}_${level}`, val]),\n    ...objectQuery.links.map((childQuery, childQueryIndex) => Object.entries(generatedHasuraVariables(childQuery, undefined, `${zone}${level}`, childQueryIndex))).flat()\n    ])\n}\n\nconst target_end = {\n    get: ``,\n    list: ``,\n    aggregate: `_aggregate`,\n}\n\nconst generatedHasuraQuery = (type, action, objectQuery, root = true, zone = '', level = '') => {\n    if (objectQuery.variables.id) {\n        objectQuery.variables[\"where\"] = objectQuery.variables[\"where\"] || {};\n        objectQuery.variables[\"where\"][\"id\"] = { _eq: objectQuery.variables.id };\n        delete objectQuery.variables.id;\n    }\n\n    return `${([\"socket\", \"subscription\"].includes(type)) ? `${[...objectQuery.target].shift()}:` : (root ? \"data:\" : \"\")}${objectQuery.schema ? `${root ? `${objectQuery.schema}_` : \"\"}${objectQuery.target.slice(-1)}${target_end[action]}` : objectQuery.target.slice(-1)[0]}\n    ${Object.keys(objectQuery.variables).length > 0 ? `(${(() => {\n            let trans_variables = Object.keys(objectQuery.variables).map(k => (filterPrismaToHasura.get(k) || [k])[0]);\n            return [\n                [\"where\", `$where_${zone}_${level}`],\n                [\"order_by\", `$order_by_${zone}_${level}`],\n                [\"distinct_on\", `$distinct_on_${zone}_${level}`],\n                [\"limit\", `$limit_${zone}_${level}`],\n                [\"offset\", `$offset_${zone}_${level}`],\n            ].filter(([key, val]) => trans_variables.includes(key)).map((x) => x.join(\": \")).join(\", \")\n\n        })()\n            })` : \"\"} {\n            ${objectQuery.fields.map((x) => `${(x.length > 1 && [\"socket\", \"subscription\"].includes(type)) ? `${x.slice(0, 1)[0]}:` : \"\"}${x.slice(-1)[0]}`).join(\"\\n\")}\n            ${objectQuery.links.map((x, linkIndex) => generatedHasuraQuery(type, action, x, false, `${zone}${level}`, linkIndex))}\n        }`;\n}\n\nconst generateHasuraVariablesType = (objectQuery, zone = '', level = '') => {\n    let table = `${objectQuery.schema}_${[...objectQuery.target].pop().replace(\"list_\", \"\")}`\n    let keys = Object.keys(objectQuery.variables).map(k => (filterPrismaToHasura.get(k) || [k])[0]);\n    let tt = [...[\n        [\"where\", `${table}_bool_exp`],\n        [\"order_by\", `[${table}_order_by!]`],\n        [\"distinct_on\", `[${table}_select_column!]`],\n        [\"limit\", `Int`],\n        [\"offset\", `Int`],\n    ].filter(([key, val]) => keys.includes(key)).map(([key, val]) => `$${key}_${zone}_${level}: ${val}`),\n    ...objectQuery.links.map((childQuery, childQueryIndex) => generateHasuraVariablesType(childQuery, `${zone}${level}`, childQueryIndex))\n    ]\n    return tt.filter(x => x).join(\",\")\n}\n\nconst generateHasuraObject = (id, mode, action, objectQuery, root = true) => {\n    let table = `${objectQuery.schema}_${objectQuery.target.slice(-1)[0]}`\n    let _variables = generatedHasuraVariables(objectQuery);\n    let _variablesType = generateHasuraVariablesType(objectQuery);\n    let _query = generatedHasuraQuery(mode, action, objectQuery);\n\n    return ({\n        query: `${mode === \"subscription\" ? mode : \"query\"} ${id}${_variablesType ? ` (${_variablesType}) ` : \"\"}{ ${_query} }`,\n        variables: _variables\n    })\n}\n\nconst applyRole = async (action, objectQuery) => {\n    objectQuery.user = {};\n    if (objectQuery.headers['authorization'] && objectQuery.headers['authorization']['startsWith'](\"Bearer \")) {\n        let token = objectQuery.headers['authorization'].slice(7)\n        let payload = jwt.verify(token, await jwt.getPrivateKey(), { algorithm: \"HS512\" })\n        objectQuery.user['id'] = payload.userId;\n    }\n\n    objectQuery.links.map(childObjectQuery => applyRole(action, Object.assign(childObjectQuery, { headers: objectQuery.headers })))\n    // if ([\"get\", \"list\"].includes(action)) {\n    //     if (objectQuery.variables.id) {\n    //         objectQuery.variables[\"where\"] = objectQuery.variables[\"where\"] || {};\n    //         objectQuery.variables[\"where\"][\"id\"] = { _eq: objectQuery.variables.id };\n    //         delete objectQuery.variables.id;\n    //     }\n    //     let getter = getters.get(objectQuery.target[1])\n    //     if (getter) {\n    //         await getter.bind(objectQuery)()\n    //     }\n    // } else if ([\"create\", \"update\"].includes(action)) {\n    //     let setter = setters.get(objectQuery.target[1]);\n    //     if (setter) {\n    //         await setter.bind(objectQuery)()\n    //     }\n    // }\n    return objectQuery\n}\n\nconst queryNow = async (id, action, objectQuery, socket = false, callback = () => { }) => {\n    id = id || createId()\n    objectQuery = await applyRole(action, objectQuery) || objectQuery;\n    let _query2 = generateHasuraObject(id, socket ? \"socket\" : \"query\", action, objectQuery);\n    return _query2\n    // await sendData(id, { operationName: id, ..._query2 }, \"start\");\n    // return await new Promise((resolve, reject) => {\n    //     emitter.once(id, async (_preDeleteRecord) => {\n    //         resolve(_preDeleteRecord)\n    //     })\n    // })\n};\ncontext.set(\"queryNow\", queryNow)",
+        "finalize": "",
+        "libs": [
+            {
+                "var": "paralleldriveCuid2",
+                "module": "@paralleldrive/cuid2"
+            },
+            {
+                "var": "jwt",
+                "module": "jsonwebtoken"
+            }
+        ],
+        "x": 750,
+        "y": 820,
+        "wires": [
+            [
+                "ef4d78454cc63244"
+            ]
+        ]
+    },
+    {
+        "id": "9ee0c0db98e5f790",
+        "type": "switch",
+        "z": "c1a8b2d3e4f5a6b7",
+        "name": "Router Query",
+        "property": "payload.mode",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "query",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 780,
+        "y": 640,
+        "wires": [
+            [
+                "3750469cdcaf6922"
+            ]
+        ]
+    },
+    {
+        "id": "460d16fc29448fe4",
+        "type": "subflow:5ed478d1a62e4007",
+        "z": "c1a8b2d3e4f5a6b7",
+        "d": true,
+        "name": "",
+        "x": 530,
+        "y": 820,
+        "wires": [
+            [
+                "0fb0833f4e31a63b"
+            ]
+        ]
+    },
+    {
+        "id": "4b2d302eacc317e1",
+        "type": "function",
+        "z": "c1a8b2d3e4f5a6b7",
+        "name": "Config Worker",
+        "func": "msg.topic = \"configWorker\";\nmsg.payload = { name: \"query\", concurrency: 100 };\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 320,
+        "y": 820,
+        "wires": [
+            [
+                "460d16fc29448fe4"
+            ]
+        ]
+    },
+    {
+        "id": "3750469cdcaf6922",
+        "type": "function",
+        "z": "c1a8b2d3e4f5a6b7",
+        "name": "Change Topic to Job",
+        "func": "console.log(msg)\nreturn ({\n    topic: \"job\",\n    payload: {\n        jobName: \"query\",\n        jobData: msg.payload\n    }\n});",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1020,
+        "y": 640,
+        "wires": [
+            [
+                "d9851c13a1bc067b"
+            ]
+        ]
+    },
+    {
+        "id": "ef4d78454cc63244",
+        "type": "function",
+        "z": "c1a8b2d3e4f5a6b7",
+        "name": "hasura Worker",
+        "func": "if ( msg.topic == \"parse\") {\n    let { payload, type, contextValue } = msg;\n    context.get(\"sendQuery\")({ payload, type, contextValue})\n}",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "var wsApp;\nvar wsAppConnected = false;\nvar emitter = new events.EventEmitter();\nemitter.setMaxListeners(0);\n\nlet connectSocket = async () => {\n    let hasuraURL = new url.URL(env.get(\"HASURA_URL\"));\n    // Convert Ws Query\n    hasuraURL.protocol = \"ws:\";\n    hasuraURL.pathname = \"/v1/graphql\";\n    console.log(`Connecting Hasura: ${hasuraURL.href}`);\n    wsApp = new WebSocket(hasuraURL.href, [\"graphql-ws\"]);\n    wsApp.on(\"open\", async () => {\n        console.log(`Connect Hasura successfully: ${hasuraURL.href}`);\n        await wsApp.send(JSON.stringify({ type: \"connection_init\", payload: { headers: { \"content-type\": \"application/json\" }, lazy: true } }));\n    });\n\n    wsApp.on(\"message\", async (msg) => {\n        const { id, type, payload } = JSON.parse('{}');\n        console.log(\"message\", id, type, payload?.errors);\n        if (id) {\n            let has_listener = await emitter.emit(id, {\n                type,\n                payload\n            });\n            if (!has_listener) {\n                emitter.emit(`stop-${id}`, null)\n            }\n        } else if (type === \"connection_ack\") {\n            wsAppConnected = true;\n            emitter.emit(\"connect\", true);\n        }\n    });\n\n\n    wsApp.on(\"error\", (err) => {\n        console.log(\"Connect Hasura failed!\");\n    });\n\n    wsApp.on(\"close\", () => {\n        console.log(\"Connect Hasura Socket closed!\");\n        console.log(`Try reconnect to Hasura after: 1000ms`);\n        if (this.state !== \"close\") {\n            setTimeout(connectSocket, 1000)\n        }\n    });\n};\n\nconnectSocket();\n\ncontext.set(\"sendQuery\", async ({ payload, type, contextValue}) => {\n    await wsApp.send(JSON.stringify({ id: contextValue.id, payload, type }));\n    emitter.once(contextValue.id, async (returnValue) => {\n        node.send({\n            topic: \"reply\",\n            returnValue,\n            replyTo: contextValue.replyTo,\n            id: contextValue.id\n        })\n    })\n})",
+        "finalize": "",
+        "libs": [
+            {
+                "var": "events",
+                "module": "events"
+            },
+            {
+                "var": "WebSocket",
+                "module": "ws"
+            },
+            {
+                "var": "paralleldriveCuid2",
+                "module": "@paralleldrive/cuid2"
+            },
+            {
+                "var": "url",
+                "module": "url"
+            }
+        ],
+        "x": 1000,
+        "y": 720,
+        "wires": [
+            [
+                "9b4d82c6eb4c4f47"
+            ]
+        ]
+    },
+    {
+        "id": "d9851c13a1bc067b",
+        "type": "subflow:1e273549eda8541e",
+        "z": "c1a8b2d3e4f5a6b7",
+        "name": "",
+        "x": 1290,
+        "y": 640,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "718c8adc934ab506",
+        "type": "function",
+        "z": "c1a8b2d3e4f5a6b7",
+        "name": "Config Queue",
+        "func": "msg.topic = \"configQueue\";\nmsg.payload = {\n    name: \"query\"\n};\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1040,
+        "y": 560,
+        "wires": [
+            [
+                "d9851c13a1bc067b"
+            ]
+        ]
+    },
+    {
+        "id": "9b4d82c6eb4c4f47",
+        "type": "function",
+        "z": "c1a8b2d3e4f5a6b7",
+        "name": "send Response To ReplyTo Queue",
+        "func": "console.log(\"okiela\", msg);\n\nflow.get(\"sendJobToQueue\")( msg.replyTo, msg.id, msg.returnValue, { jobId: msg.id})\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "// Code added here will be run once\n// whenever the node is started.\nconst { Queue, QueueEvents } = bullmq;\nconst IORedis = ioredis;\n\nconst connection = new IORedis(env.get(\"REDIS_URL\"), { maxRetriesPerRequest: null });\nconst AsyncFunction = (async function () { }).constructor;\n\nvar queues = {};\nvar eventQueues = {};\n\nvar newQueue;\nvar newQueueEvents;\n\ncontext.set(\"createNewQueue\", async (name) => {\n    newQueue = await new Queue(name, { connection });\n    newQueueEvents = await new QueueEvents(name, { connection })\n    await context.set(\"addJob\", async (jobName, jobData) => {\n        var job = await newQueue.add(jobName, jobData);\n        const result = await job.waitUntilFinished(newQueueEvents);\n        return result\n    })\n});\n\ncontext.set(\"sendJobToQueue\", async (queueName, jobName, jobData) => {\n    if (!queues[queueName]) {\n        queues[queueName] = await new Queue(queueName, { connection });\n        eventQueues[queueName] = await new QueueEvents(queueName, { connection });\n    };\n    var job = await queues[queueName].add(jobName, jobData);\n    const result = await job.waitUntilFinished(eventQueues[queueName]);\n    return result\n    \n})",
+        "finalize": "",
+        "libs": [
+            {
+                "var": "bullmq",
+                "module": "bullmq"
+            },
+            {
+                "var": "ioredis",
+                "module": "ioredis"
+            }
+        ],
+        "x": 1300,
+        "y": 720,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "4461b8cb54c4fcc6",
+        "type": "function",
+        "z": "c1a8b2d3e4f5a6b7",
+        "name": "Convert Mutation To Hasura",
+        "func": "let { mode, action, data, context: contextValue } = msg.payload;\nconsole.log(mode, action, data)\ntry {\n    node.send([{\n        topic: \"parse\",\n        payload: await context.get(\"queryNow\")( contextValue.id, mode, action, data, true),\n        type: \"start\",\n        contextValue\n    }])\n    node.status({\n        fill: \"green\",\n        shape: \"ring\",\n        text: contextValue.id\n    })\n} catch (err) {\n    console.log(err.message)\n}\nreturn null;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   ",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "const { createId } = paralleldriveCuid2;\n\nconst filterPrismaToHasuraInWhere = new Map([\n     [\"neq\", [\"_neq\"]],\n     [\"eq\", [\"_eq\"]],\n     [\"equals\", [\"_eq\"]],\n     [\"lte\", [\"[_lte\"]],\n     [\"lt\", [\"_lt\"]],\n     [\"gte\", [\"_gte\"]],\n     [\"gt\", [\"_gt\"]],\n     [\"in\", [\"_in\"]],\n     [\"notIn\", [\"_nin\"]],\n     [\"like\", [\"_like\"]],\n     [\"iLike\", [\"_ilike\"]],\n     [\"regex\", [\"_regex\"]],\n     [\"iRegex\", [\"_iregex\"]],\n     [\"hasKey\", [\"_has_key\"]],\n     [\"isNull\", [\"_is_null\"]],\n ]);\n\nconst filterPrismaToHasura = new Map([\n       [\"neq\", [\"_neq\"]],\n       [\"eq\", [\"_eq\"]],\n       [\"equals\", [\"_eq\"]],\n       [\"lte\", [\"[_lte\"]],\n       [\"lt\", [\"_lt\"]],\n       [\"gte\", [\"_gte\"]],\n       [\"gt\", [\"_gt\"]],\n       [\"in\", [\"_in\"]],\n       [\"notIn\", [\"_nin\"]],\n       [\"like\", [\"_like\"]],\n       [\"iLike\", [\"_ilike\"]],\n       [\"regex\", [\"_regex\"]],\n       [\"iRegex\", [\"_iregex\"]],\n       [\"and\", [\"_and\"]],\n       [\"or\", [\"_or\"]],\n       [\"not\", [\"_not\"]],\n       [\"distinctOn\", [\"distinct_on\"]],\n       [\"orderBy\", [\"order_by\"]],\n       [\"hasKey\", [\"_has_key\"]],\n       [\"cast\", [\"_cast\"]],\n       [\"String\", [\"String\"]],\n       [\"path\", [\"path\"]],\n   ]);\n\nconst generatedHasuraVariables = (objectQuery, type = undefined, zone = '', level = '') => {\n    // objectQuery.variables.where = { and: [objectQuery.variables.where || {}, { deletedAt: { isNull: true } }] }\n    let generatedHasuraVariablesZone = (variables, type = undefined) => {\n        return Object.fromEntries(Object.entries(variables).map(([key, val]) => {\n            let test_key = filterPrismaToHasuraInWhere.get(key);\n            if (test_key) {\n                return [test_key, val]\n            } else {\n                let _type = type || key;\n                let new_key = [...filterPrismaToHasura.get(key) || [key]][0];\n                if (val && [\"and\", \"or\", \"not\"].includes(key) && Object.prototype.toString.call(val) === '[object Array]') {\n                    return [new_key, val.map(_val => generatedHasuraVariablesZone(_val, _type))]\n                } else if (val && !filterPrismaToHasuraInWhere.has(key) && Object.prototype.toString.call(val) === '[object Object]') {\n                    if (new_key.startsWith(\"list\")) {\n                        return [new_key, generatedHasuraVariablesZone({ and: [{ deletedAt: { isNull: true } }, val] }, _type)]\n                    } else {\n                        return [new_key, generatedHasuraVariablesZone(val, _type)]\n                    }\n                } else {\n                    return [new_key, val]\n                }\n            }\n        }))\n    }\n    return Object.fromEntries([...Object.entries(generatedHasuraVariablesZone(objectQuery.variables)).map(([key, val]) => [`${key}_${zone}_${level}`, val]),\n    ...objectQuery.links.map((childQuery, childQueryIndex) => Object.entries(generatedHasuraVariables(childQuery, undefined, `${zone}${level}`, childQueryIndex))).flat()\n    ])\n}\n\nconst target_begin = {\n    get: ``,\n    list: ``,\n    aggregate: ``,\n    create: 'insert_',\n    update: \"update_\",\n    delete: \"delete_\"\n}\n\nconst target_end = {\n    get: ``,\n    list: ``,\n    aggregate: `_aggregate`,\n    create: '_one',\n    update: \"_by_pk\",\n    delete: \"_by_pk\"\n}\n\nconst generatedHasuraQuery = (type, action, objectQuery, root = true, zone = '', level = '') => {\n\n    return `${([\"socket\", \"subscription\"].includes(type)) ? `${[...objectQuery.target].shift()}:` : (root ? \"data:\" : \"\")}${objectQuery.schema ? `${root ? `${target_begin[action]}${objectQuery.schema}_` : \"\"}${objectQuery.target.slice(-1)}${target_end[action]}` : objectQuery.target.slice(-1)[0]}\n    ${Object.keys(objectQuery.variables).length > 0 ? `(${(() => {\n            let trans_variables = Object.keys(objectQuery.variables).map(k => (filterPrismaToHasura.get(k) || [k])[0]);\n            return [\n                [\"where\", `$where_${zone}_${level}`],\n                [\"order_by\", `$order_by_${zone}_${level}`],\n                [\"distinct_on\", `$distinct_on_${zone}_${level}`],\n                [\"limit\", `$limit_${zone}_${level}`],\n                [\"offset\", `$offset_${zone}_${level}`],\n                [\"createInput\", `$createInput_${zone}_${level}`, \"object\"],\n                [\"updateInput\", `$updateInput_${zone}_${level}`, \"_set\"],\n                [\"pk_columns\", `$pk_columns_${zone}_${level}`],\n                [\"id\", `$id_${zone}_${level}`]\n            ].filter(([key, val]) => trans_variables.includes(key)).map(([originKey, newVal, newKey]) => `${newKey || originKey}: ${newVal}`).join(\", \")\n\n        })()\n            })` : \"\"} {\n            ${objectQuery.fields.map((x) => `${(x.length > 1 && [\"socket\", \"subscription\"].includes(type)) ? `${x.slice(0, 1)[0]}:` : \"\"}${x.slice(-1)[0]}`).join(\"\\n\")}\n            ${objectQuery.links.map((x, linkIndex) => generatedHasuraQuery(type, action, x, false, `${zone}${level}`, linkIndex))}\n        }`;\n}\n\nconst generateHasuraVariablesType = (objectQuery, zone = '', level = '') => {\n    let table = `${objectQuery.schema}_${[...objectQuery.target].pop().replace(\"list_\", \"\")}`\n    let keys = Object.keys(objectQuery.variables).map(k => (filterPrismaToHasura.get(k) || [k])[0]);\n    let tt = [...[\n        [\"where\", `${table}_bool_exp!`],\n        [\"order_by\", `[${table}_order_by!]`],\n        [\"distinct_on\", `[${table}_select_column!]`],\n        [\"updateInput\", `${table}_set_input`],\n        [\"createInput\", `${table}_insert_input!`],\n        [\"limit\", `Int`],\n        [\"offset\", `Int`],\n        [\"pk_columns\", `${table}_pk_columns_input!`],\n        [\"id\", `String!`]\n    ].filter(([key, val]) => keys.includes(key)).map(([key, val]) => `$${key}_${zone}_${level}: ${val}`),\n    ...objectQuery.links.map((childQuery, childQueryIndex) => generateHasuraVariablesType(childQuery, `${zone}${level}`, childQueryIndex))\n    ]\n    return tt.filter(x => x).join(\",\")\n}\n\nconst generateHasuraObject = (id, mode, action, objectQuery, root = true) => {\n    switch (action) {\n        case \"create\":\n            objectQuery.variables[\"createInput\"] = objectQuery.variables.input;\n            delete objectQuery.variables.input;\n            break;\n        case \"update\":\n            objectQuery.variables[\"pk_columns\"] = { id: objectQuery.variables.id };\n            delete objectQuery.variables.id;\n            objectQuery.variables[\"updateInput\"] = objectQuery.variables.input;\n            delete objectQuery.variables.input;\n            break;\n        case \"delete\":\n            break;\n        default:\n            if (objectQuery.variables.id) {\n                objectQuery.variables[\"where\"] = objectQuery.variables[\"where\"] || {};\n                objectQuery.variables[\"where\"][\"id\"] = { _eq: objectQuery.variables.id };\n                delete objectQuery.variables.id;\n            };\n            break;\n    }\n    console.log(JSON.stringify(objectQuery.variables))\n    \n    let table = `${objectQuery.schema}_${objectQuery.target.slice(-1)[0]}`\n    let _variables = generatedHasuraVariables(objectQuery);\n    let _variablesType = generateHasuraVariablesType(objectQuery);\n    let _query = generatedHasuraQuery(mode, action, objectQuery);\n    console.log(mode, action)\n    return ({\n        query: `${mode === \"socket\" ? \"subscription\" : mode } ${id}${_variablesType ? ` (${_variablesType}) ` : \"\"}{ ${_query} }`,\n        variables: _variables\n    })\n}\n\nconst applyRole = async (action, objectQuery) => {\n    objectQuery.user = {};\n    if (objectQuery.headers['authorization'] && objectQuery.headers['authorization']['startsWith'](\"Bearer \")) {\n        let token = objectQuery.headers['authorization'].slice(7)\n        let payload = jwt.verify(token, await jwt.getPrivateKey(), { algorithm: \"HS512\" })\n        objectQuery.user['id'] = payload.userId;\n    }\n\n    objectQuery.links.map(childObjectQuery => applyRole(action, Object.assign(childObjectQuery, { headers: objectQuery.headers })))\n    // if ([\"get\", \"list\"].includes(action)) {\n    //     if (objectQuery.variables.id) {\n    //         objectQuery.variables[\"where\"] = objectQuery.variables[\"where\"] || {};\n    //         objectQuery.variables[\"where\"][\"id\"] = { _eq: objectQuery.variables.id };\n    //         delete objectQuery.variables.id;\n    //     }\n    //     let getter = getters.get(objectQuery.target[1])\n    //     if (getter) {\n    //         await getter.bind(objectQuery)()\n    //     }\n    // } else if ([\"create\", \"update\"].includes(action)) {\n    //     let setter = setters.get(objectQuery.target[1]);\n    //     if (setter) {\n    //         await setter.bind(objectQuery)()\n    //     }\n    // }\n    return objectQuery\n}\n\nconst queryNow = async (id, mode, action, objectQuery, socket = false, callback = () => { }) => {\n    id = id || createId()\n    objectQuery = await applyRole(action, objectQuery) || objectQuery;\n    let _query2 = generateHasuraObject(id, mode, action, objectQuery);\n    return _query2\n    // await sendData(id, { operationName: id, ..._query2 }, \"start\");\n    // return await new Promise((resolve, reject) => {\n    //     emitter.once(id, async (_preDeleteRecord) => {\n    //         resolve(_preDeleteRecord)\n    //     })\n    // })\n};\ncontext.set(\"queryNow\", queryNow)",
+        "finalize": "",
+        "libs": [
+            {
+                "var": "paralleldriveCuid2",
+                "module": "@paralleldrive/cuid2"
+            },
+            {
+                "var": "jwt",
+                "module": "jsonwebtoken"
+            }
+        ],
+        "x": 740,
+        "y": 1400,
+        "wires": [
+            [
+                "24b240a2d666641b"
+            ]
+        ]
+    },
+    {
+        "id": "5e2c05ea9d901b0d",
+        "type": "link in",
+        "z": "4495e7c5444d7ec4",
+        "name": "From 'Build Main' Flow",
+        "links": [],
+        "x": 155,
+        "y": 100,
+        "wires": [
+            [
+                "fdc4bad19c3c600d"
+            ]
+        ]
+    },
+    {
+        "id": "fdc4bad19c3c600d",
+        "type": "function",
+        "z": "4495e7c5444d7ec4",
+        "name": "Setup GraphQL Container (Run Once per Schema)",
+        "func": "// This function simulates the `setup` method.\n// It initializes a global GraphQL container and configures it with the tables.\n\n// --- Placeholder for your BuildGraphqlServer ---\n// In a real scenario, you would require your actual class here\n// or have it loaded into the global context.\nclass MockGraphqlServer {\n    constructor() {\n        node.log('MockGraphqlServer initialized.');\n        this.configuredSchemas = new Set();\n    }\n    setup({ path, tables }) {\n        node.log(`Configuring GraphQL schema for path: ${path}`);\n        this.configuredSchemas.add(path.replace('/', ''));\n    }\n    async executeOperation(path, payload, context) {\n        node.log(`Executing operation for path '${path}' with payload:`, payload);\n        // This is a mock response. Replace with your actual execution logic.\n        if (payload.query.includes('subscription')) {\n            // Simulate a subscription that yields multiple results\n            async function* subscriptionData() {\n                yield { type: 'data', payload: { data: { message: `Subscribed to ${path}` } } };\n                await new Promise(resolve => setTimeout(resolve, 1000));\n                yield { type: 'data', payload: { data: { message: `Update from ${path}` } } };\n            }\n            return subscriptionData();\n        } else {\n            // Simulate a single query/mutation response\n            return [{ type: 'data', payload: { data: { message: `Query result for ${path}` } } }];\n        }\n    }\n    stop(path, id) {\n        node.log(`Stopping subscription for path '${path}' with id: ${id}`);\n    }\n}\n// --- End Placeholder ---\n\n// Initialize the container in the global context if it doesn't exist\nlet graphqlContainer = global.get('graphqlContainer');\nif (!graphqlContainer) {\n    graphqlContainer = new MockGraphqlServer();\n    global.set('graphqlContainer', graphqlContainer);\n}\n\nconst tables = msg.payload;\nconst schemas = new Set(tables.map(({ schema }) => schema));\n\nfor (const schema of schemas) {\n    if (!graphqlContainer.configuredSchemas.has(schema)) {\n        graphqlContainer.setup({ path: `/${schema}`, tables });\n    }\n}\n\nnode.log('GraphQL setup complete for all new schemas.');\nreturn null; // Stop the flow here, this is just for configuration",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 460,
+        "y": 100,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "cdcf877ceb3338db",
+        "type": "http in",
+        "z": "4495e7c5444d7ec4",
+        "name": "POST /graphql/:schema",
+        "url": "/graphql/:schema",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 160,
+        "y": 240,
+        "wires": [
+            [
+                "dc623f15a2ecc0b5"
+            ]
+        ]
+    },
+    {
+        "id": "dc623f15a2ecc0b5",
+        "type": "function",
+        "z": "4495e7c5444d7ec4",
+        "name": "Execute GraphQL HTTP",
+        "func": "const graphqlContainer = global.get('graphqlContainer');\nconst schema = msg.req.params.schema;\n\nif (!graphqlContainer) {\n    msg.statusCode = 500;\n    msg.payload = { errors: [{ message: \"GraphQL server not initialized.\" }] };\n    return msg;\n}\n\n// The original code returns a promise that resolves to the first element.\n(async () => {\n    try {\n        let [response] = await graphqlContainer.executeOperation(schema, msg.payload, { headers: msg.req.headers });\n        if (response.payload?.errors) {\n            msg.statusCode = 400;\n        }\n        msg.payload = response.payload;\n        node.send(msg);\n    } catch(err) {\n        msg.statusCode = 500;\n        msg.payload = { errors: [{ message: err.message }] };\n        node.send(msg);\n    }\n})();\n\n// Return null because we are sending asynchronously\nreturn null;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 400,
+        "y": 240,
+        "wires": [
+            [
+                "3aae509f7b97611f"
+            ]
+        ]
+    },
+    {
+        "id": "3aae509f7b97611f",
+        "type": "http response",
+        "z": "4495e7c5444d7ec4",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 630,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "2a54dae1411d6dd7",
+        "type": "websocket in",
+        "z": "4495e7c5444d7ec4",
+        "name": "GraphQL WebSocket IN",
+        "server": "",
+        "client": "",
+        "x": 160,
+        "y": 380,
+        "wires": [
+            [
+                "dc4a974f4afac71e"
+            ]
+        ]
+    },
+    {
+        "id": "dc4a974f4afac71e",
+        "type": "function",
+        "z": "4495e7c5444d7ec4",
+        "name": "WebSocket Message Router",
+        "func": "// This function manages the state for each connected WebSocket client.\nconst graphqlContainer = global.get('graphqlContainer');\nconst createId = global.get('cuid2').createId;\n\n// Initialize client-specific state using node context\nlet subscribeIds = node.context().get('subscribeIds') || new Map();\nnode.context().set('subscribeIds', subscribeIds);\n\nconst path = msg.req.url.replace('/',''); // Get schema from URL\n\n// Handle client disconnection\nif (msg._session && msg._session.type === \"close\") {\n    node.log(`WS client disconnected from ${path}. Cleaning up ${subscribeIds.size} subscriptions.`);\n    subscribeIds.forEach(id => graphqlContainer.stop(path, id));\n    node.context().set('subscribeIds', new Map()); // Clear state\n    return null;\n}\n\n// Handle incoming messages\nconst { id, type, payload } = JSON.parse(msg.payload.toString());\nmsg.topic = id; // Use the operation ID as the topic for routing responses\n\nif (type === \"connection_init\") {\n    msg.payload = { type: \"connection_ack\" };\n    return msg;\n} else if (type === \"subscribe\") {\n    if (subscribeIds.has(id)) {\n        graphqlContainer.stop(path, subscribeIds.get(id));\n    }\n    const jobId = createId();\n    subscribeIds.set(id, jobId);\n\n    (async () => {\n        let responseData = await graphqlContainer.executeOperation(path, payload, { id: jobId, headers: {} });\n        for await (const { type: t, payload: p } of responseData) {\n            // Create a new message for each event in the subscription\n            node.send({\n                _session: msg._session, // IMPORTANT: Preserve session to route back to client\n                topic: id,\n                payload: { id, type: t === 'data' ? 'next' : t, payload: t === 'data' ? p : p?.errors }\n            });\n            if (t !== 'data') subscribeIds.delete(id);\n        }\n    })();\n} else if (type === \"complete\") {\n    if (subscribeIds.has(id)) {\n        graphqlContainer.stop(path, subscribeIds.get(id));\n        subscribeIds.delete(id);\n    }\n}\n\nreturn null; // All messages are sent asynchronously via node.send()",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 410,
+        "y": 380,
+        "wires": [
+            [
+                "bffe889d5f617fb6"
+            ]
+        ]
+    },
+    {
+        "id": "bffe889d5f617fb6",
+        "type": "websocket out",
+        "z": "4495e7c5444d7ec4",
+        "name": "",
+        "server": "",
+        "client": "",
+        "x": 650,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "e0246f4be156dc65",
+        "type": "function",
+        "z": "4495e7c5444d7ec4",
+        "name": "Socket.IO Message Router",
+        "func": "// This logic is nearly identical to the WebSocket router, adapted for Socket.IO\nconst graphqlContainer = global.get('graphqlContainer');\nconst createId = global.get('cuid2').createId;\n\n// Associate state with the socket.id\nconst contextKey = `socket_${msg.socketid}`;\nlet subscribeIds = context.get(contextKey) || new Map();\ncontext.set(contextKey, subscribeIds);\n\n// Get schema from the namespace\nconst path = msg.namespace.replace('/','');\n\n// Handle disconnection (this requires a separate flow listening to 'disconnect')\n// For simplicity, we handle it here, but a dedicated flow is better.\nif (msg.payload === 'disconnect') {\n    node.log(`Socket.IO client disconnected from ${path}. Cleaning up ${subscribeIds.size} subscriptions.`);\n    subscribeIds.forEach(id => graphqlContainer.stop(path, id));\n    context.set(contextKey, new Map());\n    return null;\n}\n\nconst { id, type, payload } = msg.payload;\nmsg.topic = id;\n\nif (type === \"connection_init\") {\n    msg.payload = { id, type: 'connection_ack' };\n    return msg;\n} else if ([\"query\", \"subscription\", \"start\", \"patch\"].includes(type)) {\n    if (subscribeIds.has(id)) {\n        graphqlContainer.stop(path, subscribeIds.get(id));\n    }\n    const jobId = createId();\n    subscribeIds.set(id, jobId);\n\n    (async () => {\n        let responseData = await graphqlContainer.executeOperation(path, typeof payload === 'string' ? JSON.parse(payload) : payload, { id: jobId, headers: {} });\n        for await (const { type: t, payload: p } of responseData) {\n            node.send({ \n                socketid: msg.socketid, \n                event: 'data',\n                payload: { id, type: t, payload: p }\n            });\n            if (t !== 'data') {\n                if (subscribeIds.has(id)) {\n                    graphqlContainer.stop(path, subscribeIds.get(id));\n                    subscribeIds.delete(id);\n                }\n            }\n        }\n    })();\n} else if ([\"stop\", \"complete\"].includes(type)) {\n     if (subscribeIds.has(id)) {\n        graphqlContainer.stop(path, subscribeIds.get(id));\n        subscribeIds.delete(id);\n    }\n}\n\nreturn null; // All messages sent via node.send()",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 400,
+        "y": 520,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "03490bd5bba0d715",
+        "type": "comment",
+        "z": "4495e7c5444d7ec4",
+        "name": "Flow 1: Server Configuration",
+        "info": "This flow is triggered by the previous 'Build Main' flow.\n\nIt receives the table configuration and sets up a shared, global `graphqlContainer` instance that all the listener flows below will use. This simulates the `setup()` method in your class.",
+        "x": 200,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "0fedf7b378dc7933",
+        "type": "comment",
+        "z": "4495e7c5444d7ec4",
+        "name": "Flow 2: HTTP Endpoint",
+        "info": "Listens for standard POST requests and executes a GraphQL operation.",
+        "x": 170,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "c2aeab9f566f9294",
+        "type": "comment",
+        "z": "4495e7c5444d7ec4",
+        "name": "Flow 3: WebSocket Endpoint",
+        "info": "Handles the GraphQL-over-WebSocket protocol, including subscriptions and connection state for each client.",
+        "x": 190,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "0fb6f202eca0d257",
+        "type": "comment",
+        "z": "4495e7c5444d7ec4",
+        "name": "Flow 4: Socket.IO Endpoint",
+        "info": "Handles your custom 'data' event protocol over Socket.IO, managing state for each connected socket.",
+        "x": 180,
+        "y": 480,
+        "wires": []
     },
     {
         "id": "5ad5f579311f38d9",

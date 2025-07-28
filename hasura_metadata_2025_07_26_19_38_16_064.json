@@ -1,0 +1,68 @@
+{
+  "resource_version": 3,
+  "metadata": {
+    "version": 3,
+    "sources": [
+      {
+        "name": "s5pg",
+        "kind": "postgres",
+        "tables": [
+          {
+            "table": {
+              "name": "column",
+              "schema": "private"
+            }
+          },
+          {
+            "table": {
+              "name": "column_history",
+              "schema": "private"
+            }
+          },
+          {
+            "table": {
+              "name": "relation",
+              "schema": "private"
+            }
+          },
+          {
+            "table": {
+              "name": "relation_history",
+              "schema": "private"
+            }
+          },
+          {
+            "table": {
+              "name": "table",
+              "schema": "private"
+            }
+          },
+          {
+            "table": {
+              "name": "table_history",
+              "schema": "private"
+            }
+          }
+        ],
+        "configuration": {
+          "connection_info": {
+            "database_url": {
+              "connection_parameters": {
+                "database": "postgres",
+                "host": "localhost",
+                "password": "buuandbee",
+                "port": 5432,
+                "username": "postgres"
+              }
+            },
+            "isolation_level": "read-committed",
+            "use_prepared_statements": false
+          }
+        },
+        "customization": {
+          "naming_convention": "hasura-default"
+        }
+      }
+    ]
+  }
+}
